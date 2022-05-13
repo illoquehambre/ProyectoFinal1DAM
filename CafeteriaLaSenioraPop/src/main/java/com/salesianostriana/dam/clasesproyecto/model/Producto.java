@@ -29,6 +29,7 @@ public class Producto {
 	private String url;
 	//Especificar el tipo de conexion de BD (mnayToOne, OneToMany...)
 	@ManyToOne
+	
 	private Categoria categoria;
 	
 	
