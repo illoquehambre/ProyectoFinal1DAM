@@ -25,18 +25,18 @@ public class Producto {
 	private long id;	
 	private String nombre;
 	private double precio;
-	private int cantidadDisponible;
+	private int cantidad;
 	private String url;
 	//Especificar el tipo de conexion de BD (mnayToOne, OneToMany...)
 	@ManyToOne
 	private Categoria categoria;
 	
 	
-	public Producto(String nombre, double precio, int cantidadDisponible, String url, Categoria categoria) {
+	public Producto(String nombre, double precio, int cantidad, String url, Categoria categoria) {
 		super();
 		this.nombre = nombre;
 		this.precio = precio;
-		this.cantidadDisponible = cantidadDisponible;
+		this.cantidad = cantidad;
 		this.url = url;
 		this.categoria = categoria;
 	}
