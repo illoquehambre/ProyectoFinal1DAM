@@ -14,9 +14,9 @@
 
 <body class="container d-flex align-items-center">
 
-        <form th:action="@{/productosAdmin/nuevo/submit}" class="w-75 d-flex flex-column align-items-center was-validated container py-2 bg-success mt-5" th:object="${producto}" method="post" >
+        <form th:action="${producto.id != 0} ? @{editar/submit} : @{nuevo/submit}" class="w-75 d-flex flex-column align-items-center was-validated container py-2 bg-success mt-5" th:object="${producto}" method="post" >
             <div class="align-items-center">
-
+				<input th:if="${producto.id != 0}" type="hidden" name="id" th:field="*{id}" />
                 <div class="d-flex mb-1 w-100 w-lg-50 input-group form-floating my-5">
                     <span class="input-group-text text-success">Nombre</span>
                     <input class="  bg-light text-secondary " type="text"

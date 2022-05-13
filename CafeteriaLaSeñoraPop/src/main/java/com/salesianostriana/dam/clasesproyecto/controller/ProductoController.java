@@ -2,6 +2,7 @@ package com.salesianostriana.dam.clasesproyecto.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -80,6 +81,41 @@ public class ProductoController {
 		productoServicio.deleteById(id);
 		return "redirect:/productosAdmin";
 	}
+	
+	
+	
+	@GetMapping("/productosAdmin/{id}/editar")
+	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
+		
+		//Buscamos al categoria por id y recordemos que el método findById del servicio, devuelve el objeto buscado o null si no se encuentra.
+		 
+		
+		Optional<Producto> comprobar = productoServicio.findById(id);
+		
+		if (comprobar.isPresent()) {
+			model.addAttribute("producto", comprobar.get());
+			return "AgregarProducto";
+		} else {
+			// No existe ningún categoria con el Id proporcionado.
+			// Redirigimos hacia el listado.
+			return "redirect:/productosAdmin";
+		}
+		
+		
+	}
+	
+	/**
+	 * Método que procesa la respuesta del formulario al editar
+	 */
+	@PostMapping("productosAdmin/{id}/editar/submit")
+	public String procesarFormularioEdicion(@ModelAttribute("producto") Producto pr) {
+		productoServicio.edit(pr);
+		return "redirect:/productosAdmin";//Volvemos a redirigir la listado a través del controller para pintar la lista actualizada con la modificación hecha
+	}
+	
+	
+	
+	
 	
 	 @ModelAttribute("categorias")
 	 public List<Categoria> categorias(){
