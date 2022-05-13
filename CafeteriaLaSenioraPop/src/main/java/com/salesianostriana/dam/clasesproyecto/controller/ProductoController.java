@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,12 +22,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Controller
 public class ProductoController {
-
-	private final CategoriaServicio categoriaServicio;
 	
-	private final ProductoServicio productoServicio;
-	
-	private final LineaDeVentaServicio lineaDeVentaServicio;
+	@Autowired
+	private CategoriaServicio categoriaServicio;
+	@Autowired
+	private ProductoServicio productoServicio;
+	@Autowired
+	private LineaDeVentaServicio lineaDeVentaServicio;
 	
 	@GetMapping({"categorias/{id}/productos"})
 	public String listado(Model model,  @PathVariable Long id) {

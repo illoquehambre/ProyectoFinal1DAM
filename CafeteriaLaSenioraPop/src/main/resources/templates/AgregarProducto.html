@@ -45,7 +45,8 @@
                 <div class=" d-flex mb-1 w-100 w-lg-50   input-group align-content-between my-5">
                     <span class="input-group-text text-success">categoria</span>
                     <select class="  bg-light text-secondary" name="categoria" id="categoria" required th:field="*{categoria}">
-                        <option th:each="categoria : ${categorias}"> <span th:text="${categoria.nombre}"></span> </option>
+                    	<option value="-1"></option>
+                        <option th:each="categoria : ${categorias}" th_value="${categoria.id}" th:text="${categoria.nombre}"> </option>
                     </select>
                 </div>
     -->			
