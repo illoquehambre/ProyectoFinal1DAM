@@ -15,7 +15,7 @@
 
 <body>
 
-	<nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+	<nav th:fragment="mysidebar" class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="paginaPrincipal.html"> <img src="../static/img/sr.pop_01.png" width="50px"
 					alt="Logo oficial"></a>
@@ -25,7 +25,7 @@
 			<div class="collapse navbar-collapse" id="mynavbar">
 				<ul class="navbar-nav me-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="paginaPrincipal.html">LA SR. POP </a>
+						<a class="nav-link" href="../templates/paginaPrincipal">LA SR. POP </a>
 					</li>
 					
 					<li>
@@ -36,7 +36,7 @@
 						</button>
 					</li>
 				</ul>
-				<a th:href="@{/index}"><button class="btn btn-primary bg-dark border border-white bot mx-4 px-4" type="button">Logout</button></a>
+				<a th:href="@{/logout}"><button class="btn btn-primary bg-dark border border-white bot mx-4 px-4" type="button">Logout</button></a>
 
 			</div>
 		</div>
