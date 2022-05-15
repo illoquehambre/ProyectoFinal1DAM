@@ -15,17 +15,31 @@
 <body>
     <div class="container-lg">
         
-        <ul class="card">
-            <h1 class="text-center text-info mb-3 card-header">CARTA</h1>
-            <li class="card-body border border-1 border-dark my-3" th:each="categoria : ${categorias}">
-                
-                    <span  th:text="${categoria.nombre}"></span>
-               
-                <a href="#" th:href="@{/admin/categoriasAdmin/{id}/editar(id=${categoria.id})}">Modificar</a> 
-                <a href="#" th:href="@{/admin/categoriasAdmin/borrar/{id}(id=${categoria.id})}">Eliminar</a>               
-            </li>
-
-        </ul>
+        <div class="row">
+				<div class="col-md-12">
+					<h4 class="text-center mb-4">Create Your Domain Name</h4>
+					<div class="table-wrap">
+						<table class="table">
+					    <thead class="thead-primary">
+					      <tr>
+					        
+					        <th>Nombre</th>
+					        <th>Modificar</th>
+					        <th>Eliminar</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr  th:each="categoria : ${categorias}">
+					       
+					        <td th:text="${categoria.nombre}">nombre</td>
+					        <td><a href="#" th:href="@{/admin/categoriasAdmin/{id}/editar(id=${categoria.id})}" class="btn btn-primary">Modificar</a></td>
+							<td><a href="#" th:href="@{/admin/categoriasAdmin/borrar/{id}(id=${categoria.id})}" class="btn btn-danger">Eliminar</a></td>
+					      </tr>				
+					    </tbody>
+					  </table>
+					</div>
+				</div>
+			</div>
         <div class="d-flex justify-content-between">
             <a th:href="@{/}"><button  class=" btn btn-primary rounded-pill">Volver Atrás</button>
             <a th:href="@{/logout}"><button  class=" btn btn-primary rounded-pill" >SALIR</button></a>

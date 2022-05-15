@@ -13,15 +13,35 @@
         crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container-lg"></div>
-        <ul class="card">
-            <h1 class="text-center text-info mb-3 card-header">CARTA</h1>
-            <li th:each="producto : ${productos}" class="card-body border border-1 border-dark my-3 d-flex" >
-                    <span th:text="${producto.nombre}"></span> 
-                    <a href="#" th:href="@{/admin/productosAdmin/{id}/editar(id=${producto.id})}">Modificar</a> 
-                	<a href="#" th:href="@{/admin/productosAdmin/borrar/{id}(id=${producto.id})}">Eliminar</a>       
-            </li>
-        </ul>
+    <div class="container-lg">
+        
+        
+         <div class="row">
+				<div class="col-md-12">
+					<h4 class="text-center mb-4">Create Your Domain Name</h4>
+					<div class="table-wrap">
+						<table class="table">
+					    <thead class="thead-primary">
+					      <tr>
+					        <th>Icono</th>
+					        <th>Nombre</th>
+					        <th>Modificar</th>
+					        <th>Eliminar</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr  th:each="producto : ${productos}">
+					        <td><img th:src="@{producto.url}" alt="Icono"></td>
+					        <td th:text="${producto.nombre}">nombre</td>
+					        <td><a href="#" th:href="@{/admin/productosAdmin/{id}/editar(id=${producto.id})}" class="btn btn-primary">Modificar</a></td>
+							<td><a href="#" th:href="@{/admin/productosAdmin/borrar/{id}(id=${producto.id})}" class="btn btn-danger">Eliminar</a></td>
+					      </tr>				
+					    </tbody>
+					  </table>
+					</div>
+				</div>
+			</div>
+        
         <div class="d-flex justify-content-between">
             <a th:href="@{/admin/categoriasAdmin/}"><button  class=" btn btn-primary rounded-pill">Volver al listado</button></a>
             <a th:href="@{/admin/productosAdmin/nuevo}"><button class=" btn btn-primary rounded-pill">CrearNuevo</button></a>

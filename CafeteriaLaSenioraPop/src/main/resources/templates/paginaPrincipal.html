@@ -2,656 +2,704 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Latest compiled and minified CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="./estilos.css">
-  <!-- Latest compiled JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  <title>Document</title>
-  <style>
-    body {
-      background-image: url(../static/img/fondo_02.png);
-      background-size: contain;
-      background-attachment: fixed;
-    }
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Latest compiled and minified CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="./estilos.css">
+	<!-- Latest compiled JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<title>Document</title>
+	<style>
+		body {
+			background-image: url(../static/img/fondo_02.png);
+			background-size: contain;
+			background-attachment: fixed;
+		}
 
-    .bot {
-      background-color: #8762d9;
-      color: whitesmoke;
-      border-style: none;
-    }
+		.bot {
+			background-color: #8762d9;
+			color: whitesmoke;
+			border-style: none;
+		}
 
-    .bot:hover {
-      background-color: #4c0370;
-      border-style: none;
-      color: whitesmoke;
-    }
+		.bot:hover {
+			background-color: #4c0370;
+			border-style: none;
+			color: whitesmoke;
+		}
 
-    .eo {
-      background-image: linear-gradient(to right, #8517a0, #3e5da1);
-      border-style: none;
-      color: whitesmoke;
-    }
+		.eo {
+			background-image: linear-gradient(to right, #8517a0, #3e5da1);
+			border-style: none;
+			color: whitesmoke;
+		}
 
-    h1 {
-      color: white;
-    }
+		h1 {
+			color: white;
+		}
 
-    .form {
-      background-color: rgba(212, 194, 160, 0.4)
-    }
+		.form {
+			background-color: rgba(212, 194, 160, 0.4)
+		}
 
-    .other {
+		.other {
 
-      background-image: url(../static/img/fondo.jpg);
-      background-size: cover;
-      background-position: center;
-    }
+			background-image: url(../static/img/fondo.jpg);
+			background-size: cover;
+			background-position: center;
+		}
 
-    .other:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background: linear-gradient(45deg, rgb(36, 51, 66), rgba(36, 51, 66, 0.81))
-    }
-  </style>
+		.other:before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			background: linear-gradient(45deg, rgb(36, 51, 66), rgba(36, 51, 66, 0.81))
+		}
+
+		td {
+			text-align: center;
+		}
+	</style>
 </head>
 
 <body>
 
-  <!-- The navbar - The <a> elements are used to jump to a section in the scrollable area -->
+	<!-- The navbar - The <a> elements are used to jump to a section in the scrollable area -->
 
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="paginaPrincipal.html"> <img src="../static/img/sr.pop_01.png" width="50px" alt="Logo oficial"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mynavbar">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="paginaPrincipal.html">LA SR. POP </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#section0">EVENTOS</a>
-          </li>
-          <li>
-            <div class="dropdown">
-              <button type="button" class="btn btn-primary dropdown-toggle bg-dark border border-dark text-muted"
-                data-bs-toggle="dropdown">
-                CATEGORÍAS
-              </button>
-              <ul class="dropdown-menu bg-dark">
-                <li><a class="dropdown-item text-muted" href="#section2">NOVEDADES</a></li>
-                <li><a class="dropdown-item text-muted" href="#section3">MAS VENDIDOS</a></li>
-                <li><a class="dropdown-item text-muted" href="#section4">ESPECIALES DE LA CASA</a></li>
-              </ul>
-            </div>
-          <li>
-            <!-- Button to open the offcanvas sidebar -->
-            <button class="btn btn-primary bg-dark border border-dark text-muted" type="button"
-              data-bs-toggle="offcanvas" data-bs-target="#botonsidecamva">
-              Eventos Semanales
-            </button>
-          </li>
-        </ul>
-          <a th:href="@{/index}"><button class="btn bot mx-4 px-4" type="button">Login</button></a>
-        
-      </div>
-    </div>
-  </nav>
-  <!-- Offcanvas Sidebar -->
-  <div class="offcanvas offcanvas-start" id="botonsidecamva">
-    <div class="offcanvas-header eo">
-      <h1 class="offcanvas-title text-light">Eventos Semanales</h1>
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
-    </div>
-    <div class="offcanvas-body eo">
-      <table class="table table-dark table-hover">
-        <thead>
-          <tr>
-            
-            <th class="text-center">Mensual </th>
-            <th class="text-center">Semanal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            
-            <td>Lunes</td>
-            <td>Micro Libre</td>
-          </tr>
-          <tr>
-            
-            <td>Martes</td>
-            <td>Recital</td>
-          </tr>
-          <tr>
-            
-            <td>Miércoles</td>
-            <td>Homenaje</td>
-          </tr>
-          <tr>
-            
-            <td>Jueves</td>
-            <td>Monólogo</td>
-          </tr>
-          <tr>
-            
-            <td>Viernes</td>
-            <td>Concierto</td>
-          </tr>
-          <tr>
-            
-            <td>Sábado</td>
-            <td>Improvisación</td>
-          </tr>
-          <tr>
-            
-            <td>Domingo</td>
-            <td>Micro Libre</td>
-          </tr>
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="paginaPrincipal.html"> <img src="../static/img/sr.pop_01.png" width="50px"
+					alt="Logo oficial"></a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="mynavbar">
+				<ul class="navbar-nav me-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="paginaPrincipal.html">LA SR. POP </a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#section0">EVENTOS</a>
+					</li>
+					<li>
+						<div class="dropdown">
+							<button type="button"
+								class="btn btn-primary dropdown-toggle bg-dark border border-dark text-muted"
+								data-bs-toggle="dropdown">
+								CATEGORÍAS
+							</button>
+							<ul class="dropdown-menu bg-dark">
+								<li><a class="dropdown-item text-muted" href="#section2">NOVEDADES</a></li>
+								<li><a class="dropdown-item text-muted" href="#section3">MAS VENDIDOS</a></li>
+								<li><a class="dropdown-item text-muted" href="#section4">ESPECIALES DE LA CASA</a></li>
+							</ul>
+						</div>
+					<li>
+						<!-- Button to open the offcanvas sidebar -->
+						<button class="btn btn-primary bg-dark border border-dark text-muted" type="button"
+							data-bs-toggle="offcanvas" data-bs-target="#botonsidecamva">
+							Eventos Semanales
+						</button>
+					</li>
+				</ul>
+				<a th:href="@{/index}"><button class="btn bot mx-4 px-4" type="button">Login</button></a>
 
-        </tbody>
-      </table>
-      <!-- Button to open the offcanvas sidebar -->
-      <button class="btn btn-secondary bot" type="button" data-bs-toggle="offcanvas" data-bs-target="#botonsidecamva2">
-        Votar actuacion
-      </button>
-    </div>
-  </div>
-  <!-- Offcanvas Sidebar 2 -->
-  <div class="offcanvas offcanvas-end" id="botonsidecamva2">
-    <div class="offcanvas-header eo">
-      <button type="button" class="btn-close text-reset " data-bs-dismiss="offcanvas"></button>
-      <h1 class=" offcanvas-title text-light">Mejor anime</h1>
-    </div>
-    <div class="offcanvas-body eo">
-      <form class="w-100 d-flex flex-column align-items-end was-validated">
-        <div class="d-flex flex-column mb-1 w-100">
-          <label for="name">Nombre</label>
-          <input class="border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary " type="text"
-            placeholder="Monkey D.Luffy" name="name" id="name" required>
-        </div>
-        <div class="d-flex flex-column mb-1 w-100">
-          <label for="email">Tu Email</label>
-          <input class=" border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary" type="email" required
-            placeholder="alguien@ejemplo.com" name="email" id="email" />
+			</div>
+		</div>
+	</nav>
+	<!-- Offcanvas Sidebar -->
+	<div class="offcanvas offcanvas-start" id="botonsidecamva">
+		<div class="offcanvas-header eo">
+			<h1 class="offcanvas-title text-light">Eventos Semanales</h1>
+			<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+		</div>
+		<div class="offcanvas-body eo">
+			<table class="table table-dark table-hover">
+				<thead>
+					<tr>
 
+						<th class="text-center">Mensual </th>
+						<th class="text-center">Semanal</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
 
+						<td>Lunes</td>
+						<td>Micro Libre</td>
+					</tr>
+					<tr>
 
-        </div>
-        <div class="d-flex flex-column mb-1 w-100">
-          <label for="anime">Anime</label>
-          <input class="border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary" type="text"
-            placeholder="Cowboy bebob" name="anime" id="anime" required>
-        </div>
-        <div class="d-flex flex-column mb-1 w-100">
-          <label for="range">Valoración:</label>
-          <input class="form-range " type="range" min="0" max="100" step="5" name="range" id="range" />
+						<td>Martes</td>
+						<td>Recital</td>
+					</tr>
+					<tr>
 
-        </div>
-        <div class="d-flex flex-column mb-1 w-100">
-          <label for="message">¡Cuéntanos tu experiencia!</label>
-          <textarea class="border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary" type="text" name="message"
-            id="message" rows="5" placeholder="One piece es mi anime favorito y ..."> </textarea>
+						<td>Miércoles</td>
+						<td>Homenaje</td>
+					</tr>
+					<tr>
 
-        </div>
-        <button type="submit" class="btn btn-default mr-0 ">Enviar</button>
-      </form>
-      <button class="btn btn-secondary bot" type="button" data-bs-toggle="offcanvas"
-        data-bs-target="#botonsidecamva">TOP MANGAS</button>
-    </div>
-  </div>
-  <!-- Carousel -->
-  <div id="demo" class="carousel slide" data-bs-ride="carousel">
+						<td>Jueves</td>
+						<td>Monólogo</td>
+					</tr>
+					<tr>
 
-    <!-- Indicators/dots -->
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-      <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-      <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-    </div>
+						<td>Viernes</td>
+						<td>Concierto</td>
+					</tr>
+					<tr>
 
-    <!-- The slideshow/carousel -->
-    <div class="carousel-inner ">
-      <div class="carousel-item active ">
-        <img src="la.jpg" alt="Los Angeles" height="100%" w class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="chicago.jpg" alt="Zenitsu" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="ny.jpg" alt="Inosuke" class="d-block w-100">
-      </div>
-    </div>
+						<td>Sábado</td>
+						<td>Improvisación</td>
+					</tr>
+					<tr>
 
-    <!-- Left and right controls/icons -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-  </div>
+						<td>Domingo</td>
+						<td>Micro Libre</td>
+					</tr>
 
-  <div class="container">
-    <section id="section0">
-
-    </section>
-    <section id="section1" class="row d-flex justify-content-center pt-5 mt-5">
-      <h1 class="display-6 text-center text-succes bg-dark mt-5">EVENTOS</h1>
-      <div class="card col-sm-4 col-12 m-3 " style="max-width:400px;">
-        <img class="card-img-top" src="../static/img/evento_01.png" alt="Card image">
-        <div class="card-body">
-          <h4 class="card-title">Eiichiro Oda</h4>
-          <p class="card-text">Eiichiro Oda es un mangaka japonés conocido por su serie de manga One Piece, la cual ha
-            vendido más de 500
-            Nombre nativo: 尾田 栄一郎</p>
-          <a href="../static/img/evento_01.png" class="btn btn-primary bot m-3">Ver más</a>
-        </div>
-      </div>
-      <div class="card col-sm-4 col-12 m-3 " style="max-width:400px;">
-        <img class="card-img-top" src="../static/img/evento_02.png" alt="Card image">
-        <div class="card-body">
-          <h4 class="card-title">Eiichiro Oda</h4>
-          <p class="card-text">Eiichiro Oda es un mangaka japonés conocido por su serie de manga One Piece, la cual ha
-            vendido más de 500
-            Nombre nativo: 尾田 栄一郎</p>
-          <a href="../static/img/evento_02.png" class="btn btn-primary bot m-3">Ver más</a>
-        </div>
-      </div>
-      <div class="card col-sm-4 col-12 m-3 " style="max-width:400px;">
-        <img class="card-img-top" src="../static/img/evento_03.png" alt="Card image">
-        <div class="card-body">
-          <h4 class="card-title">Eiichiro Oda</h4>
-          <p class="card-text">Eiichiro Oda es un mangaka japonés conocido por su serie de manga One Piece, la cual ha
-            vendido más de 500
-            Nombre nativo: 尾田 栄一郎</p>
-          <a href="../static/img/evento_03.png" class="btn btn-primary bot m-3">Ver más</a>
-        </div>
-      </div>
-      <div class="card col-sm-4 col-12 m-3 " style="max-width:400px;">
-        <img class="card-img-top" src="../static/img/evento_04.png" alt="Card image">
-        <div class="card-body">
-          <h4 class="card-title">Eiichiro Oda</h4>
-          <p class="card-text">Eiichiro Oda es un mangaka japonés conocido por su serie de manga One Piece, la cual ha
-            vendido más de 500
-            Nombre nativo: 尾田 栄一郎</p>
-          <a href="../static/img/evento_04.png" class="btn btn-primary bot m-3">Ver más</a>
-        </div>
-      </div>
-      <div class="card col-sm-4 col-12 m-3 " style="max-width:400px;">
-        <img class="card-img-top" src="../static/img/evento_05.png" alt="Card image">
-        <div class="card-body">
-          <h4 class="card-title">Eiichiro Oda</h4>
-          <p class="card-text">Eiichiro Oda es un mangaka japonés conocido por su serie de manga One Piece, la cual ha
-            vendido más de 500
-            Nombre nativo: 尾田 栄一郎</p>
-          <a href="../static/img/evento_05.png" class="btn btn-primary bot m-3">Ver más</a>
-        </div>
-      </div>
-      <div class="card col-sm-4 col-12 m-3 " style="max-width:400px;">
-        <img class="card-img-top" src="../static/img/evento_06.png" alt="Card image">
-        <div class="card-body">
-          <h4 class="card-title">Eiichiro Oda</h4>
-          <p class="card-text">Eiichiro Oda es un mangaka japonés conocido por su serie de manga One Piece, la cual ha
-            vendido más de 500
-            Nombre nativo: 尾田 栄一郎</p>
-          <a href="../static/img/evento_06.png" class="btn btn-primary bot m-3">Ver más</a>
-        </div>
-      </div>
-      <h1 class="display-6 text-center text-succes bg-dark mt-5">MANGAKAS</h1>
-    </section>
-
-    <section id="section2" class="row d-flex justify-content-center pt-5 mt-5">
-      <h1 class="display-6 text-center text-succes bg-dark mt-5">MÁS VISTOS</h1>
-      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-            aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="d-flex">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="d-flex">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="d-flex">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-            </div>
-          </div>
-        </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-
-      </div>
-      <h1 class="display-6 text-center text-succes bg-dark mt-5">MÁS VISTOS</h1>
-    </section>
-    <section id="section3" class="row d-flex justify-content-center pt-5 mt-5">
-      <h1 class="display-6 text-center text-succes bg-dark mt-5">MÁS VENDIDOS</h1>
-      <div id="carouselExampleCaptions3" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions3" data-bs-slide-to="0" class="active"
-            aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions3" data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions3" data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="d-flex">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="d-flex">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="d-flex">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions3"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions3"
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-      <h1 class="display-6 text-center text-succes bg-dark mt-5">MÁS VENDIDOS</h1>
-    </section>
-    <section id="section4" class="row d-flex justify-content-center pt-5 mt-5">
-      <h1 class="display-6 text-center text-succes bg-dark mt-5">MEJOR VALORADOS</h1>
-      <div id="carouselExampleCaptions4" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide-to="0" class="active"
-            aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="d-flex">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="d-flex">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="d-flex">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-              <img src="../static/img/comida_01.jpg" width="25%" height="400px" class="m-3 col-12 col-sm-4" alt="...">
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions4"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions4"
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-
-      </div>
-      <h1 class="display-6 text-center text-succes bg-dark mt-5">MEJOR VALORADOS</h1>
-    </section>
-  </div>
-  <section class="pt-5 mt-5">
-    <div class="d-flex align-items-center justify-content-center p-3 fw-bold w-100 h-100 ">
-      <div class=" d-flex w-75 w-sm-100 flex-column-reverse flex-md-row rounded overflow-hidden shadow-lg ">
-        <div class="other p-1 p-md-2 w-100 w-md-75 flex-column d-flex justify-content-end position-relative">
-          <div class="position-relative p-3">
-            <h1 class="text-info display-4 fw-bold ">LA SR. POP</h1>
-            <a class="ml-3 h5  d-flex text-decoration-none text-muted" href="mailto:webDeveloper@bestProgramer.com">
-              <h3 class="text-light"><span class="h2 ">Email: </span><span
-                  class="text-info ">la_señora_pop_oficial@gmail.com</span></h3>
-
-            </a>
-
-            <h3 class="text-light">RRSS:</h3>
-            <div class="  d-flex mt-3">
-              <a class="m-0 d-flex  justify-content-center align-items-center" href="" target="_blank">
-                <svg class="w-50 h-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                  <path
-                    d="M373.66 0H138.34C62.06 0 0 62.06 0 138.34v235.32C0 449.94 62.06 512 138.34 512h235.32C449.94 512 512 449.94 512 373.66V138.34C512 62.06 449.94 0 373.66 0zm96.976 373.66c0 53.472-43.503 96.976-96.977 96.976H138.34c-53.472 0-96.976-43.503-96.976-96.977V138.34c0-53.472 43.503-96.976 96.977-96.976h235.32c53.472 0 96.976 43.503 96.976 96.977v235.32z" />
-                  <path
-                    d="M370.586 238.14c-3.64-24.546-14.84-46.794-32.386-64.34-17.547-17.547-39.795-28.747-64.34-32.386-11.177-1.657-22.508-1.657-33.683 0-30.336 4.5-57.103 20.54-75.372 45.172-18.27 24.63-25.854 54.903-21.355 85.237 4.5 30.335 20.54 57.102 45.172 75.372 19.996 14.83 43.706 22.62 68.153 22.62 5.667 0 11.375-.42 17.083-1.266 30.336-4.5 57.103-20.542 75.372-45.173 18.27-24.63 25.855-54.9 21.356-85.236zM267.79 327.633c-19.404 2.882-38.77-1.973-54.526-13.66-15.757-11.687-26.02-28.81-28.896-48.216-2.878-19.405 1.973-38.77 13.66-54.527 11.688-15.758 28.81-26.02 48.217-28.898 3.574-.53 7.173-.795 10.772-.795s7.2.265 10.773.796c32.23 4.78 57.098 29.645 61.878 61.877 5.94 40.058-21.817 77.482-61.877 83.422zM400.05 111.95c-3.853-3.85-9.184-6.057-14.626-6.057S374.65 108.1 370.8 111.95c-3.852 3.853-6.06 9.175-6.06 14.626 0 5.45 2.208 10.773 6.06 14.625 3.85 3.852 9.182 6.06 14.624 6.06s10.773-2.207 14.625-6.06c3.85-3.85 6.057-9.182 6.057-14.624 0-5.443-2.207-10.774-6.058-14.625z" />
-                </svg>
-              </a>
-              <a class="m-0 d-flex h3 justify-content-center align-items-center" href="" target="_blank">
-                <svg class="w-50 h-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612">
-                  <path
-                    d="M612 116.258c-22.525 9.98-46.694 16.75-72.088 19.772 25.93-15.527 45.777-40.155 55.184-69.41-24.322 14.378-51.17 24.82-79.775 30.48-22.906-24.438-55.49-39.66-91.63-39.66-69.333 0-125.55 56.218-125.55 125.514 0 9.828 1.11 19.427 3.25 28.606-104.325-5.24-196.834-55.223-258.75-131.174-10.822 18.51-16.98 40.078-16.98 63.1 0 43.56 22.182 81.994 55.836 104.48-20.575-.688-39.926-6.348-56.867-15.756v1.568c0 60.806 43.29 111.554 100.692 123.104-10.517 2.83-21.607 4.398-33.08 4.398-8.107 0-15.947-.803-23.634-2.333 15.985 49.907 62.336 86.2 117.253 87.194-42.946 33.655-97.098 53.656-155.915 53.656-10.134 0-20.116-.612-29.944-1.72 55.568 35.68 121.537 56.484 192.44 56.484 230.947 0 357.187-191.29 357.187-357.188l-.42-16.253C573.87 163.525 595.21 141.42 612 116.257z" />
-                </svg>
-              </a>
-              <a class="m-0 d-flex h3 justify-content-center align-items-center" href="" target="_blank">
-                <svg class="w-50 h-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60.734 60.733">
-                  <path
-                    d="M57.378 0H3.352C1.502 0 0 1.5 0 3.354V57.38c0 1.852 1.502 3.353 3.352 3.353h29.086v-23.52h-7.914v-9.166h7.914v-6.76c0-7.843 4.79-12.116 11.787-12.116 3.355 0 6.232.252 7.07.36v8.2h-4.853c-3.805 0-4.54 1.81-4.54 4.463v5.85h9.08l-1.188 9.167h-7.892v23.52h15.475c1.852 0 3.355-1.503 3.355-3.35V3.35C60.732 1.5 59.23 0 57.378 0z" />
-
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="form w-100 w-lg-50  p-3 d-flex flex-column align-items-end">
-          <h1 class="text-center mb-3 w-100">¡Envianos tu comentario!</h1>
-          <form class="w-100 d-flex flex-column align-items-end was-validated ">
-            <div class="d-flex flex-column mb-1 w-100">
-              <label for="name">Nombre completo</label>
-              <input class="border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary" type="text"
-                placeholder="D.Jango" name="name" id="name" required>
-            </div>
-            <fieldset class="row mb-1 w-100 ">
-              <legend class="col-12 h5 pl-0">Genero: </legend>
-
-              <div class="form-check col-12 col-lg-4">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class=" form-check-label text-dark" for="flexRadioDefault1">
-                  Hombre
-                </label>
-              </div>
-              <div class="form-check col-12 col-lg-4">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                <label class="form-check-label text-dark" for="flexRadioDefault2">
-                  Mujer
-                </label>
-              </div>
-              <div class="form-check col-12 col-lg-4">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                <label class="form-check-label text-dark" for="flexRadioDefault2">
-                  Helicóptero Apache De Combate
-                </label>
-              </div>
+				</tbody>
+			</table>
+			<!-- Button to open the offcanvas sidebar -->
+			<button class="btn btn-secondary bot" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#botonsidecamva2">
+				Votar actuacion
+			</button>
+		</div>
+	</div>
+	<!-- Offcanvas Sidebar 2 -->
+	<div class="offcanvas offcanvas-end" id="botonsidecamva2">
+		<div class="offcanvas-header eo">
+			<button type="button" class="btn-close text-reset " data-bs-dismiss="offcanvas"></button>
+			<h1 class=" offcanvas-title text-light">Mejor evento</h1>
+		</div>
+		<div class="offcanvas-body eo">
+			<form class="w-100 d-flex flex-column align-items-end was-validated">
+				<div class="d-flex flex-column mb-1 w-100">
+					<label for="name">Nombre</label>
+					<input class="border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary " type="text"
+						placeholder="Monkey D.Luffy" name="name" id="name" required>
+				</div>
+				<div class="d-flex flex-column mb-1 w-100">
+					<label for="email">Tu Email</label>
+					<input class=" border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary" type="email" required
+						placeholder="alguien@ejemplo.com" name="email" id="email" />
 
 
 
-            </fieldset>
-            <div class="d-flex flex-column mb-1 w-100 ">
-              <label for="email">Tu Email</label>
-              <input class=" border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary" type="email" required
-                placeholder="alguien@ejemplo.com" name="email" id="email" />
+				</div>
+				<div class="d-flex flex-column mb-1 w-100">
+					<label for="anime">Evento</label>
+					<input class="border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary" type="text"
+						placeholder="Cowboy bebob" name="anime" id="anime" required>
+				</div>
+				<div class="d-flex flex-column mb-1 w-100">
+					<label for="range">Valoración:</label>
+					<input class="form-range " type="range" min="0" max="100" step="5" name="range" id="range" />
+
+				</div>
+				<div class="d-flex flex-column mb-1 w-100">
+					<label for="message">¡Cuéntanos tu experiencia!</label>
+					<textarea class="border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary" type="text"
+						name="message" id="message" rows="5" placeholder="One piece es mi anime favorito y ...">
+					</textarea>
+
+				</div>
+				<button type="submit" class="btn btn-default mr-0 ">Enviar</button>
+			</form>
+			<button class="btn btn-secondary bot" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#botonsidecamva">Listado Semanal</button>
+		</div>
+	</div>
+	<!-- Carousel -->
+	<div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+		<!-- Indicators/dots -->
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+			<button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+			<button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+		</div>
+
+		<!-- The slideshow/carousel -->
+		<div class="carousel-inner ">
+			<div class="carousel-item active ">
+				<img src="la.jpg" alt="Los Angeles" height="100%" w class="d-block w-100">
+			</div>
+			<div class="carousel-item">
+				<img src="chicago.jpg" alt="Zenitsu" class="d-block w-100">
+			</div>
+			<div class="carousel-item">
+				<img src="ny.jpg" alt="Inosuke" class="d-block w-100">
+			</div>
+		</div>
+
+		<!-- Left and right controls/icons -->
+		<button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon"></span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+			<span class="carousel-control-next-icon"></span>
+		</button>
+	</div>
+
+	<div class="container">
+		<section id="section0">
+
+		</section>
+		<section id="section1" class="row d-flex justify-content-center pt-5 mt-5">
+			<h1 class="display-6 text-center text-succes bg-dark mt-5">EVENTOS</h1>
+			<div class="card col-sm-4 col-12 m-3 " style="max-width:400px;">
+				<img class="card-img-top" src="../static/img/evento_01.png" alt="Card image">
+				<div class="card-body">
+					<h4 class="card-title">Eiichiro Oda</h4>
+					<p class="card-text">Eiichiro Oda es un mangaka japonés conocido por su serie de manga One Piece, la
+						cual ha
+						vendido más de 500
+						Nombre nativo: 尾田 栄一郎</p>
+					<a href="https://www.instagram.com/p/CddwN60AUPQ/" class="btn btn-primary bot m-3">Ver más</a>
+				</div>
+			</div>
+			<div class="card col-sm-4 col-12 m-3 " style="max-width:400px;">
+				<img class="card-img-top" src="../static/img/evento_02.png" alt="Card image">
+				<div class="card-body">
+					<h4 class="card-title">Eiichiro Oda</h4>
+					<p class="card-text">Eiichiro Oda es un mangaka japonés conocido por su serie de manga One Piece, la
+						cual ha
+						vendido más de 500
+						Nombre nativo: 尾田 栄一郎</p>
+					<a href="https://www.instagram.com/p/CdSq7IsA80v/" class="btn btn-primary bot m-3">Ver más</a>
+				</div>
+			</div>
+			<div class="card col-sm-4 col-12 m-3 " style="max-width:400px;">
+				<img class="card-img-top" src="../static/img/evento_03.png" alt="Card image">
+				<div class="card-body">
+					<h4 class="card-title">Eiichiro Oda</h4>
+					<p class="card-text">Eiichiro Oda es un mangaka japonés conocido por su serie de manga One Piece, la
+						cual ha
+						vendido más de 500
+						Nombre nativo: 尾田 栄一郎</p>
+					<a href="https://www.instagram.com/p/Cc5pvZXoILm/" class="btn btn-primary bot m-3">Ver más</a>
+				</div>
+			</div>
+			<div class="card col-sm-4 col-12 m-3 " style="max-width:400px;">
+				<img class="card-img-top" src="../static/img/evento_04.png" alt="Card image">
+				<div class="card-body">
+					<h4 class="card-title">Eiichiro Oda</h4>
+					<p class="card-text">Eiichiro Oda es un mangaka japonés conocido por su serie de manga One Piece, la
+						cual ha
+						vendido más de 500
+						Nombre nativo: 尾田 栄一郎</p>
+					<a href="https://www.instagram.com/p/Cc5ncMRIu4U/" class="btn btn-primary bot m-3">Ver más</a>
+				</div>
+			</div>
+			<div class="card col-sm-4 col-12 m-3 " style="max-width:400px;">
+				<img class="card-img-top" src="../static/img/evento_05.png" alt="Card image">
+				<div class="card-body">
+					<h4 class="card-title">Eiichiro Oda</h4>
+					<p class="card-text">Eiichiro Oda es un mangaka japonés conocido por su serie de manga One Piece, la
+						cual ha
+						vendido más de 500
+						Nombre nativo: 尾田 栄一郎</p>
+					<a href="https://www.instagram.com/p/CbfMNjqgejL/" class="btn btn-primary bot m-3">Ver más</a>
+				</div>
+			</div>
+			<div class="card col-sm-4 col-12 m-3 " style="max-width:400px;">
+				<img class="card-img-top" src="../static/img/evento_06.png" alt="Card image">
+				<div class="card-body">
+					<h4 class="card-title">Eiichiro Oda</h4>
+					<p class="card-text">Eiichiro Oda es un mangaka japonés conocido por su serie de manga One Piece, la
+						cual ha
+						vendido más de 500
+						Nombre nativo: 尾田 栄一郎</p>
+					<a href="https://www.instagram.com/p/Caw7EL8gV9y/" class="btn btn-primary bot m-3">Ver más</a>
+				</div>
+			</div>
+			<h1 class="display-6 text-center text-succes bg-dark mt-5">EVENTOS</h1>
+		</section>
+
+		<section id="section2" class="row d-flex justify-content-center pt-5 mt-5">
+			<h1 class="display-6 text-center text-succes bg-dark mt-5">NOVEDADES</h1>
+			<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+
+				<div class="carousel-indicators">
+					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+						aria-current="true" aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+						aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+						aria-label="Slide 3"></button>
+				</div>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<div class="d-flex">
+							<img src="../static/img/comida_01.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img src="../static/img/comida_02.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img src="../static/img/comida_03.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="d-flex">
+							<img src="../static/img/comida_02.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img src="../static/img/comida_03.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img src="../static/img/comida_04.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="d-flex">
+							<img src="../static/img/comida_03.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img src="../static/img/comida_04.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img src="../static/img/comida_05.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+						</div>
+					</div>
+				</div>
+
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+					data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+					data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+
+			</div>
+			<h1 class="display-6 text-center text-succes bg-dark mt-5">NOVEDADES</h1>
+		</section>
+		<section id="section3" class="row d-flex justify-content-center pt-5 mt-5">
+			<h1 class="display-6 text-center text-succes bg-dark mt-5">MÁS VENDIDOS</h1>
+			<div id="carouselExampleCaptions3" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-indicators">
+					<button type="button" data-bs-target="#carouselExampleCaptions3" data-bs-slide-to="0" class="active"
+						aria-current="true" aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#carouselExampleCaptions3" data-bs-slide-to="1"
+						aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#carouselExampleCaptions3" data-bs-slide-to="2"
+						aria-label="Slide 3"></button>
+				</div>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<div class="d-flex">
+							<img src="../static/img/comida_06.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img src="../static/img/comida_07.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img src="../static/img/comida_08.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="d-flex">
+							<img src="../static/img/comida_07.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img src="../static/img/comida_08.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img src="../static/img/comida_09.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="d-flex">
+							<img src="../static/img/comida_08.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img src="../static/img/comida_09.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img src="../static/img/comida_01.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+						</div>
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions3"
+					data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions3"
+					data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+			<h1 class="display-6 text-center text-succes bg-dark mt-5">MÁS VENDIDOS</h1>
+		</section>
+		<section id="section4" class="row d-flex justify-content-center pt-5 mt-5">
+			<h1 class="display-6 text-center text-succes bg-dark mt-5">ESPECIALES DE LA CASA</h1>
+			<div id="carouselExampleCaptions4" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-indicators">
+					<button type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide-to="0" class="active"
+						aria-current="true" aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide-to="1"
+						aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide-to="2"
+						aria-label="Slide 3"></button>
+				</div>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<div class="d-flex">
+							<img src="../static/img/comida_02.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img src="../static/img/comida_05.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img src="../static/img/comida_07.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="d-flex">
+							<img src="../static/img/comida_05.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img src="../static/img/comida_07.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img src="../static/img/comida_03.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="d-flex">
+							<img src="../static/img/comida_07.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img src="../static/img/comida_03.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img src="../static/img/comida_06.jpg" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+						</div>
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions4"
+					data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions4"
+					data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+
+			</div>
+			<h1 class="display-6 text-center text-succes bg-dark mt-5">ESPECIALES DE LA CASA</h1>
+		</section>
+	</div>
+	<section class="pt-5 mt-5">
+		<div class="d-flex align-items-center justify-content-center p-3 fw-bold w-100 h-100 ">
+			<div class=" d-flex w-75 w-sm-100 flex-column-reverse flex-md-row rounded overflow-hidden shadow-lg ">
+				<div class="other p-1 p-md-2 w-100 w-md-75 flex-column d-flex justify-content-end position-relative">
+					<div class="position-relative p-3">
+						<h1 class="text-info display-4 fw-bold ">LA SR. POP</h1>
+						<a class="ml-3 h5  d-flex text-decoration-none text-muted"
+							href="mailto:webDeveloper@bestProgramer.com">
+							<h3 class="text-light"><span class="h2 ">Email: </span><span
+									class="text-info ">la_señora_pop_oficial@gmail.com</span></h3>
+
+						</a>
+
+						<h3 class="text-light">RRSS:</h3>
+						<div class="  d-flex mt-3">
+							<a class="m-0 d-flex  justify-content-center align-items-center" href="" target="_blank">
+								<svg class="w-50 h-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+									<path
+										d="M373.66 0H138.34C62.06 0 0 62.06 0 138.34v235.32C0 449.94 62.06 512 138.34 512h235.32C449.94 512 512 449.94 512 373.66V138.34C512 62.06 449.94 0 373.66 0zm96.976 373.66c0 53.472-43.503 96.976-96.977 96.976H138.34c-53.472 0-96.976-43.503-96.976-96.977V138.34c0-53.472 43.503-96.976 96.977-96.976h235.32c53.472 0 96.976 43.503 96.976 96.977v235.32z" />
+									<path
+										d="M370.586 238.14c-3.64-24.546-14.84-46.794-32.386-64.34-17.547-17.547-39.795-28.747-64.34-32.386-11.177-1.657-22.508-1.657-33.683 0-30.336 4.5-57.103 20.54-75.372 45.172-18.27 24.63-25.854 54.903-21.355 85.237 4.5 30.335 20.54 57.102 45.172 75.372 19.996 14.83 43.706 22.62 68.153 22.62 5.667 0 11.375-.42 17.083-1.266 30.336-4.5 57.103-20.542 75.372-45.173 18.27-24.63 25.855-54.9 21.356-85.236zM267.79 327.633c-19.404 2.882-38.77-1.973-54.526-13.66-15.757-11.687-26.02-28.81-28.896-48.216-2.878-19.405 1.973-38.77 13.66-54.527 11.688-15.758 28.81-26.02 48.217-28.898 3.574-.53 7.173-.795 10.772-.795s7.2.265 10.773.796c32.23 4.78 57.098 29.645 61.878 61.877 5.94 40.058-21.817 77.482-61.877 83.422zM400.05 111.95c-3.853-3.85-9.184-6.057-14.626-6.057S374.65 108.1 370.8 111.95c-3.852 3.853-6.06 9.175-6.06 14.626 0 5.45 2.208 10.773 6.06 14.625 3.85 3.852 9.182 6.06 14.624 6.06s10.773-2.207 14.625-6.06c3.85-3.85 6.057-9.182 6.057-14.624 0-5.443-2.207-10.774-6.058-14.625z" />
+								</svg>
+							</a>
+							<a class="m-0 d-flex h3 justify-content-center align-items-center" href="" target="_blank">
+								<svg class="w-50 h-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612">
+									<path
+										d="M612 116.258c-22.525 9.98-46.694 16.75-72.088 19.772 25.93-15.527 45.777-40.155 55.184-69.41-24.322 14.378-51.17 24.82-79.775 30.48-22.906-24.438-55.49-39.66-91.63-39.66-69.333 0-125.55 56.218-125.55 125.514 0 9.828 1.11 19.427 3.25 28.606-104.325-5.24-196.834-55.223-258.75-131.174-10.822 18.51-16.98 40.078-16.98 63.1 0 43.56 22.182 81.994 55.836 104.48-20.575-.688-39.926-6.348-56.867-15.756v1.568c0 60.806 43.29 111.554 100.692 123.104-10.517 2.83-21.607 4.398-33.08 4.398-8.107 0-15.947-.803-23.634-2.333 15.985 49.907 62.336 86.2 117.253 87.194-42.946 33.655-97.098 53.656-155.915 53.656-10.134 0-20.116-.612-29.944-1.72 55.568 35.68 121.537 56.484 192.44 56.484 230.947 0 357.187-191.29 357.187-357.188l-.42-16.253C573.87 163.525 595.21 141.42 612 116.257z" />
+								</svg>
+							</a>
+							<a class="m-0 d-flex h3 justify-content-center align-items-center" href="" target="_blank">
+								<svg class="w-50 h-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60.734 60.733">
+									<path
+										d="M57.378 0H3.352C1.502 0 0 1.5 0 3.354V57.38c0 1.852 1.502 3.353 3.352 3.353h29.086v-23.52h-7.914v-9.166h7.914v-6.76c0-7.843 4.79-12.116 11.787-12.116 3.355 0 6.232.252 7.07.36v8.2h-4.853c-3.805 0-4.54 1.81-4.54 4.463v5.85h9.08l-1.188 9.167h-7.892v23.52h15.475c1.852 0 3.355-1.503 3.355-3.35V3.35C60.732 1.5 59.23 0 57.378 0z" />
+
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="form w-100 w-lg-50  p-3 d-flex flex-column align-items-end">
+					<h1 class="text-center mb-3 w-100">¡Envianos tu comentario!</h1>
+					<form class="w-100 d-flex flex-column align-items-end was-validated ">
+						<div class="d-flex flex-column mb-1 w-100">
+							<label for="name">Nombre completo</label>
+							<input class="border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary" type="text"
+								placeholder="D.Jango" name="name" id="name" required>
+						</div>
+						<fieldset class="row mb-1 w-100 ">
+							<legend class="col-12 h5 pl-0">Genero: </legend>
+
+							<div class="form-check col-12 col-lg-4">
+								<input class="form-check-input" type="radio" name="flexRadioDefault"
+									id="flexRadioDefault1">
+								<label class=" form-check-label text-dark" for="flexRadioDefault1">
+									Hombre
+								</label>
+							</div>
+							<div class="form-check col-12 col-lg-4">
+								<input class="form-check-input" type="radio" name="flexRadioDefault"
+									id="flexRadioDefault2" checked>
+								<label class="form-check-label text-dark" for="flexRadioDefault2">
+									Mujer
+								</label>
+							</div>
+							<div class="form-check col-12 col-lg-4">
+								<input class="form-check-input" type="radio" name="flexRadioDefault"
+									id="flexRadioDefault2" checked>
+								<label class="form-check-label text-dark" for="flexRadioDefault2">
+									Helicóptero Apache De Combate
+								</label>
+							</div>
 
 
-            </div>
-            <div class="d-flex flex-column mb-1 w-100">
-              <label for="message">Comentarios</label>
-              <textarea class="border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary" type="text"
-                name="message" id="message" rows="5" placeholder="Me encanta este lugar porque..."> </textarea>
 
-            </div>
-            <button type="submit" class="btn btn-default mr-0 ">Enviar</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-  <footer class="text-center text-lg-start bg-dark text-muted ">
-    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-      <div class="me-5 d-none d-lg-block">
-        <span>Mantente en contacto con nosotros:</span>
-      </div>
+						</fieldset>
+						<div class="d-flex flex-column mb-1 w-100 ">
+							<label for="email">Tu Email</label>
+							<input class=" border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary" type="email"
+								required placeholder="alguien@ejemplo.com" name="email" id="email" />
 
-      <div>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-google"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
 
-    </section>
-    <section class="">
-      <div class="container text-center text-md-start mt-5">
+						</div>
+						<div class="d-flex flex-column mb-1 w-100">
+							<label for="message">Comentarios</label>
+							<textarea class="border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary" type="text"
+								name="message" id="message" rows="5" placeholder="Me encanta este lugar porque...">
+							</textarea>
 
-        <div class="row mt-3">
+						</div>
+						<button type="submit" class="btn btn-default mr-0 ">Enviar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer class="text-center text-lg-start bg-dark text-muted ">
+		<section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+			<div class="me-5 d-none d-lg-block">
+				<span>Mantente en contacto con nosotros:</span>
+			</div>
 
-          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+			<div>
+				<a href="" class="me-4 text-reset">
+					<i class="fab fa-facebook-f"></i>
+				</a>
+				<a href="" class="me-4 text-reset">
+					<i class="fab fa-twitter"></i>
+				</a>
+				<a href="" class="me-4 text-reset">
+					<i class="fab fa-google"></i>
+				</a>
+				<a href="" class="me-4 text-reset">
+					<i class="fab fa-instagram"></i>
+				</a>
+				<a href="" class="me-4 text-reset">
+					<i class="fab fa-linkedin"></i>
+				</a>
+				<a href="" class="me-4 text-reset">
+					<i class="fab fa-github"></i>
+				</a>
+			</div>
 
-            <h6 class="text-uppercase fw-bold mb-4">
-              <i class="fas fa-gem me-3"></i>LA SR. POP
-            </h6>
-            <p>
-              Somos una pequeña cafeteria con tematica un tanto friki que esperemos pueda dar cobijo a todo tipos de personas
-               con el fin de que puedan compartir experiencias de la vida entre ellos así como pasar un buen rato.
-            </p>
-          </div>
+		</section>
+		<section class="">
+			<div class="container text-center text-md-start mt-5">
 
-          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+				<div class="row mt-3">
 
-            <h6 class="text-uppercase fw-bold mb-4">
-              Productos
-            </h6>
-            <p>
-              <a href="#!" class="text-reset">Reposteria</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Cafés</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Copas</a>
-            </p>
-            <p>
-                <a href="#!" class="text-reset">Cervezas </a>
-            </p>
-            <p>
-                <a href="#!" class="text-reset">Música y arte</a>
-            </p>
-          </div>
+					<div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
 
-          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+						<h6 class="text-uppercase fw-bold mb-4">
+							<i class="fas fa-gem me-3"></i>LA SR. POP
+						</h6>
+						<p>
+							Somos una pequeña cafeteria con tematica un tanto friki que esperemos pueda dar cobijo a
+							todo tipos de personas
+							con el fin de que puedan compartir experiencias de la vida entre ellos así como pasar un
+							buen rato.
+						</p>
+					</div>
 
-            <h6 class="text-uppercase fw-bold mb-4">
-              Links
-            </h6>
-            <p>
-              <a href="#!" class="text-reset">Más sobre nosotros</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Aviso legal</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Cookies</a>
-            </p>
-          </div>
+					<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 
-          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+						<h6 class="text-uppercase fw-bold mb-4">
+							Productos
+						</h6>
+						<p>
+							<a href="#!" class="text-reset">Reposteria</a>
+						</p>
+						<p>
+							<a href="#!" class="text-reset">Cafés</a>
+						</p>
+						<p>
+							<a href="#!" class="text-reset">Copas</a>
+						</p>
+						<p>
+							<a href="#!" class="text-reset">Cervezas </a>
+						</p>
+						<p>
+							<a href="#!" class="text-reset">Música y arte</a>
+						</p>
+					</div>
 
-            <h6 class="text-uppercase fw-bold mb-4">
-              Contacto
-            </h6>
-            <p><i class="fas fa-home me-3"></i> Alameda de Hércules, Sevilla</p>
-            <p>
-              <i class="fas fa-envelope me-3"></i>
-              la_señora_pop@gmail.com
-            </p>
-            <p><i class="fas fa-phone me-3"></i> + 34 634 567 886 524</p>
-          </div>
+					<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 
-        </div>
+						<h6 class="text-uppercase fw-bold mb-4">
+							Links
+						</h6>
+						<p>
+							<a href="#!" class="text-reset">Más sobre nosotros</a>
+						</p>
+						<p>
+							<a href="#!" class="text-reset">Aviso legal</a>
+						</p>
+						<p>
+							<a href="#!" class="text-reset">Cookies</a>
+						</p>
+					</div>
 
-      </div>
-    </section>
+					<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-      © 2021 Copyright:
-      <a class="text-reset fw-bold" href="">la_señora_pop.com</a>
-    </div>
-  </footer>
+						<h6 class="text-uppercase fw-bold mb-4">
+							Contacto
+						</h6>
+						<p><i class="fas fa-home me-3"></i> Alameda de Hércules, Sevilla</p>
+						<p>
+							<i class="fas fa-envelope me-3"></i>
+							la_señora_pop@gmail.com
+						</p>
+						<p><i class="fas fa-phone me-3"></i> + 34 634 567 886 524</p>
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+
+		<div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+			© 2021 Copyright:
+			<a class="text-reset fw-bold" href="">la_señora_pop.com</a>
+		</div>
+	</footer>
 
 
 </body>
