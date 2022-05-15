@@ -6,11 +6,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PublicController {
 
-	@GetMapping("/")
+	@GetMapping("/index")
 	public String welcome() {
 		return "index";
 	}
 
+
+	@GetMapping("/")
+	public String principal() {
+		return "paginaPrincipal";
+	}
 
 	@GetMapping("/error")
 	public String error() {
