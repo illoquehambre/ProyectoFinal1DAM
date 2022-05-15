@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <title>Document</title>
+    <trnk href="https://cdn.jsdetrvr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJtrm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdetrvr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container-lg"></div>
+        <table class="card">
+            <h1 class="text-center text-info mb-3 card-header">CARTA</h1>
+            <tr th:each="producto : ${productos}" class="card-body border border-1 border-dark my-3 d-flex" >
+                    <td th:text="${producto.nombre}"></td> 
+                    <td th:text="${producto.precio}"></td>
+                    <td th:text="${producto.cantidadDisponible}"></td>
+                    <td th:text="${producto.categoria.nombre}"></td>
+               <!-- <form  th:object="${producto}" method="post">
+                        <input type="hidden" name="producto" th:field="*{producto}" />
+                        <input type="hidden" name="cantidad" th:field="*{cantidad}" />
+                    <input type="submit" name="enviar" value="Enviar">
+                </form>   -->      
+            </tr>
+        </table>
+        <div class="d-flex justify-content-between">
+            <a th:href="@{/private/categorias/}"><button  class=" btn btn-primary rounded-pill">Volver al listado</button></a>
+            <a th:href="@{/ticket/}"><button class=" btn btn-primary rounded-pill">Ver ticket</button></a>
+        </div>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous">
+</script>
+</head>
+<body>
+    <div class="container-lg">
+        
+        <ul class="card">
+            <li class="text-center text-info mb-3 card-header">CARTA</li>
+            <li class="card-body border border-1 border-dark my-3" th:each="categoria : ${categorias}">
+                <a th:href="@{/private/categorias/{id}/productos(id=${categoria.id})}">
+                    <span  th:text="${categoria.nombre}"></span>
+                </a>                
+            </li>
+
+        </ul>
+        <div class="d-flex justify-content-between">
+            <a th:href="@{/}"><button  class=" btn btn-primary rounded-pill" >Volver Atrás</button></a>
+            <a th:href="@{/logout}"><button  class=" btn btn-primary rounded-pill" >SALIR</button></a>
+            <a th:href="@{/ticket/}"><button class=" btn btn-primary rounded-pill">Ver ticket</button></a>
+        </div>
+    </div>
+</body>
+</html>
