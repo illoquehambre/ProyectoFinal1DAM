@@ -16,21 +16,19 @@
     <div class="container-lg">
         
         <ul class="card">
-            <h1 class="text-center text-info mb-3 card-header">CARTA</h1>
+            <li class="text-center text-info mb-3 card-header">CARTA</li>
             <li class="card-body border border-1 border-dark my-3" th:each="categoria : ${categorias}">
-                
+                <a th:href="@{/private/categorias/{id}/productos(id=${categoria.id})}">
                     <span  th:text="${categoria.nombre}"></span>
-               
-                <a href="#" th:href="@{/categoriasAdmin/{id}/editar(id=${categoria.id})}">Modificar</a> 
-                <a href="#" th:href="@{/categoriasAdmin/borrar/{id}(id=${categoria.id})}">Eliminar</a>               
+                </a>                
             </li>
 
         </ul>
         <div class="d-flex justify-content-between">
-            <a th:href="@{/}"><button  class=" btn btn-primary rounded-pill">Volver Atrás</button>
-            <a th:href="@{/categoriasAdmin/nuevo}"><button class=" btn btn-primary rounded-pill">CrearNuevo</button></a>
-            <a th:href="@{/productosAdmin}"><button class=" btn btn-primary rounded-pill">ModificarProductos</button></a>
+            <a th:href="@{/}"><button  class=" btn btn-primary rounded-pill" >Volver Atrás</button></a>
+            <a th:href="@{/logout}"><button  class=" btn btn-primary rounded-pill" >SALIR</button></a>
+            <a th:href="@{/ticket/}"><button class=" btn btn-primary rounded-pill">Ver ticket</button></a>
         </div>
     </div>
 </body>
-</html> 
+</html>

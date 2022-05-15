@@ -18,13 +18,13 @@
             <h1 class="text-center text-info mb-3 card-header">CARTA</h1>
             <li th:each="producto : ${productos}" class="card-body border border-1 border-dark my-3 d-flex" >
                     <span th:text="${producto.nombre}"></span> 
-                    <a href="#" th:href="@{/productosAdmin/{id}/editar(id=${producto.id})}">Modificar</a> 
-                	<a href="#" th:href="@{/productosAdmin/borrar/{id}(id=${producto.id})}">Eliminar</a>       
+                    <a href="#" th:href="@{/admin/productosAdmin/{id}/editar(id=${producto.id})}">Modificar</a> 
+                	<a href="#" th:href="@{/admin/productosAdmin/borrar/{id}(id=${producto.id})}">Eliminar</a>       
             </li>
         </ul>
         <div class="d-flex justify-content-between">
-            <a th:href="@{/categoriasAdmin/}"><button  class=" btn btn-primary rounded-pill">Volver al listado</button></a>
-            <a th:href="@{/productosAdmin/nuevo}"><button class=" btn btn-primary rounded-pill">CrearNuevo</button></a>
+            <a th:href="@{/admin/categoriasAdmin/}"><button  class=" btn btn-primary rounded-pill">Volver al listado</button></a>
+            <a th:href="@{/admin/productosAdmin/nuevo}"><button class=" btn btn-primary rounded-pill">CrearNuevo</button></a>
         </div>
         
     </div>

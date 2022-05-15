@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.salesianostriana.dam.clasesproyecto.model.Categoria;
 import com.salesianostriana.dam.clasesproyecto.servicios.CategoriaServicio;
@@ -19,11 +20,12 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Controller
+
 public class CategoriaController {
 	@Autowired
 	private CategoriaServicio categoriaServicio;
 	
-	@GetMapping({ "/", "/carta" })
+	@GetMapping("/carta")
 	public String carta(Model model,  Optional<String> optional) {
 
 		List<Categoria> categorias = new ArrayList<Categoria>();
@@ -41,7 +43,7 @@ public class CategoriaController {
 	}
 	
 	
-	@GetMapping( "/categorias")
+	@GetMapping( {"/private", "/private/categorias"})
 	public String listado(Model model,  Optional<String> optional) {
 
 		List<Categoria> categorias = new ArrayList<Categoria>();
@@ -55,10 +57,10 @@ public class CategoriaController {
 		
 		
 
-		return "Categorias";
+		return "private/Categorias";
 	}
 	
-	@GetMapping( "/categoriasAdmin")
+	@GetMapping({"/admin", "/admin/categoriasAdmin"})
 	public String gestionCategorias(Model model,  Optional<String> optional) {
 
 		List<Categoria> categorias = new ArrayList<Categoria>();
@@ -72,31 +74,31 @@ public class CategoriaController {
 		
 		
 
-		return "CategoriasAdmin";
+		return "admin/CategoriasAdmin";
 	}
 	
 	
-	@GetMapping("/categoriasAdmin/nuevo")
+	@GetMapping("/admin/categoriasAdmin/nuevo")
 	public String mostrarFormularioCategoria(Model model) {
 		model.addAttribute("categoria", new Categoria());
-		return "AgregarCategoria";
+		return "admin/AgregarCategoria";
 	}
 	
 
-	@PostMapping("/categoriasAdmin/nuevo/submit")
+	@PostMapping("/admin/categoriasAdmin/nuevo/submit")
 	public String procesarFormularioCategoria(@ModelAttribute("categoria") Categoria cat) {
 		categoriaServicio.add(cat);
-		return "redirect:/categoriasAdmin";
+		return "redirect:/admin/categoriasAdmin";
 	}
 	
-	@GetMapping("/categoriasAdmin/borrar/{id}")
+	@GetMapping("/admin/categoriasAdmin/borrar/{id}")
 	public String borrar(@PathVariable("id") long id) {
 		categoriaServicio.deleteById(id);
-		return "redirect:/categoriasAdmin";
+		return "redirect:/admin/categoriasAdmin";
 	}
 	
 	
-	@GetMapping("/categoriasAdmin/{id}/editar")
+	@GetMapping("/admin/categoriasAdmin/{id}/editar")
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
 		
 		//Buscamos al categoria por id y recordemos que el método findById del servicio, devuelve el objeto buscado o null si no se encuentra.
@@ -106,11 +108,11 @@ public class CategoriaController {
 		
 		if (comprobar.isPresent()) {
 			model.addAttribute("categoria", comprobar.get());
-			return "AgregarCategoria";
+			return "admin/AgregarCategoria";
 		} else {
 			// No existe ningún categoria con el Id proporcionado.
 			// Redirigimos hacia el listado.
-			return "redirect:/categoriasAdmin";
+			return "redirect:/admin/categoriasAdmin";
 		}
 		
 		
@@ -119,10 +121,10 @@ public class CategoriaController {
 	/**
 	 * Método que procesa la respuesta del formulario al editar
 	 */
-	@PostMapping("categoriasAdmin/{id}/editar/submit")
+	@PostMapping("/admin/categoriasAdmin/{id}/editar/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("categoria") Categoria cat) {
 		categoriaServicio.edit(cat);
-		return "redirect:/categoriasAdmin";//Volvemos a redirigir la listado a través del controller para pintar la lista actualizada con la modificación hecha
+		return "redirect:/admin/categoriasAdmin";//Volvemos a redirigir la listado a través del controller para pintar la lista actualizada con la modificación hecha
 	}
 	
 	
