@@ -20,6 +20,11 @@
 
 <body>
 	<!--<header th:replace="~{fragments/sidebar :: mysidebar}"></header>-->
+	<form method="GET" th:action="@{/producto/buscar}">
+    	<input type="text" placeholder="Nombre producto"
+    		name="nombre" id="nombre" th:value="${param.nombre}" />
+    	<input type="submit" value="Enviar" />
+    </form>
 	<div class="container-lg">
 
 
@@ -43,7 +48,7 @@
 								<td th:text="${producto.nombre}">nombre</td>
 								<td th:text="${producto.precio}">precio</td>
 								<td>Cantidad</td>
-								<td>Agregar</td>
+								<td><a href="#" th:href="@{/}" class="btn btn-primary">Agregar</a></td>
 
 
 								<!-- <form  th:object="${producto}" method="post">

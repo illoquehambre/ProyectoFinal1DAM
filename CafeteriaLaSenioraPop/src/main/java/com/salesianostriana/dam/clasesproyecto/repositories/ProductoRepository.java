@@ -9,4 +9,6 @@ import com.salesianostriana.dam.clasesproyecto.model.Producto;
 public interface ProductoRepository extends JpaRepository<Producto, Long>{
 	
 	public List <Producto> findByCategoriaId(Long id);
+
+	public List<Producto> findByNombreContainsIgnoreCase(String nombre);
 }
