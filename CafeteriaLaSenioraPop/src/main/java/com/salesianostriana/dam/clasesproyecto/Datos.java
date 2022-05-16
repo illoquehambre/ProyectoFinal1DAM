@@ -1,5 +1,5 @@
 package com.salesianostriana.dam.clasesproyecto;
-
+/*
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,3 +48,4 @@ public class Datos {
 	
 	
 }
+*/
