@@ -12,7 +12,13 @@
         crossorigin="anonymous"></script>
 </head>
 <body>
-	 
+	 <form method="GET" th:action="@{/admin/buscar}">
+		<input type="text" placeholder="Nombre producto" name="nombre"
+			id="nombre" th:value="${param.q}"
+			 />
+		<input type="submit" value="Enviar" />
+	</form>
+	
     <div class="container-lg">
         
        
