@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
@@ -18,6 +17,7 @@
 </script>
 </head>
 <body>
+<header th:replace="~{fragments/sidebar :: mysidebar}"></header>
 	<form method="GET" th:action="@{/private/buscarCat}">
 		<input type="text" placeholder="Nombre categoria" name="nombre"
 			id="nombre" th:value="${param.nombre}" /> <input type="submit"
@@ -26,22 +26,7 @@
 
 	<div class="container-lg">
 
-		<ul class="card">
-			<li class="text-center text-info mb-3 card-header">CARTA</li>
-			<li class="card-body border border-1 border-dark my-3"
-				th:each="categoria : ${categorias}"><a
-				th:href="@{/private/categorias/{id}/productos(id=${categoria.id})}">
-					<span th:text="${categoria.nombre}"></span>
-			</a></li>
-
-		</ul>
-		<div class="d-flex justify-content-between">
-			<a th:href="@{/index}"><button class=" btn btn-primary rounded-pill">Volver
-					Atrás</button></a> <a th:href="@{/logout}"><button
-					class=" btn btn-primary rounded-pill">SALIR</button></a> <a
-				th:href="@{/ticket/}"><button
-					class=" btn btn-primary rounded-pill">Ver ticket</button></a>
-		</div>
+		<h1 class="text-center">Bienvenido a la zona de gestión, Usuario.</h1>
 	</div>
 </body>
 </html>

@@ -18,6 +18,7 @@
 </script>
 </head>
 <body>
+<header th:replace="~{fragments/header :: myheader}"></header>
 	 <form method="GET" th:action="@{/admin/buscarCat}">
 		<input type="text" placeholder="Nombre categoria" name="nombre"
 			id="nombre" th:value="${param.nombre}"

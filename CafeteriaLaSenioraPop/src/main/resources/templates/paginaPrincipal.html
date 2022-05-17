@@ -79,42 +79,42 @@
 	<!-- The navbar - The <a> elements are used to jump to a section in the scrollable area -->
 
 	<nav class="navbar navbar-expand-sm crema sticky-top ">
-		<div class="container-fluid">
+		<div class="container-fluid d-flex">
 			<a class="navbar-brand" th:href="@{/}"> <img th:src="@{img/sr.pop_01.png}" width="75px"
 					alt="Logo oficial"></a>
-			<button class="navbar-toggler bg-dark " type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-				<span class="navbar-toggler-icon azul"></span>
+			<button class="navbar-toggler btn btn-light bt-lg dropdown-toggle crema border border-dark text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+				 Desplegar
 			</button>
-			<div class="collapse navbar-collapse" id="mynavbar">
+			<div class="collapse navbar-collapse " id="mynavbar">
 				<ul class="navbar-nav me-auto">
-					<li class="nav-item">
+					<li class="nav-item mx-2 h3">
 						<a class="nav-link text-black" th:href="@{/}">LA SR. POP </a>
 					</li>
-					<li class="nav-item ">
-						<a class="nav-link text-black" href="#section0">EVENTOS</a>
+					<li class="nav-item mx-2 h3">
+						<a class="nav-link text-black" href="#section2">EVENTOS</a>
 					</li>
-					<li class="mr-2">
+					<li class="mx-2">
 						<div class="dropdown">
 							<button type="button"
-								class="btn btn-light dropdown-toggle crema border border-dark text-dark"
+								class="btn btn-light btn-lg dropdown-toggle crema border border-dark text-dark"
 								data-bs-toggle="dropdown">
 								CATEGORÍAS
 							</button>
 							<ul class="dropdown-menu crema text-dark">
-								<li><a class="dropdown-item text-muted" href="#section2">NOVEDADES</a></li>
+								<li><a class="dropdown-item text-muted" href="#section1">ESPECIALES DE LA CASA</a></li>
 								<li><a class="dropdown-item text-muted" href="#section3">MAS VENDIDOS</a></li>
-								<li><a class="dropdown-item text-muted" href="#section4">ESPECIALES DE LA CASA</a></li>
+								
 							</ul>
 						</div>
 					<li>
 						<!-- Button to open the offcanvas sidebar -->
-						<button class="btn btn-light crema border border-dark text-dark" type="button"
+						<button class="btn btn-light btn-lg crema border border-dark text-dark" type="button"
 							data-bs-toggle="offcanvas" data-bs-target="#botonsidecamva">
 							Eventos Semanales
 						</button>
 					</li>
 				</ul>
-				<a th:href="@{/index}"><button class="btn btn-light border-0 mx-4 px-4 pastel w-100" type="button">Login</button></a>
+				<a th:href="@{/index}"><button class="btn btn-light btn-lg border-0 mr-4 px-4 pastel " type="button">Login</button></a>
 
 			</div>
 		</div>

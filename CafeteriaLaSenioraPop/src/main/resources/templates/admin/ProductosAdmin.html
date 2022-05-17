@@ -12,6 +12,7 @@
         crossorigin="anonymous"></script>
 </head>
 <body>
+<header th:replace="~{fragments/header :: myheader}"></header>
 	 <form method="GET" th:action="@{/admin/buscarPr}">
 		<input type="text" placeholder="Nombre producto" name="nombre"
 			id="nombre" th:value="${param.nombre}"
