@@ -47,17 +47,17 @@ public class ProductoController {
 		
 		return "private/Productos";
 	}
-	/*
-	@GetMapping("/admin/buscar")
+	
+	@GetMapping("/private/buscar")
 	public String buscar(Model model, @RequestParam("q") Optional<String> nombre ) {
 		
 		
 		model.addAttribute("lista", productoServicio.buscarPorNombre(nombre.get()));
 		
-		return "admin/ProductosAdmin";
+		return "admin/Productos";
 		
 	}
-	*/
+	
 	@GetMapping( "/admin/productosAdmin")
 	public String gestionProductos(Model model) {
 
