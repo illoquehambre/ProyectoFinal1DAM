@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 <meta charset="UTF-8">
@@ -20,6 +20,11 @@
 
 <body>
 	<!--<header th:replace="~{fragments/sidebar :: mysidebar}"></header>-->
+	<form method="GET" th:action="@{/private/buscar}">
+    	<input type="text" placeholder="Nombre producto"
+    		name="nombre" id="nombre" th:value="${param.nombre}" />
+    	<input type="submit" value="Enviar" />
+    </form>
 	<div class="container-lg">
 
 
