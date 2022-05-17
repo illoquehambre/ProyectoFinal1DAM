@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://http://www.thymeleaf.org"/>
 
 <head>
 <meta charset="UTF-8">
@@ -48,7 +48,7 @@
 								<td th:text="${producto.nombre}">nombre</td>
 								<td th:text="${producto.precio}">precio</td>
 								<td>Cantidad</td>
-								<td><a href="#" th:href="@{/}" class="btn btn-primary">Agregar</a></td>
+								<td><a href="#" th:href="@{/private/productoACarrito/{id}(id=${producto.id})}" class="btn btn-primary">Agregar</a></td>
 
 
 								<!-- <form  th:object="${producto}" method="post">
@@ -68,7 +68,7 @@
 		<div class="d-flex justify-content-between">
 			<a th:href="@{/private/categorias/}"><button
 					class=" btn btn-primary rounded-pill">Volver al listado</button></a> <a
-				th:href="@{/ticket/}"><button
+				th:href="@{/private/mostrarTicket}"><button
 					class=" btn btn-primary rounded-pill">Ver ticket</button></a>
 		</div>
 
