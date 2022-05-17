@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,9 +12,9 @@
         crossorigin="anonymous"></script>
 </head>
 <body>
-	 <form method="GET" th:action="@{/admin/buscar}">
+	 <form method="GET" th:action="@{/admin/buscarPr}">
 		<input type="text" placeholder="Nombre producto" name="nombre"
-			id="nombre" th:value="${param.q}"
+			id="nombre" th:value="${param.nombre}"
 			 />
 		<input type="submit" value="Enviar" />
 	</form>

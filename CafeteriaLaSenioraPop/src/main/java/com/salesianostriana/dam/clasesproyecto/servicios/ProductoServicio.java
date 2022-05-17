@@ -17,7 +17,7 @@ public class ProductoServicio extends ServicioBaseImpl<Producto, Long, ProductoR
 
 	public List<Producto> buscarPorNombre(String nombre) {
 	
-		return this.repositorio.findByNombre(nombre);
+		return this.repositorio.findByNombreContainsIgnoreCase(nombre);
 	}
 
 	

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.clasesproyecto.model.Categoria;
 import com.salesianostriana.dam.clasesproyecto.servicios.CategoriaServicio;
@@ -43,6 +44,7 @@ public class CategoriaController {
 	}
 	
 	
+	
 	@GetMapping( {"/private", "/private/categorias"})
 	public String listado(Model model,  Optional<String> optional) {
 
@@ -58,6 +60,25 @@ public class CategoriaController {
 		
 
 		return "private/Categorias";
+	}
+	
+	@GetMapping("/admin/buscarCat")
+	public String buscarAdmin(Model model, @RequestParam String nombre ) {
+		
+		
+		model.addAttribute("categorias", categoriaServicio.buscarPorNombre(nombre));
+		
+		return "admin/CategoriasAdmin";
+		
+	}
+	@GetMapping("/private/buscarCat")
+	public String buscarPrivate(Model model, @RequestParam String nombre ) {
+		
+		
+		model.addAttribute("categorias", categoriaServicio.buscarPorNombre(nombre));
+		
+		return "private/Categorias";
+		
 	}
 	
 	@GetMapping({"/admin", "/admin/categoriasAdmin"})

@@ -18,7 +18,12 @@
 </script>
 </head>
 <body>
-	
+	 <form method="GET" th:action="@{/admin/buscarCat}">
+		<input type="text" placeholder="Nombre categoria" name="nombre"
+			id="nombre" th:value="${param.nombre}"
+			 />
+		<input type="submit" value="Enviar" />
+	</form>
 	<div class="container-lg">
 
 		<div class="row">
@@ -51,7 +56,7 @@
 			</div>
 		</div>
 		<div class="d-flex justify-content-between">
-			<a th:href="@{/}"><button class=" btn btn-primary rounded-pill">Volver
+			<a th:href="@{/index}"><button class=" btn btn-primary rounded-pill">Volver
 					Atrás</button> <a th:href="@{/logout}"><button
 						class=" btn btn-primary rounded-pill">SALIR</button></a> <a
 				th:href="@{/admin/categoriasAdmin/nuevo}"><button

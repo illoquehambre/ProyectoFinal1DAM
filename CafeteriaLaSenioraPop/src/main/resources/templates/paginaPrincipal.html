@@ -32,11 +32,7 @@
 			color: whitesmoke;
 		}
 
-		.eo {
-			background-image: linear-gradient(to right, #8517a0, #3e5da1);
-			border-style: none;
-			color: whitesmoke;
-		}
+		
 
 		h1 {
 			color: white;
@@ -118,24 +114,25 @@
 						</button>
 					</li>
 				</ul>
-				<a th:href="@{/index}"><button class="btn btn-light border-0 mx-4 px-4 pastel" type="button">Login</button></a>
+				<a th:href="@{/index}"><button class="btn btn-light border-0 mx-4 px-4 pastel w-100" type="button">Login</button></a>
 
 			</div>
 		</div>
 	</nav>
 	<!-- Offcanvas Sidebar -->
 	<div class="offcanvas offcanvas-start" id="botonsidecamva">
-		<div class="offcanvas-header eo">
-			<h1 class="offcanvas-title text-light">Eventos Semanales</h1>
+		<div class="offcanvas-header crema">
+			<h1 class="offcanvas-title text-dark">Eventos Semanales</h1>
+
 			<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
 		</div>
-		<div class="offcanvas-body eo">
+		<div class="offcanvas-body azul">
 			<table class="table table-dark table-hover">
 				<thead>
 					<tr>
 
-						<th class="text-center">Mensual </th>
-						<th class="text-center">Semanal</th>
+						<th class="text-center">Día </th>
+						<th class="text-center">Evento</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -177,57 +174,11 @@
 
 				</tbody>
 			</table>
-			<!-- Button to open the offcanvas sidebar -->
-			<button class="btn btn-secondary bot" type="button" data-bs-toggle="offcanvas"
-				data-bs-target="#botonsidecamva2">
-				Votar actuacion
-			</button>
+			
+			
 		</div>
 	</div>
-	<!-- Offcanvas Sidebar 2 -->
-	<div class="offcanvas offcanvas-end" id="botonsidecamva2">
-		<div class="offcanvas-header eo">
-			<button type="button" class="btn-close text-reset " data-bs-dismiss="offcanvas"></button>
-			<h1 class=" offcanvas-title text-light">Mejor evento</h1>
-		</div>
-		<div class="offcanvas-body eo">
-			<form class="w-100 d-flex flex-column align-items-end was-validated">
-				<div class="d-flex flex-column mb-1 w-100">
-					<label for="name">Nombre</label>
-					<input class="border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary " type="text"
-						placeholder="Monkey D.Luffy" name="name" id="name" required>
-				</div>
-				<div class="d-flex flex-column mb-1 w-100">
-					<label for="email">Tu Email</label>
-					<input class=" border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary" type="email" required
-						placeholder="alguien@ejemplo.com" name="email" id="email" />
-
-
-
-				</div>
-				<div class="d-flex flex-column mb-1 w-100">
-					<label for="anime">Evento</label>
-					<input class="border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary" type="text"
-						placeholder="Cowboy bebob" name="anime" id="anime" required>
-				</div>
-				<div class="d-flex flex-column mb-1 w-100">
-					<label for="range">Valoración:</label>
-					<input class="form-range " type="range" min="0" max="100" step="5" name="range" id="range" />
-
-				</div>
-				<div class="d-flex flex-column mb-1 w-100">
-					<label for="message">¡Cuéntanos tu experiencia!</label>
-					<textarea class="border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary" type="text"
-						name="message" id="message" rows="5" placeholder="One piece es mi anime favorito y ...">
-					</textarea>
-
-				</div>
-				<button type="submit" class="btn btn-default mr-0 ">Enviar</button>
-			</form>
-			<button class="btn btn-secondary bot" type="button" data-bs-toggle="offcanvas"
-				data-bs-target="#botonsidecamva">Listado Semanal</button>
-		</div>
-	</div>
+	
 	<!-- Carousel -->
 	<div id="demo" class="carousel slide" data-bs-ride="carousel">
 
@@ -261,10 +212,66 @@
 	</div>
 
 	<div class="container">
-		<section id="section0">
+		<section id="section1" class="row d-flex justify-content-center pt-5 mt-5">
+			<h1 class="display-6 text-center text-dark crema mt-5">ESPECIALES DE LA CASA</h1>
+			<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 
+				<div class="carousel-indicators">
+					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+						aria-current="true" aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+						aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+						aria-label="Slide 3"></button>
+				</div>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<div class="d-flex">
+							<img th:src="@{/img/comida_01.jpg}" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img th:src="@{/img/comida_02.jpg}" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img th:src="@{/img/comida_03.jpg}" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="d-flex">
+							<img th:src="@{/img/comida_02.jpg}" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img th:src="@{/img/comida_03.jpg}" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img th:src="@{/img/comida_04.jpg}" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="d-flex">
+							<img th:src="@{/img/comida_03.jpg}" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img th:src="@{/img/comida_04.jpg}" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+							<img th:src="@{/img/comida_05.jpg}" width="25%" height="400px"
+								class="m-3 col-12 col-sm-4" alt="...">
+						</div>
+					</div>
+				</div>
+
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+					data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+					data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+
+			</div>
+			<h1 class="display-6 text-center text-dark crema mt-5">ESPECIALES DE LA CASA</h1>
 		</section>
-		<section id="section1" class="row d-flex justify-content-center pt-5 mt-5 ">
+		<section id="section2" class="row d-flex justify-content-center pt-5 mt-5 ">
 			<h1 class="display-6 text-center text-dark crema mt-5">EVENTOS</h1>
 			<div class="card col-sm-4 col-12 m-3 azul p-0 border-0" style="max-width:400px;">
 				<img class="card-img-top" th:src="@{/img/evento_01.png}" alt="Card image">
@@ -335,65 +342,7 @@
 			<h1 class="display-6 text-center text-dark crema mt-5">EVENTOS</h1>
 		</section>
 
-		<section id="section2" class="row d-flex justify-content-center pt-5 mt-5">
-			<h1 class="display-6 text-center text-dark crema mt-5">NOVEDADES</h1>
-			<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-
-				<div class="carousel-indicators">
-					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-						aria-current="true" aria-label="Slide 1"></button>
-					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-						aria-label="Slide 2"></button>
-					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-						aria-label="Slide 3"></button>
-				</div>
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<div class="d-flex">
-							<img th:src="@{/img/comida_01.jpg}" width="25%" height="400px"
-								class="m-3 col-12 col-sm-4" alt="...">
-							<img th:src="@{/img/comida_02.jpg}" width="25%" height="400px"
-								class="m-3 col-12 col-sm-4" alt="...">
-							<img th:src="@{/img/comida_03.jpg}" width="25%" height="400px"
-								class="m-3 col-12 col-sm-4" alt="...">
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div class="d-flex">
-							<img th:src="@{/img/comida_02.jpg}" width="25%" height="400px"
-								class="m-3 col-12 col-sm-4" alt="...">
-							<img th:src="@{/img/comida_03.jpg}" width="25%" height="400px"
-								class="m-3 col-12 col-sm-4" alt="...">
-							<img th:src="@{/img/comida_04.jpg}" width="25%" height="400px"
-								class="m-3 col-12 col-sm-4" alt="...">
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div class="d-flex">
-							<img th:src="@{/img/comida_03.jpg}" width="25%" height="400px"
-								class="m-3 col-12 col-sm-4" alt="...">
-							<img th:src="@{/img/comida_04.jpg}" width="25%" height="400px"
-								class="m-3 col-12 col-sm-4" alt="...">
-							<img th:src="@{/img/comida_05.jpg}" width="25%" height="400px"
-								class="m-3 col-12 col-sm-4" alt="...">
-						</div>
-					</div>
-				</div>
-
-				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-					data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Previous</span>
-				</button>
-				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-					data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Next</span>
-				</button>
-
-			</div>
-			<h1 class="display-6 text-center text-dark crema mt-5">NOVEDADES</h1>
-		</section>
+		
 		<section id="section3" class="row d-flex justify-content-center pt-5 mt-5">
 			<h1 class="display-6 text-center text-dark crema mt-5">MÁS VENDIDOS</h1>
 			<div id="carouselExampleCaptions3" class="carousel slide" data-bs-ride="carousel">
@@ -449,63 +398,6 @@
 				</button>
 			</div>
 			<h1 class="display-6 text-center text-dark crema mt-5">MÁS VENDIDOS</h1>
-		</section>
-		<section id="section4" class="row d-flex justify-content-center pt-5 mt-5">
-			<h1 class="display-6 text-center text-dark crema mt-5">ESPECIALES DE LA CASA</h1>
-			<div id="carouselExampleCaptions4" class="carousel slide" data-bs-ride="carousel">
-				<div class="carousel-indicators">
-					<button type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide-to="0" class="active"
-						aria-current="true" aria-label="Slide 1"></button>
-					<button type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide-to="1"
-						aria-label="Slide 2"></button>
-					<button type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide-to="2"
-						aria-label="Slide 3"></button>
-				</div>
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<div class="d-flex">
-							<img th:src="@{/img/comida_02.jpg}" width="25%" height="400px"
-								class="m-3 col-12 col-sm-4" alt="...">
-							<img th:src="@{/img/comida_05.jpg}" width="25%" height="400px"
-								class="m-3 col-12 col-sm-4" alt="...">
-							<img th:src="@{/img/comida_07.jpg}" width="25%" height="400px"
-								class="m-3 col-12 col-sm-4" alt="...">
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div class="d-flex">
-							<img th:src="@{/img/comida_05.jpg}" width="25%" height="400px"
-								class="m-3 col-12 col-sm-4" alt="...">
-							<img th:src="@{/img/comida_07.jpg}" width="25%" height="400px"
-								class="m-3 col-12 col-sm-4" alt="...">
-							<img th:src="@{/img/comida_03.jpg}" width="25%" height="400px"
-								class="m-3 col-12 col-sm-4" alt="...">
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div class="d-flex">
-							<img th:src="@{/img/comida_07.jpg}" width="25%" height="400px"
-								class="m-3 col-12 col-sm-4" alt="...">
-							<img th:src="@{/img/comida_03.jpg}" width="25%" height="400px"
-								class="m-3 col-12 col-sm-4" alt="...">
-							<img th:src="@{/img/comida_06.jpg}" width="25%" height="400px"
-								class="m-3 col-12 col-sm-4" alt="...">
-						</div>
-					</div>
-				</div>
-				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions4"
-					data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Previous</span>
-				</button>
-				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions4"
-					data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Next</span>
-				</button>
-
-			</div>
-			<h1 class="display-6 text-center text-dark crema mt-5">ESPECIALES DE LA CASA</h1>
 		</section>
 	</div>
 	<section class="pt-5 mt-5">
