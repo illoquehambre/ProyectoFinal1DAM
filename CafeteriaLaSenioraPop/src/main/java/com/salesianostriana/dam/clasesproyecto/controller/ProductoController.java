@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.clasesproyecto.model.Categoria;
 import com.salesianostriana.dam.clasesproyecto.model.Producto;
@@ -45,6 +46,26 @@ public class ProductoController {
 		
 		
 		return "private/Productos";
+	}
+	
+	@GetMapping("/admin/buscarPr")
+	public String buscarAdmin(Model model, @RequestParam String nombre ) {
+		
+		
+		model.addAttribute("productos", productoServicio.buscarPorNombre(nombre));
+		
+		return "admin/ProductosAdmin";
+		
+	}
+	
+	@GetMapping("/private/buscarPr")
+	public String buscarPrivate(Model model, @RequestParam String nombre ) {
+		
+		
+		model.addAttribute("productos", productoServicio.buscarPorNombre(nombre));
+		
+		return "private/Productos";
+		
 	}
 	
 	@GetMapping( "/admin/productosAdmin")

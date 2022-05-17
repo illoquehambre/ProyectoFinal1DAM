@@ -15,5 +15,10 @@ public class ProductoServicio extends ServicioBaseImpl<Producto, Long, ProductoR
 		return this.repositorio.findByCategoriaId(id);
 	}
 
+	public List<Producto> buscarPorNombre(String nombre) {
+	
+		return this.repositorio.findByNombreContainsIgnoreCase(nombre);
+	}
+
 	
 }
