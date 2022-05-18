@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
-=======
+
 <html lang="es" xmlns:th="http://http://www.thymeleaf.org"/>
->>>>>>> ticket
+
 
 <head>
 <meta charset="UTF-8">
@@ -23,7 +21,7 @@
 </head>
 
 <body>
-<<<<<<< HEAD
+
 	<header th:replace="~{fragments/sidebar :: mysidebar}"></header>
 	<form method="GET" th:action="@{/private/buscarPr}">
 		<input type="text" placeholder="Nombre producto" name="nombre"
@@ -32,14 +30,7 @@
 	</form>
 	
 
-=======
-	<!--<header th:replace="~{fragments/sidebar :: mysidebar}"></header>-->
-	<form method="GET" th:action="@{/producto/buscar}">
-    	<input type="text" placeholder="Nombre producto"
-    		name="nombre" id="nombre" th:value="${param.nombre}" />
-    	<input type="submit" value="Enviar" />
-    </form>
->>>>>>> ticket
+
 	<div class="container-lg">
 
 
@@ -81,15 +72,9 @@
 
 
 		<div class="d-flex justify-content-between">
-<<<<<<< HEAD
-			<a th:href="@{/index/}"><button
-					class=" btn btn-primary rounded-pill">Volver</button></a> <a
-				th:href="@{/ticket/}"><button
-=======
-			<a th:href="@{/private/categorias/}"><button
-					class=" btn btn-primary rounded-pill">Volver al listado</button></a> <a
-				th:href="@{/private/mostrarTicket}"><button
->>>>>>> ticket
+
+			 <a	th:href="@{/private/mostrarTicket}"><button
+
 					class=" btn btn-primary rounded-pill">Ver ticket</button></a>
 		</div>
 
