@@ -144,15 +144,17 @@
 							<td>   </td>
 							<td>	</td>
 							<td>
-								<button type="button" class="btn btn-success">
+								<a th:href="@{/private/cerrarTicket}"><button type="button" class="btn btn-success">
 									Checkout <span class="glyphicon glyphicon-play"></span>
-								</button>
+								</button></a>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
+		<a th:href="@{/private/categorias}"><button
+					class=" btn btn-primary rounded-pill">Seguir comprando</button></a>
 	</div>
 </body>
 

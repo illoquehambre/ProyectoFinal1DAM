@@ -13,26 +13,30 @@
 </head>
 
 <body>
-    <div class="container d-flex justify-content-around">
-    	<div class="card col-sm-4 col-12 m-3 azul p-0 border-1" style="max-width:400px;">
-				<img class="card-img-top" th:src="@{/img/admin.png}" alt="Card image">
+    <div class="container p-4">
+    <div class="row d-flex justify-content-around">
+    	<div class="card  col-12 col-md-6 m-3 azul p-0 border-1" style="max-width:400px;">
+				<a th:href="@{/admin/categoriasAdmin}" class="btn btn-light text dark pastel border-0 m-3"><img class="card-img-top" th:src="@{/img/admin.png}" alt="Card image">
+				</a>
 				<div class="card-body">
 					<h2 class="card-title">Admin</h2>
 					<p class="card-text">Administración de productos y categorias</p>
-					<a th:href="@{/admin/categoriasAdmin}" class="btn btn-light text dark pastel border-0 m-3">Administración</a>
+					
 				</div>
 			</div>
 			
-			<div class="card col-sm-4 col-12 m-3 azul p-0 border-1" style="max-width:400px;">
+			<div class="card  col-12 col-md-6 m-3 azul p-0 border-1" style="max-width:400px;">
+			<a th:href="@{/private/categorias}" class="btn btn-light text dark pastel border-0 m-3">			
 				<img class="card-img-top" th:src="@{/img/user.png}" alt="Card image">
+				</a>
 				<div class="card-body">
 					<h2 class="card-title">User</h2>
 					<p class="card-text">Gestión de la venta de productos </p>
-					<a th:href="@{/private/categorias}" class="btn btn-light text dark pastel border-0 m-3">Gestión</a>
+					
 				</div>
 			</div>
     </div>
-    
+    </div>
     
 </body>
 

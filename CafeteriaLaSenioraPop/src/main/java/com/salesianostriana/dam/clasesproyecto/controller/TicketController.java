@@ -39,7 +39,7 @@ public class TicketController {
 
 		Optional<Producto> comprobar = productoServicio.findById(id);
 
-		if (comprobar != null) {
+		if (comprobar.isPresent()) {
 			ticketServicio.addProducto(comprobar.get());// se hará igual
 			return "redirect:/private/mostrarTicket";
 		} else {
@@ -54,6 +54,15 @@ public class TicketController {
 
 		ticketServicio.removeProducto(productoServicio.findById(id));
 		return "redirect:/private/mostrarTicket";
+	}
+	
+	
+	@GetMapping("/private/cerrarTicket")
+	public String checkout() {		
+		
+			ticketServicio.cerrarTicket();
+			return "redirect:/private/categorias";
+		
 	}
 
 	@ModelAttribute("total_carrito")
@@ -70,5 +79,7 @@ public class TicketController {
 
 		return 0.0;
 	}
+	
+	
 
 }

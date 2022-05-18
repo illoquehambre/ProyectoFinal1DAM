@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.clasesproyecto.servicios;
 
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
@@ -17,14 +19,22 @@ import org.springframework.web.context.WebApplicationContext;
 import com.salesianostriana.dam.clasesproyecto.model.LineaDeVenta;
 import com.salesianostriana.dam.clasesproyecto.model.Producto;
 import com.salesianostriana.dam.clasesproyecto.model.Ticket;
+import com.salesianostriana.dam.clasesproyecto.repositories.ProductoRepository;
 import com.salesianostriana.dam.clasesproyecto.repositories.TicketRepository;
 import com.salesianostriana.dam.clasesproyecto.servicios.base.ServicioBaseImpl;
+
+import lombok.Builder;
 
 @Service
 
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketRepository> {
-
+	@Autowired
+	private LineaDeVentaServicio lineaDeVentaServicio;
+	
+	@Autowired
+	private ProductoRepository productoRepositorio;
+	
 	private Map<Producto, Integer> products = new HashMap<>();
 
 	public Map<Producto, Integer> getProductsCarrito() {
@@ -47,6 +57,43 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 			}
 		}
 
+	}
+	public void cerrarTicket() {
+		List<LineaDeVenta> listaLineasDeVenta =new ArrayList<LineaDeVenta>();
+		Ticket ticket;
+		double total=0;
+		for (Map.Entry<Producto, Integer> lineaDeVenta : products.entrySet()) {//
+			
+			
+			listaLineasDeVenta.add(
+					LineaDeVenta.builder()
+					.producto(lineaDeVenta.getKey())
+					.cantidad(lineaDeVenta.getValue())
+					.subtotal(lineaDeVenta.getKey().getPrecio() * lineaDeVenta.getValue())
+					.build()
+					);
+			
+			total+=total+(lineaDeVenta.getKey().getPrecio() * lineaDeVenta.getValue());
+		}
+		//build del ticket
+		ticket = Ticket.builder()
+		.fecha(LocalDateTime.now())
+		.total(total)
+		.build();
+		
+		if(!listaLineasDeVenta.isEmpty()) {
+			this.save(ticket);
+			for (LineaDeVenta lineaDeVenta : listaLineasDeVenta) {
+				lineaDeVenta.addToTicket(ticket);
+				lineaDeVentaServicio.save(lineaDeVenta);
+				
+			}
+			productoRepositorio.flush();
+			products.clear();
+			
+		}
+		
+		
 	}
 
 }
