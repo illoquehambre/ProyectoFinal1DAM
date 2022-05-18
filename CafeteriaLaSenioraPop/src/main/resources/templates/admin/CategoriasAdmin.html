@@ -48,7 +48,7 @@
 									th:href="@{/admin/categoriasAdmin/{id}/editar(id=${categoria.id})}"
 									class="btn btn-primary">Modificar</a></td>
 								<td><a href="#"
-									th:href="@{/admin/categoriasAdmin/borrar/{id}(id=${categoria.id})}"
+									data-bs-toggle="modal" th:attr="data-bs-target='#delete-modal'+'-'+${categoria.id}"
 									class="btn btn-danger">Eliminar</a></td>
 							</tr>
 						</tbody>
@@ -64,6 +64,27 @@
 						class=" btn btn-primary rounded-pill">CrearNuevo</button></a> <a
 				th:href="@{/admin/productosAdmin}"><button
 						class=" btn btn-primary rounded-pill">ModificarProductos</button></a>
+		</div>
+	</div>
+	
+	
+	<div class="modal fade"  th:id="delete-modal +' -' + ${categoria.id}">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Borrar categoría</h4>
+				</div>
+				<div class="modal-body">
+					<p>¿Está usted seguro de borrar esta categoría?</p>
+					<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+					<a th:href="@{/admin/categoriasAdmin/borrar/{id}(id=${categoria.id})}" class="btn btn-danger">Sí</a>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </body>
