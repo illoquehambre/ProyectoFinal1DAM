@@ -38,6 +38,8 @@
 								type="button" data-bs-toggle="offcanvas"
 								data-bs-target="#botonsidecamva">Desplegar Categorias</button>
 						</li>
+						<li><a class="nav-link"
+							th:href="@{/private/mostrarTicket}">Mostrar Ticket </a>
 					</ul>
 					<a th:href="@{/logout}"><button
 							class="btn btn-primary bg-dark border border-white bot mx-4 px-4"
@@ -58,7 +60,7 @@
 					<thead>
 						<tr>
 
-							<th class="text-center">Categorias</th>
+							<th class="text-center text-light">Categorias</th>
 							<th></th>
 
 						</tr>
@@ -68,14 +70,15 @@
 
 							<td class="text-center" th:text="${categoria.nombre}">Una
 								categoria</td>
-							<td><a th:href="@{/private/categorias/{id}/productos(id=${categoria.id})}"><button type="button" class="btn bg-success btn-light"
+							<td>
+							<a th:href="@{/private/categorias/{id}/productos(id=${categoria.id})}"><button type="button" class="btn bg-success btn-light"
 									>Produtos</button></a></td>
 
 						</tr>
 
 					</tbody>
 				</table>
-				<!-- Button to open the offcanvas sidebar -->
+				
 
 			</div>
 		</div>

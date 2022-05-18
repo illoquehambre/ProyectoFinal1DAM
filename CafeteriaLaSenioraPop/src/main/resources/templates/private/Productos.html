@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<html lang="es" xmlns:th="http://http://www.thymeleaf.org"/>
+
 
 <head>
 <meta charset="UTF-8">
@@ -19,6 +21,7 @@
 </head>
 
 <body>
+
 	<header th:replace="~{fragments/sidebar :: mysidebar}"></header>
 	<form method="GET" th:action="@{/private/buscarPr}">
 		<input type="text" placeholder="Nombre producto" name="nombre"
@@ -26,6 +29,7 @@
 			value="Enviar" />
 	</form>
 	
+
 
 	<div class="container-lg">
 
@@ -40,7 +44,7 @@
 								<th>Icono</th>
 								<th>Nombre</th>
 								<th>Precio</th>
-								<th>Cantidad</th>
+								
 								<th>Agregar</th>
 							</tr>
 						</thead>
@@ -49,15 +53,11 @@
 								<td><img th:src="@{producto.url}" alt="Icono"></td>
 								<td th:text="${producto.nombre}">nombre</td>
 								<td th:text="${producto.precio}">precio</td>
-								<td>Cantidad</td>
-								<td>Agregar</td>
+								
+								<td><a href="#" th:href="@{/private/productoACarrito/{id}(id=${producto.id})}" class="btn btn-primary">Agregar</a></td>
 
 
-								<!-- <form  th:object="${producto}" method="post">
-		                        <input type="hidden" name="producto" th:field="*{producto.id}" />
-		                        <input type="hidden" name="cantidad" th:field="*{cantidad}" />
-		                    	<input type="submit" name="enviar" value="Enviar">
-		               		 	</form> -->
+								
 
 							</tr>
 						</tbody>
@@ -67,10 +67,10 @@
 		</div>
 
 
-		<div class="d-flex justify-content-between">
-			<a th:href="@{/index/}"><button
-					class=" btn btn-primary rounded-pill">Volver</button></a> <a
-				th:href="@{/ticket/}"><button
+		<div class="d-flex">
+
+			 <a	th:href="@{/private/mostrarTicket}"><button
+
 					class=" btn btn-primary rounded-pill">Ver ticket</button></a>
 		</div>
 

@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://http://www.thymeleaf.org"/>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous">
-    </script>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+		</script>
 </head>
+
 <body>
+	
+	<header th:replace="~{fragments/sidebar :: mysidebar}"></header>
+	<!--
     <div class="container">
 
     
@@ -37,5 +41,119 @@
             
         </div>
     </div>
+    
+-->
+
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-10 col-md-offset-1">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Producto</th>
+							<th>Cantidad</th>
+							<th class="text-center">Precio</th>
+							<th class="text-center">Subtotal</th>
+							<th> </th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<!-- Bucle que va sacando los distintos elementos guardados en el carrito. 
+                Recordemos que es un HashMap cuya clave es un  producto 
+                y cuyo valor es la cantidad de productos, por eso
+                vamos sacando un elemento del carrito, esto significa que element, es tipo Entry, es decir,
+                pareja clave-valor "entera" (producto-cantidad), por todo esto, cuando queremos, por ejemplo, 
+                mostrar el nombre del producto, accedemos mediante: 
+                ${element.key.nombre} ya que sacamos la clave de la pareja "entry" que es un producto, 
+                y a su vez, accedemos al tributo nombre de ese producto -->
+
+						<tr th:each="element : ${products.entrySet()}">
+							<td class="col-sm-8 col-md-6">
+								
+									<a class="thumbnail pull-left" href="#">
+										<img class="media-object"
+											src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png"
+											style="width: 72px; height: 72px;" th:src="${element.key.url}" alt="icono"/> </a>
+									
+							</td>
+							<td class="col-sm-1 col-md-1" style="text-align: center">
+							<h4 class="media-heading"><span
+													th:text="${element.key.nombre}">Product name</span></h4></td>
+							<td class="col-sm-1 col-md-1" style="text-align: center">
+								<input class="form-control" id="inputQuantity" value="3" th:value="${element.value}"
+									type="text" />
+							</td>
+							<td class="col-sm-1 col-md-1 text-center"><strong
+									th:text="${element.key.precio}">$4.87</strong></td>
+							<!-- Como se puede ver en el manual de Th y hablamos en clase, en th se pueden hacer operaciones básicas con variables
+                        como en java, por lo que se puede multiplicar un valor por otro, como por ejemplo, aquí en precio por cantidad -->
+
+							<td class="col-sm-1 col-md-1 text-center"><strong
+									th:text="${element.key.precio * element.value}">$14.61</strong></td>
+							<td class="col-sm-1 col-md-1">
+
+
+								<a data-bs-toggle="modal"
+									th:attr="data-bs-target='#delete-modal'+'-'+${element.key.id}"><button type="button" class="btn btn-danger">
+									<span class="glyphicon glyphicon-remove"></span> Borrar
+								</button></a>
+							</td>
+							
+							<div class="modal fade"
+									th:id="delete-modal+'-'+${element.key.id}">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+												<h4 class="modal-title">Borrar producto</h4>
+											</div>
+											<div class="modal-body">
+												<p>¿Está usted seguro de borrar este producto?</p>
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">No</button>
+												<a
+													th:href="@{/private/borrarProducto/{id}(id=${element.key.id})}"
+													class="btn btn-danger">Sí</a>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							
+						</tr>
+						<tr>
+							<td>   </td>
+							<td>   </td>
+							<td>   </td>
+							<td>
+								<h3>Total</h3>
+							</td>
+							<td class="text-right">
+								<h3><strong th:text="${total_carrito}">100€</strong></h3>
+							</td>
+						</tr>
+						<tr>
+							<td>   </td>
+							<td>   </td>
+							<td>   </td>
+							<td>	</td>
+							<td>
+								<button type="button" class="btn btn-success">
+									Checkout <span class="glyphicon glyphicon-play"></span>
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </body>
+
 </html>
