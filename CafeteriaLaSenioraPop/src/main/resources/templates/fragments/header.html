@@ -18,7 +18,7 @@
 </head>
 
 <body>
-	<header th:fragment="mysidebar">
+	<header th:fragment="myheader">
 		<nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
 			<div class="container-fluid">
 				<a class="navbar-brand" th:href="@{/}"> <img
@@ -33,10 +33,14 @@
 							th:href="@{/}">LA SR. POP </a></li>
 
 						<li>
-							<!-- Button to open the offcanvas sidebar -->
-							<button class="btn btn-primary bg-dark border border-white "
-								type="button" data-bs-toggle="offcanvas"
-								data-bs-target="#botonsidecamva">Desplegar Categorias</button>
+							
+							<a th:href="@{/admin/categoriasAdmin}"><button class="btn btn-primary bg-dark border border-white "
+								type="button">Categorias</button></a>
+						</li>
+						<li>
+							
+							<a th:href="@{/admin/productosAdmin}"><button class="btn btn-primary bg-dark border border-white "
+								type="button">Productos</button></a>
 						</li>
 					</ul>
 					<a th:href="@{/logout}"><button
@@ -47,39 +51,7 @@
 			</div>
 		</nav>
 
-		<div class="offcanvas offcanvas-start" id="botonsidecamva">
-			<div class="offcanvas-header eo">
-				<h1 class="offcanvas-title text-light">Selección</h1>
-				<button type="button" class="btn-close text-reset"
-					data-bs-dismiss="offcanvas"></button>
-			</div>
-			<div class="offcanvas-body eo">
-				<table class="table table-dark table-hover">
-					<thead>
-						<tr>
-
-							<th class="text-center">Categorias</th>
-							<th></th>
-
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="categoria : ${categorias}">
-
-							<td class="text-center" th:text="${categoria.nombre}">Una
-								categoria</td>
-							<td><a th:href="@{/private/categorias/{id}/productos(id=${categoria.id})}"><button type="button" class="btn bg-success btn-light"
-									>Produtos</button></a></td>
-
-						</tr>
-
-					</tbody>
-				</table>
-				<!-- Button to open the offcanvas sidebar -->
-
-			</div>
-		</div>
-
+		
 	</header>
 
 

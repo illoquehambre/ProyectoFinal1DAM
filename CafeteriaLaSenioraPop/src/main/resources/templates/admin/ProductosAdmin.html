@@ -12,6 +12,7 @@
         crossorigin="anonymous"></script>
 </head>
 <body>
+<header th:replace="~{fragments/header :: myheader}"></header>
 	 <form method="GET" th:action="@{/admin/buscarPr}">
 		<input type="text" placeholder="Nombre producto" name="nombre"
 			id="nombre" th:value="${param.nombre}"
@@ -40,7 +41,33 @@
 						<td><img th:src="@{producto.url}" alt="Icono"></td>
 						<td th:text="${producto.nombre}">nombre</td>
 						<td><a href="#" th:href="@{/admin/productosAdmin/{id}/editar(id=${producto.id})}" class="btn btn-primary">Modificar</a></td>
-						<td><a href="#" th:href="@{/admin/productosAdmin/borrar/{id}(id=${producto.id})}" class="btn btn-danger">Eliminar</a></td>
+						<td><a href="#" data-bs-toggle="modal"
+									th:attr="data-bs-target='#delete-modal'+'-'+${producto.id}" class="btn btn-danger">Eliminar</a></td>
+						
+						<div class="modal fade"
+									th:id="delete-modal+'-'+${producto.id}">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+												<h4 class="modal-title">Borrar producto</h4>
+											</div>
+											<div class="modal-body">
+												<p>¿Está usted seguro de borrar este producto?</p>
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">No</button>
+												<a
+													th:href="@{/admin/productosAdmin/borrar/{id}(id=${producto.id})}"
+													class="btn btn-danger">Sí</a>
+											</div>
+										</div>
+
+									</div>
+								</div>
+						
 						</tr>				
 					</tbody>
 					</table>
