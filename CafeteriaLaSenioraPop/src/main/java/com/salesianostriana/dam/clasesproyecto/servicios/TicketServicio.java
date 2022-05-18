@@ -1,14 +1,11 @@
 package com.salesianostriana.dam.clasesproyecto.servicios;
 
-<<<<<<< HEAD
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-=======
-import java.util.Collections;
-import java.util.HashMap;
->>>>>>> 792f3da16602f6dae92d622851f024529e428142
+
 import java.util.Map;
 import java.util.Optional;
 
@@ -24,27 +21,7 @@ import com.salesianostriana.dam.clasesproyecto.repositories.TicketRepository;
 import com.salesianostriana.dam.clasesproyecto.servicios.base.ServicioBaseImpl;
 
 @Service
-<<<<<<< HEAD
-@Scope (value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketRepository>{
-	
-	
-	private  List<LineaDeVenta> ticket= new ArrayList <LineaDeVenta> ();
-	
-	public  List<LineaDeVenta> getProductosCarrito() {
-		// TODO Auto-generated method stub
-		return Collections.unmodifiableList(ticket);
-	}
 
-	public void addLineaDeVenta (Optional<LineaDeVenta> optional) {
-		
-		ticket.add(optional.get());
-	}
-
-	public void removeProducto(Optional<Producto> p) {
-		ticket.remove(p);
-		
-=======
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketRepository> {
 
@@ -69,7 +46,7 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 				products.remove(optional.get());// si no, lo elimina
 			}
 		}
->>>>>>> 792f3da16602f6dae92d622851f024529e428142
+
 	}
 
 }

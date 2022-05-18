@@ -49,6 +49,7 @@
 				<table class="table table-hover">
 					<thead>
 						<tr>
+							<th></th>
 							<th>Producto</th>
 							<th>Cantidad</th>
 							<th class="text-center">Precio</th>
@@ -67,21 +68,18 @@
                 ${element.key.nombre} ya que sacamos la clave de la pareja "entry" que es un producto, 
                 y a su vez, accedemos al tributo nombre de ese producto -->
 
-						<tr th:each="producto : ${products.entrySet()}">
+						<tr th:each="element : ${products.entrySet()}">
 							<td class="col-sm-8 col-md-6">
-								<div class="media">
+								
 									<a class="thumbnail pull-left" href="#">
 										<img class="media-object"
 											src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png"
 											style="width: 72px; height: 72px;" th:src="${element.key.url}" alt="icono"/> </a>
-									<div class="media-body">
-										<h4 class="media-heading"><a href="#"><span
-													th:text="${element.key.nombre}">Product name</span></a></h4>
-										<h5 class="media-heading"> by <a href="#">Salesianos.com</a></h5>
-
-									</div>
-								</div>
+									
 							</td>
+							<td class="col-sm-1 col-md-1" style="text-align: center">
+							<h4 class="media-heading"><span
+													th:text="${element.key.nombre}">Product name</span></h4></td>
 							<td class="col-sm-1 col-md-1" style="text-align: center">
 								<input class="form-control" id="inputQuantity" value="3" th:value="${element.value}"
 									type="text" />
@@ -96,9 +94,9 @@
 							<td class="col-sm-1 col-md-1">
 
 
-								<button type="button" class="btn btn-danger">
-									<span class="glyphicon glyphicon-remove"></span> Remove
-								</button>
+								<a th:href="@{/borrarProducto/{id}(id=${element.key.id})}"><button type="button" class="btn btn-danger">
+									<span class="glyphicon glyphicon-remove"></span> Borrar
+								</button></a>
 							</td>
 						</tr>
 						<tr>
@@ -116,11 +114,7 @@
 							<td>   </td>
 							<td>   </td>
 							<td>   </td>
-							<td>
-								<button type="button" class="btn btn-default">
-									<span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-								</button>
-							</td>
+							<td>	</td>
 							<td>
 								<button type="button" class="btn btn-success">
 									Checkout <span class="glyphicon glyphicon-play"></span>
