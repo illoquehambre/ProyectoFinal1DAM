@@ -13,31 +13,35 @@
 </head>
 <body>
 <header th:replace="~{fragments/header :: myheader}"></header>
-	 <form method="GET" th:action="@{/admin/buscarPr}">
-		<input type="text" placeholder="Nombre producto" name="nombre"
-			id="nombre" th:value="${param.nombre}"
-			 />
-		<input type="submit" value="Enviar" />
-	</form>
+	
 	
     <div class="container-lg">
         
        
 		<div class="row">
 			<div class="col-md-12">
-				<h4 class="text-center mb-4">Create Your Domain Name</h4>
+				<h4 class="text-center mb-4">Administración Productos</h4>
 				<div class="table-wrap">
 					<table class="table">
 					<thead class="thead-primary">
 						<tr>
+						<th>Categoria</th>
 						<th>Icono</th>
 						<th>Nombre</th>
 						<th>Modificar</th>
 						<th>Eliminar</th>
+						 <form method="GET" th:action="@{/admin/buscarPr}">
+		<input type="text" placeholder="Nombre producto" name="nombre"
+			id="nombre" th:value="${param.nombre}"
+			 />
+		<input type="submit" value="Enviar" />
+	</form>
 						</tr>
 					</thead>
 					<tbody>
+						
 						<tr  th:each="producto : ${productos}">
+						<td th:text="${producto.categoria.nombre}">nombreCat</td>
 						<td><img th:src="@{producto.url}" alt="Icono"></td>
 						<td th:text="${producto.nombre}">nombre</td>
 						<td><a href="#" th:href="@{/admin/productosAdmin/{id}/editar(id=${producto.id})}" class="btn btn-primary">Modificar</a></td>
@@ -76,7 +80,8 @@
 		</div>
         
         <div class="d-flex justify-content-between">
-            <a th:href="@{/admin/categoriasAdmin/}"><button  class=" btn btn-primary rounded-pill">Volver al listado</button></a>
+            <a th:href="@{/index}"><button
+					class=" btn btn-primary rounded-pill">Volver Atrás</button>
             <a th:href="@{/admin/productosAdmin/nuevo}"><button class=" btn btn-primary rounded-pill">CrearNuevo</button></a>
         </div>
         

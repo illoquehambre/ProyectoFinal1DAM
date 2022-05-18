@@ -18,15 +18,13 @@
 </head>
 <body>
 <header th:replace="~{fragments/sidebar :: mysidebar}"></header>
-	<form method="GET" th:action="@{/private/buscarCat}">
-		<input type="text" placeholder="Nombre categoria" name="nombre"
-			id="nombre" th:value="${param.nombre}" /> <input type="submit"
-			value="Enviar" />
-	</form>
+	
 
 	<div class="container-lg">
 
 		<h1 class="text-center">Bienvenido a la zona de gestión, Usuario.</h1>
+		<a th:href="@{/index}"><button
+					class=" btn btn-primary rounded-pill">Volver Atrás</button>
 	</div>
 </body>
 </html>

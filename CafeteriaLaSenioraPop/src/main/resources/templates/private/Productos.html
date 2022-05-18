@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="es" xmlns:th="http://http://www.thymeleaf.org"/>
+<html lang="es" xmlns:th="http://http://www.thymeleaf.org" />
 
 
 <head>
@@ -23,12 +23,8 @@
 <body>
 
 	<header th:replace="~{fragments/sidebar :: mysidebar}"></header>
-	<form method="GET" th:action="@{/private/buscarPr}">
-		<input type="text" placeholder="Nombre producto" name="nombre"
-			id="nombre" th:value="${param.nombre}" /> <input type="submit"
-			value="Enviar" />
-	</form>
-	
+
+
 
 
 	<div class="container-lg">
@@ -36,28 +32,37 @@
 
 		<div class="row">
 			<div class="col-md-12">
-				<h4 class="text-center mb-4">Create Your Domain Name</h4>
+				<h4 class="text-center mb-4">Productos</h4>
 				<div class="table-wrap">
 					<table class="table">
 						<thead class="thead-primary">
 							<tr>
+								<th>Categoria</th>
 								<th>Icono</th>
 								<th>Nombre</th>
 								<th>Precio</th>
-								
+
 								<th>Agregar</th>
+								<form method="GET" th:action="@{/private/buscarPr}">
+									<input type="text" placeholder="Nombre producto" name="nombre"
+										id="nombre" th:value="${param.nombre}" /> <input
+										type="submit" value="Enviar" />
+								</form>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="producto : ${productos}">
+								<td th:text="${producto.categoria.nombre}">nombreCat</td>
 								<td><img th:src="@{producto.url}" alt="Icono"></td>
 								<td th:text="${producto.nombre}">nombre</td>
 								<td th:text="${producto.precio}">precio</td>
-								
-								<td><a href="#" th:href="@{/private/productoACarrito/{id}(id=${producto.id})}" class="btn btn-primary">Agregar</a></td>
+
+								<td><a href="#"
+									th:href="@{/private/productoACarrito/{id}(id=${producto.id})}"
+									class="btn btn-primary">Agregar</a></td>
 
 
-								
+
 
 							</tr>
 						</tbody>
@@ -68,10 +73,8 @@
 
 
 		<div class="d-flex">
-
-			 <a	th:href="@{/private/mostrarTicket}"><button
-
-					class=" btn btn-primary rounded-pill">Ver ticket</button></a>
+			<a th:href="@{/index}"><button
+					class=" btn btn-primary rounded-pill">Volver Atrás</button>
 		</div>
 
 	</div>

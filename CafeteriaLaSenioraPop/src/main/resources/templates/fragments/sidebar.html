@@ -51,11 +51,16 @@
 
 		<div class="offcanvas offcanvas-start" id="botonsidecamva">
 			<div class="offcanvas-header eo">
-				<h1 class="offcanvas-title text-light">Selección</h1>
+				<form method="GET" th:action="@{/private/buscarCat}">
+		<input type="text" placeholder="Nombre categoria" name="nombre"
+			id="nombre" th:value="${param.nombre}" /> <input type="submit"
+			value="Enviar" />
+	</form>
 				<button type="button" class="btn-close text-reset"
 					data-bs-dismiss="offcanvas"></button>
 			</div>
 			<div class="offcanvas-body eo">
+			
 				<table class="table table-dark table-hover">
 					<thead>
 						<tr>
