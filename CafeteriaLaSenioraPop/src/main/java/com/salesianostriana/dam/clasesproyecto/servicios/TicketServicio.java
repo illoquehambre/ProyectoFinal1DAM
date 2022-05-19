@@ -37,6 +37,8 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 	public Map<Producto, Integer> getProductsCarrito() {
 		return Collections.unmodifiableMap(products);
 	}
+	
+	
 	public void addProducto (Producto p) {
 		if (products.containsKey(p)) {
 			products.replace(p, products.get(p)+1);
@@ -55,7 +57,7 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 		}
 
 	}
-	public void cerrarTicket(int mesa) {
+	public void cerrarTicket() {
 		List<LineaDeVenta> listaLineasDeVenta =new ArrayList<LineaDeVenta>();
 		Ticket ticket;
 		double total=0;
@@ -75,8 +77,7 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 		//build del ticket
 		ticket = Ticket.builder()
 		.fecha(LocalDateTime.now())
-		.total(total)
-		.mesa(mesa)
+		.total(total)		
 		.build();
 		
 		if(!listaLineasDeVenta.isEmpty()) {

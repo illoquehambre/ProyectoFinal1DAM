@@ -1,10 +1,8 @@
 package com.salesianostriana.dam.clasesproyecto.controller;
 
-<<<<<<< HEAD
-=======
+
 import java.util.ArrayList;
 import java.util.List;
->>>>>>> tablas
 import java.util.Map;
 import java.util.Optional;
 
@@ -14,16 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-<<<<<<< HEAD
-
-import com.salesianostriana.dam.clasesproyecto.model.Producto;
-=======
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.clasesproyecto.model.Categoria;
 import com.salesianostriana.dam.clasesproyecto.model.Producto;
 import com.salesianostriana.dam.clasesproyecto.servicios.CategoriaServicio;
->>>>>>> tablas
 import com.salesianostriana.dam.clasesproyecto.servicios.ProductoServicio;
 import com.salesianostriana.dam.clasesproyecto.servicios.TicketServicio;
 
@@ -37,76 +29,39 @@ public class TicketController {
 	private TicketServicio ticketServicio;
 	@Autowired
 	private ProductoServicio productoServicio;
-<<<<<<< HEAD
-=======
+
 	
 	@Autowired
 	private CategoriaServicio categoriaServicio;
->>>>>>> tablas
+
 
 	@GetMapping("private/mostrarTicket") // Se encarga de mostrar todo lo que esté añadido al carrito, en mi caso será
 											// igual
 	public String showCarrito(Model model) {
-<<<<<<< HEAD
+	
+	List<Categoria> categorias = new ArrayList<Categoria>();
 
-		model.addAttribute("products", ticketServicio.getProductsCarrito());
+	for (Categoria cat : categoriaServicio.findAll()) {
 
-		return "/private/Ticket";
+		categorias.add(cat);
 	}
 
-	@GetMapping("private/productoACarrito/{id}") // añade un producto al carrito
-	public String productoACarrito(@PathVariable("id") long id, Model model) {
+	model.addAttribute("categorias", categorias);
+	
 
-		Optional<Producto> comprobar = productoServicio.findById(id);
+	model.addAttribute("products", ticketServicio.getProductsCarrito());
 
-		if (comprobar != null) {
-			ticketServicio.addProducto(comprobar.get());// se hará igual
-			return "redirect:/private/mostrarTicket";
-		} else {
-			// No existe ningún categoria con el Id proporcionado.
-			// Redirigimos hacia el listado.
-			return "redirect:/";
-		}
-	}
+	return "/private/Ticket";
+}
 
-	@GetMapping("/borrarProducto/{id}")
-	public String removeProductFromCart(@PathVariable("id") Long id) {
+	
 
-		ticketServicio.removeProducto(productoServicio.findById(id));
-		return "redirect:/private/mostrarTicket";
-	}
+	
 
-	@ModelAttribute("total_carrito")
-	public Double totalCarrito() {
 
-		Map<Producto, Integer> carrito = ticketServicio.getProductsCarrito();
-		double total = 0.0;
-		if (carrito != null) {
-			for (Producto p : carrito.keySet()) {
-				total += p.getPrecio() * carrito.get(p);
-			}
-			return total;
-		}
 
-		return 0.0;
-	}
-
-=======
 		
-		List<Categoria> categorias = new ArrayList<Categoria>();
-
-		for (Categoria cat : categoriaServicio.findAll()) {
-
-			categorias.add(cat);
-		}
-
-		model.addAttribute("categorias", categorias);
 		
-
-		model.addAttribute("products", ticketServicio.getProductsCarrito());
-
-		return "/private/Ticket";
-	}
 
 	@GetMapping("private/productoACarrito/{id}") // añade un producto al carrito
 	public String productoACarrito(@PathVariable("id") long id, Model model) {
@@ -132,9 +87,9 @@ public class TicketController {
 	
 	
 	@GetMapping("/private/cerrarTicket")
-	public String checkout(@RequestParam("mesa") int mesa) {		
+	public String checkout() {		
 		
-			ticketServicio.cerrarTicket(mesa);
+			ticketServicio.cerrarTicket();
 			return "redirect:/private/categorias";
 		
 	}
@@ -156,5 +111,5 @@ public class TicketController {
 	
 	
 
->>>>>>> tablas
+
 }
