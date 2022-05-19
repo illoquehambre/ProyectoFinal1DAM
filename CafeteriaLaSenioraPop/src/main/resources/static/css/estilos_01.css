@@ -1,0 +1,49 @@
+body {
+	background-image: url(/img/fondo_02.png);
+	background-size: contain;
+	background-attachment: fixed;
+}
+
+h1 {
+	color: white;
+}
+
+.form {
+	background-color: rgba(212, 194, 160, 0.4)
+}
+
+.other {
+	background-image: url(/img/fondo.jpg);
+	background-size: cover;
+	background-position: center;
+}
+
+.other:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: linear-gradient(45deg, rgb(36, 51, 66),
+		rgba(36, 51, 66, 0.81))
+}
+
+td {
+	text-align: center;
+}
+
+.crema {
+	background-color: rgb(245, 225, 206);
+}
+.semiCrema {
+	background-color: rgba(245, 225, 206, 0.7);
+}
+
+.pastel {
+	background-color: rgb(234, 137, 154);
+}
+
+.azul {
+	background-color: rgb(121, 210, 230);
+}

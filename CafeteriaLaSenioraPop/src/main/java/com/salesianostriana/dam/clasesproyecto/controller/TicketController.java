@@ -1,5 +1,7 @@
 package com.salesianostriana.dam.clasesproyecto.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -9,8 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.salesianostriana.dam.clasesproyecto.model.Categoria;
 import com.salesianostriana.dam.clasesproyecto.model.Producto;
+import com.salesianostriana.dam.clasesproyecto.servicios.CategoriaServicio;
 import com.salesianostriana.dam.clasesproyecto.servicios.ProductoServicio;
 import com.salesianostriana.dam.clasesproyecto.servicios.TicketServicio;
 
@@ -24,10 +29,23 @@ public class TicketController {
 	private TicketServicio ticketServicio;
 	@Autowired
 	private ProductoServicio productoServicio;
+	
+	@Autowired
+	private CategoriaServicio categoriaServicio;
 
 	@GetMapping("private/mostrarTicket") // Se encarga de mostrar todo lo que esté añadido al carrito, en mi caso será
 											// igual
 	public String showCarrito(Model model) {
+		
+		List<Categoria> categorias = new ArrayList<Categoria>();
+
+		for (Categoria cat : categoriaServicio.findAll()) {
+
+			categorias.add(cat);
+		}
+
+		model.addAttribute("categorias", categorias);
+		
 
 		model.addAttribute("products", ticketServicio.getProductsCarrito());
 
@@ -58,9 +76,9 @@ public class TicketController {
 	
 	
 	@GetMapping("/private/cerrarTicket")
-	public String checkout() {		
+	public String checkout(@RequestParam("mesa") int mesa) {		
 		
-			ticketServicio.cerrarTicket();
+			ticketServicio.cerrarTicket(mesa);
 			return "redirect:/private/categorias";
 		
 	}

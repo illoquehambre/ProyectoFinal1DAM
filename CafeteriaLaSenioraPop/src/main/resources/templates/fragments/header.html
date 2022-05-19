@@ -19,33 +19,40 @@
 
 <body>
 	<header th:fragment="myheader">
-		<nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+		<nav class="navbar navbar-expand-sm crema sticky-top">
 			<div class="container-fluid">
 				<a class="navbar-brand" th:href="@{/}"> <img
-					th:src="@{/img/sr.pop_01.png}" width="50px" alt="Logo oficial"></a>
+					th:src="@{/img/sr.pop_01.png}" width="75px" alt="Logo oficial"></a>
 				<button class="navbar-toggler" type="button"
 					data-bs-toggle="collapse" data-bs-target="#mynavbar">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="mynavbar">
-					<ul class="navbar-nav me-auto">
-						<li class="nav-item"><a class="nav-link"
+					<ul class="navbar-nav me-auto align-items-center">
+						<li class="nav-item h3"><a class="nav-link text-dark"
 							th:href="@{/}">LA SR. POP </a></li>
 
 						<li>
 							
-							<a th:href="@{/admin/categoriasAdmin}"><button class="btn btn-primary bg-dark border border-white "
+							<a th:href="@{/admin/categoriasAdmin}"><button class="btn btn-light crema border border-1 border-dark "
 								type="button">Categorias</button></a>
 						</li>
 						<li>
 							
-							<a th:href="@{/admin/productosAdmin}"><button class="btn btn-primary bg-dark border border-white "
+							<a th:href="@{/admin/productosAdmin}"><button class="btn btn-light crema border border-1 border-dark  "
 								type="button">Productos</button></a>
 						</li>
+						
+						
 					</ul>
+					<div class="justify-content-around">
+					<a th:href="@{/index}"><button
+					class="btn btn-light crema border border-1 border-dark">Volver al inicio</button> </a>
 					<a th:href="@{/logout}"><button
-							class="btn btn-primary bg-dark border border-white bot mx-4 px-4"
+							class="btn btn-light btn-lg pastel border border-0 "
 							type="button">Logout</button></a>
+					</div>
+					
 
 				</div>
 			</div>

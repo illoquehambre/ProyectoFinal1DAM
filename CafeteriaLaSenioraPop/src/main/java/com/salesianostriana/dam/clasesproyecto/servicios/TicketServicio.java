@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-
 import java.util.Map;
 import java.util.Optional;
 
@@ -22,8 +21,6 @@ import com.salesianostriana.dam.clasesproyecto.model.Ticket;
 import com.salesianostriana.dam.clasesproyecto.repositories.ProductoRepository;
 import com.salesianostriana.dam.clasesproyecto.repositories.TicketRepository;
 import com.salesianostriana.dam.clasesproyecto.servicios.base.ServicioBaseImpl;
-
-import lombok.Builder;
 
 @Service
 
@@ -58,7 +55,7 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 		}
 
 	}
-	public void cerrarTicket() {
+	public void cerrarTicket(int mesa) {
 		List<LineaDeVenta> listaLineasDeVenta =new ArrayList<LineaDeVenta>();
 		Ticket ticket;
 		double total=0;
@@ -79,6 +76,7 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 		ticket = Ticket.builder()
 		.fecha(LocalDateTime.now())
 		.total(total)
+		.mesa(mesa)
 		.build();
 		
 		if(!listaLineasDeVenta.isEmpty()) {

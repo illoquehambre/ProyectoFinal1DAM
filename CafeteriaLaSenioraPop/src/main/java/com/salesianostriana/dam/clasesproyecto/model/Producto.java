@@ -26,7 +26,6 @@ public class Producto {
 	private long id;
 	private String nombre;
 	private double precio;
-	private int cantidadDisponible;
 	private String url;
 	//Especificar el tipo de conexion de BD (mnayToOne, OneToMany...)
 	@ManyToOne
@@ -37,7 +36,6 @@ public class Producto {
 		super();
 		this.nombre = nombre;
 		this.precio = precio;
-		this.cantidadDisponible = cantidadDisponible;
 		this.url = url;
 		this.categoria = categoria;
 	}

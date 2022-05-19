@@ -36,7 +36,7 @@ public class Ticket {
 	private LocalDateTime fecha;
 	//Indicar relación de la BD
 	private double total;
-	int mesa;
+	private int mesa;
 	
 	
 	
