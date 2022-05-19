@@ -33,7 +33,7 @@
 				th:object="${producto}" method="post">
 				<div class="d-flex flex-column mb-1 w-100">
 					<label for="name">Nombre</label> <input
-						class="border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary"
+						class="border border-0 rounded required bg-light p-2 mt-1 mb-2 text-secondary"
 						type="text" placeholder="Nombre" name="name" id="name" required
 						th:field="*{nombre}">
 				</div>
@@ -41,7 +41,7 @@
 
 				<div class="d-flex flex-column mb-1 w-100">
 					<label for="precio">precio</label> <input
-						class="border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary"
+						class="border border-0 rounded requiered  bg-light p-2 mt-1 mb-2 text-secondary"
 						type="text" placeholder="Precio" name="precio" id="precio"
 						required th:field="*{precio}">
 				</div>
@@ -49,15 +49,15 @@
 
 
 				<div class="d-flex flex-column mb-1 w-100">
-					<label for="url">Url imagen</label> <input
+					<label  for="url">Url imagen</label> <input
 						class="border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary"
 						type="text" placeholder="Url Imagen" name="url" id="url"
 						th:field="*{url}" />
 
 				</div>
 				<div class="d-flex flex-column mb-1 w-100">
-				<label class="form-label" for="textAreaExample">Descripción</label>
-					<textarea class="form-control" id="textAreaExample1" rows="4"
+				<label  for="textArea">Descripción</label>
+					<textarea  id="textArea" rows="4"
 						th:field="*{descripcion}"></textarea>
 					
 
@@ -68,7 +68,7 @@
 					<label for="categoria">Categoria</label> <select
 						class="  bg-light text-secondary" name="categoria" id="categoria"
 						required th:field="*{categoria}">
-						<option value="-1"></option>
+						<option value="-1" selected="selected">Sin categoria</option>
 						<option th:each="categoria : ${categorias}"
 							th:value="${categoria.id}" th:text="${categoria.nombre}">
 						</option>

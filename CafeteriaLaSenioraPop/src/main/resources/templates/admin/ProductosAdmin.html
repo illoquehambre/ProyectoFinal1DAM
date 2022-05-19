@@ -36,10 +36,10 @@
 							</form>
 							</div>
 				
-				<div class="table-wrap">
-					<table class="table semiCrema text-center">
+				<div class="overflow-auto">
+					<table class="table table-hover table-stiped  text-center">
 					
-						<thead class="thead-primary">
+						<thead class="thead-primary crema">
 							
 							<tr>
 								<th>Categoria</th>
@@ -50,11 +50,11 @@
 
 							</tr>
 						</thead>
-						<tbody>
+						<tbody class="semiCrema">
 
 							<tr th:each="producto : ${productos}">
 								<td th:text="${producto.categoria.nombre}">nombreCat</td>
-								<td><img th:src="@{producto.url}" alt="Icono"></td>
+								<td><img  th:src="@{producto.url}" width="50px" alt="Icono"></td>
 								<td th:text="${producto.nombre}">nombre</td>
 								<td><a href="#"
 									th:href="@{/admin/productosAdmin/{id}/editar(id=${producto.id})}"
@@ -67,7 +67,7 @@
 									<div class="modal-dialog" role="document">
 										<div class="modal-content">
 											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal"
+												<button type="button" class="close" data-bs-dismiss="modal"
 													aria-label="Close">
 													<span aria-hidden="true">&times;</span>
 												</button>

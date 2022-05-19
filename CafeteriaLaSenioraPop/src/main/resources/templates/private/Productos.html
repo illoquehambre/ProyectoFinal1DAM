@@ -5,20 +5,16 @@
 
 
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
 
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-	crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" th:href="@{/../css/estilos_01.css}">
 </head>
 
@@ -36,36 +32,56 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h4 class="text-center mb-4">Productos</h4>
-				<div class="table-wrap">
-					<table class="table semiCrema text-center">
-						<thead class="thead-primary ">
+				<div class="overflow-auto">
+					<table class="table  text-center">
+						<thead class="thead-primary crema ">
 							<tr>
 								<th>Categoria</th>
 								<th>Icono</th>
 								<th>Nombre</th>
 								<th>Precio</th>
-
+								<th>Descripción</th>
 								<th>Agregar</th>
-								<form method="GET" th:action="@{/private/buscarPr}">
-									<input type="text" placeholder="Nombre producto" name="nombre"
-										id="nombre" th:value="${param.nombre}" /> <input
-										type="submit" value="Enviar" />
-								</form>
+
+
 							</tr>
 						</thead>
-						<tbody>
+						<tbody class="semiCrema">
 							<tr th:each="producto : ${productos}">
 								<td th:text="${producto.categoria.nombre}">nombreCat</td>
-								<td><img th:src="@{producto.url}" alt="Icono"></td>
+								<td><img th:src="${not (#strings.isEmpty(producto.url))} 
+                                              ? ${producto.url} : 'http://placehold.it/30x30'" class=""
+                            alt="imagen" /></td>
 								<td th:text="${producto.nombre}">nombre</td>
 								<td th:text="${producto.precio}">precio</td>
 
+
+								<td><a href="#" data-bs-toggle="modal"
+									th:attr="data-bs-target='#descripcion'+'-'+${producto.id}"
+										class="btn btn-light border border-0 pastel">Descripción</a></td>
+
+
+								<td><a href="#" th:href="@{/private/productoACarrito/{id}(id=${producto.id})}"
+										class="btn btn-light border border-0 pastel">Agregar</a></td>
+
 								
+								<div class="modal fade" th:id="descripcion+'-'+${producto.id}">
+									<div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable" role="document">
+										<div class="modal-content">
+											<div class="modal-header text-center">
+												<button type="button" class="close" data-bs-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+												<h4 class="modal-title">Descripcion producto</h4>
+											</div>
+											<div class="modal-body overflow-auto">
+												<p th:text="${producto.descripcion}"></p>
+											</div>
+										</div>
 
-
-								<td><a href="#"
-									th:href="@{/private/productoACarrito/{id}(id=${producto.id})}"
-									class="btn btn-light border border-0 pastel">Agregar</a></td>
+									</div>
+								</div>
 
 
 
@@ -82,9 +98,7 @@
 
 		<div class="d-flex justify-content-between">
 
-			 <a	th:href="@{/private/mostrarTicket}"><button
-
-					class=" btn btn-primary rounded-pill">Ver ticket</button></a>
+			<a th:href="@{/private/mostrarTicket}"><button class=" btn btn-primary rounded-pill">Ver ticket</button></a>
 
 		</div>
 

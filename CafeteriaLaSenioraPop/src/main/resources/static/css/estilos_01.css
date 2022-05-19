@@ -47,3 +47,6 @@ td {
 .azul {
 	background-color: rgb(121, 210, 230);
 }
+td>img{
+	width: 60px;
+}

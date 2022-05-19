@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.salesianostriana.dam.clasesproyecto.model.Categoria;
 import com.salesianostriana.dam.clasesproyecto.model.Producto;
 import com.salesianostriana.dam.clasesproyecto.servicios.CategoriaServicio;
-import com.salesianostriana.dam.clasesproyecto.servicios.LineaDeVentaServicio;
 import com.salesianostriana.dam.clasesproyecto.servicios.ProductoServicio;
 
 import lombok.RequiredArgsConstructor;
@@ -46,6 +45,11 @@ public class ProductoController {
 		
 		return "private/Productos";
 	}
+	
+
+	
+	
+	
 	
 	@GetMapping("/admin/buscarPr")
 	public String buscarAdmin(Model model, @RequestParam String nombre ) {

@@ -74,7 +74,7 @@
 									<div class="modal-dialog" role="document">
 										<div class="modal-content">
 											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal"
+												<button type="button" class="close" data-bs-dismiss="modal"
 													aria-label="Close">
 													<span aria-hidden="true">&times;</span>
 												</button>
@@ -83,7 +83,7 @@
 											<div class="modal-body">
 												<p>¿Está usted seguro de borrar este producto?</p>
 												<button type="button" class="btn btn-default"
-													data-dismiss="modal">No</button>
+													data-bs-dismiss="modal">No</button>
 												<a
 													th:href="@{/private/borrarProducto/{id}(id=${element.key.id})}"
 													class="btn btn-danger">Sí</a>

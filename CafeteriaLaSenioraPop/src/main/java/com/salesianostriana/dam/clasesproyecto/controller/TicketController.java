@@ -52,15 +52,7 @@ public class TicketController {
 	model.addAttribute("products", ticketServicio.getProductsCarrito());
 
 	return "/private/Ticket";
-}
-
-	
-
-	
-
-
-
-		
+}	
 		
 
 	@GetMapping("private/productoACarrito/{id}") // añade un producto al carrito
