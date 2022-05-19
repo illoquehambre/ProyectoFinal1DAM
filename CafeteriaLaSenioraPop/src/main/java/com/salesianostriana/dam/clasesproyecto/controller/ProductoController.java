@@ -28,8 +28,7 @@ public class ProductoController {
 	private CategoriaServicio categoriaServicio;
 	@Autowired
 	private ProductoServicio productoServicio;
-	@Autowired
-	private LineaDeVentaServicio lineaDeVentaServicio;
+	
 	
 	@GetMapping({"/private/categorias/{id}/productos"})
 	public String listado(Model model,  @PathVariable Long id) {

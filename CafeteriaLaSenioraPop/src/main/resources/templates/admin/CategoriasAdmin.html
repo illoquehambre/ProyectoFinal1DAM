@@ -16,27 +16,40 @@
 	crossorigin="anonymous">
 	
 </script>
+<link rel="stylesheet" type="text/css" th:href="@{/../css/estilos_01.css}">
 </head>
 <body>
 	<header th:replace="~{fragments/header :: myheader}"></header>
-	<form method="GET" th:action="@{/admin/buscarCat}">
-		<input type="text" placeholder="Nombre categoria" name="nombre"
-			id="nombre" th:value="${param.nombre}" /> <input type="submit"
-			value="Enviar" />
-	</form>
+
 	<div class="container-lg">
+		<div class="alert alert-warning alert-dismissible" role="alert"
+			th:if="${param.error}">
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<span>No se puede borrar una categoría que tiene asociados
+				productos. Elimine primero los productos en su interior.</span>
+		</div>
 
 		<div class="row">
+
+
 			<div class="col-md-12">
-				<h4 class="text-center mb-4">Create Your Domain Name</h4>
+				<h4 class="text-center mb-4">Administración Categorias</h4>
 				<div class="table-wrap">
-					<table class="table">
-						<thead class="thead-primary">
+					<table class="table  semiCrema">
+						<thead class="thead-primary text-center">
 							<tr>
 
 								<th>Nombre</th>
 								<th>Modificar</th>
 								<th>Eliminar</th>
+								<form method="GET" th:action="@{/admin/buscarCat}">
+									<input type="text" placeholder="Nombre categoria" name="nombre"
+										id="nombre" th:value="${param.nombre}" /> <input
+										type="submit" value="Enviar" />
+								</form>
 							</tr>
 						</thead>
 						<tbody>
@@ -45,13 +58,12 @@
 								<td th:text="${categoria.nombre}">nombre</td>
 								<td><a href="#"
 									th:href="@{/admin/categoriasAdmin/{id}/editar(id=${categoria.id})}"
-									class="btn btn-primary">Modificar</a></td>
+									class="btn btn-light pastel border border-0">Modificar</a></td>
 								<td><a href="#" data-bs-toggle="modal"
 									th:attr="data-bs-target='#delete-modal'+'-'+${categoria.id}"
 									class="btn btn-danger">Eliminar</a></td>
 
-								<div class="modal fade"
-									th:id="delete-modal+'-'+${categoria.id}">
+								<div class="modal fade" th:id="delete-modal+'-'+${categoria.id}">
 									<div class="modal-dialog" role="document">
 										<div class="modal-content">
 											<div class="modal-header">
@@ -79,20 +91,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="d-flex justify-content-between">
-			<a th:href="@{/index}"><button
-					class=" btn btn-primary rounded-pill">Volver Atrás</button> <a
-				th:href="@{/logout}">
-					<button class=" btn btn-primary rounded-pill">SALIR</button>
-			</a> <a th:href="@{/admin/categoriasAdmin/nuevo}">
-					<button class=" btn btn-primary rounded-pill">CrearNuevo</button>
-			</a> <a th:href="@{/admin/productosAdmin}">
-					<button class=" btn btn-primary rounded-pill">ModificarProductos</button>
+		<div class="d-flex justify-content-end">
+			 <a
+				th:href="@{/admin/categoriasAdmin/nuevo}">
+				<button class=" btn btn-light pastel border border-0 rounded-pill">CrearNuevo</button>
 			</a>
 		</div>
 	</div>
-
-
-
 </body>
 </html>

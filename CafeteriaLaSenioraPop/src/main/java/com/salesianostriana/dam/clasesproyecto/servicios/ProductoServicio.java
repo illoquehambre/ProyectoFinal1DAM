@@ -1,9 +1,11 @@
 package com.salesianostriana.dam.clasesproyecto.servicios;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.salesianostriana.dam.clasesproyecto.model.Categoria;
 import com.salesianostriana.dam.clasesproyecto.model.Producto;
 import com.salesianostriana.dam.clasesproyecto.repositories.ProductoRepository;
 import com.salesianostriana.dam.clasesproyecto.servicios.base.ServicioBaseImpl;
@@ -17,6 +19,10 @@ public class ProductoServicio extends ServicioBaseImpl<Producto, Long, ProductoR
 	
 	public List<Producto> buscarPorNombre(String cadena) {
 		return repositorio.findByNombreContainsIgnoreCase(cadena);
+	}
+
+	public int numeroProductosCategoria(Categoria categoria) {
+		return repositorio.findNumProductosByCategoria(categoria);
 	}
 
 	

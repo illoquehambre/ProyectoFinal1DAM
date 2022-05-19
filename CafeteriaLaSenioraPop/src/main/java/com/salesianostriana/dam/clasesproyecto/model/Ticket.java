@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,8 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+
 public class Ticket {
 	
 	@Id
@@ -28,10 +31,20 @@ public class Ticket {
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	@OneToMany (mappedBy="ticket", fetch= FetchType.EAGER)
+	@Builder.Default
 	private List <LineaDeVenta> lineaDeVenta = new ArrayList<LineaDeVenta>();
 	private LocalDateTime fecha;
 	//Indicar relación de la BD
 	private double total;
-	private boolean impreso;
+	private int mesa;
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		
 }

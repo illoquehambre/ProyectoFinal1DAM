@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.clasesproyecto.model.Categoria;
 import com.salesianostriana.dam.clasesproyecto.servicios.CategoriaServicio;
+import com.salesianostriana.dam.clasesproyecto.servicios.ProductoServicio;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,108 +26,117 @@ import lombok.RequiredArgsConstructor;
 public class CategoriaController {
 	@Autowired
 	private CategoriaServicio categoriaServicio;
-	
+	@Autowired
+	private ProductoServicio productoServicio;
+
 	@GetMapping("/carta")
-	public String carta(Model model,  Optional<String> optional) {
+	public String carta(Model model, Optional<String> optional) {
 
 		List<Categoria> categorias = new ArrayList<Categoria>();
-		
-			for (Categoria cat : categoriaServicio.findAll()) {
-				
-				categorias.add(cat);
-			}
 
-			model.addAttribute("categorias", categorias);
-		
-		
+		for (Categoria cat : categoriaServicio.findAll()) {
+
+			categorias.add(cat);
+		}
+
+		model.addAttribute("categorias", categorias);
 
 		return "Carta2";
 	}
-	
-	
-	
-	@GetMapping( {"/private", "/private/categorias"})
-	public String listado(Model model,  Optional<String> optional) {
+
+	@GetMapping({ "/private", "/private/categorias" })
+	public String listado(Model model, Optional<String> optional) {
 
 		List<Categoria> categorias = new ArrayList<Categoria>();
-		
-			for (Categoria cat : categoriaServicio.findAll()) {
-				
-				categorias.add(cat);
-			}
 
-			model.addAttribute("categorias", categorias);
-		
-		
+		for (Categoria cat : categoriaServicio.findAll()) {
+
+			categorias.add(cat);
+		}
+
+		model.addAttribute("categorias", categorias);
 
 		return "private/Categorias";
 	}
-	
+
 	@GetMapping("/admin/buscarCat")
-	public String buscarAdmin(Model model, @RequestParam String nombre ) {
-		
-		
+	public String buscarAdmin(Model model, @RequestParam String nombre) {
+
 		model.addAttribute("categorias", categoriaServicio.buscarPorNombre(nombre));
-		
+
 		return "admin/CategoriasAdmin";
-		
+
 	}
+
 	@GetMapping("/private/buscarCat")
-	public String buscarPrivate(Model model, @RequestParam String nombre ) {
-		
-		
+	public String buscarPrivate(Model model, @RequestParam String nombre) {
+
 		model.addAttribute("categorias", categoriaServicio.buscarPorNombre(nombre));
-		
+
 		return "private/Categorias";
-		
+
 	}
-	
-	@GetMapping({"/admin", "/admin/categoriasAdmin"})
-	public String gestionCategorias(Model model,  Optional<String> optional) {
+
+	@GetMapping({ "/admin", "/admin/categoriasAdmin" })
+	public String gestionCategorias(Model model, Optional<String> optional) {
 
 		List<Categoria> categorias = new ArrayList<Categoria>();
-		
-			for (Categoria cat : categoriaServicio.findAll()) {
-				
-				categorias.add(cat);
-			}
 
-			model.addAttribute("categorias", categorias);
-		
-		
+		for (Categoria cat : categoriaServicio.findAll()) {
+
+			categorias.add(cat);
+		}
+
+		model.addAttribute("categorias", categorias);
 
 		return "admin/CategoriasAdmin";
 	}
-	
-	
+
 	@GetMapping("/admin/categoriasAdmin/nuevo")
 	public String mostrarFormularioCategoria(Model model) {
 		model.addAttribute("categoria", new Categoria());
 		return "admin/AgregarCategoria";
 	}
-	
 
 	@PostMapping("/admin/categoriasAdmin/nuevo/submit")
 	public String procesarFormularioCategoria(@ModelAttribute("categoria") Categoria cat) {
 		categoriaServicio.add(cat);
 		return "redirect:/admin/categoriasAdmin";
 	}
-	
+
 	@GetMapping("/admin/categoriasAdmin/borrar/{id}")
 	public String borrar(@PathVariable("id") long id) {
-		categoriaServicio.deleteById(id);
-		return "redirect:/admin/categoriasAdmin";
+		// Comprobar si tiene productos dentro
+
+		Optional<Categoria> categoria = categoriaServicio.findById(id);
+
+		if (categoria.isPresent()) {
+
+			if (productoServicio.numeroProductosCategoria(categoria.get()) == 0) {
+				categoriaServicio.delete(categoria.get());
+			} else {
+
+				// Se ha agregado el parámetro error con valor true a la ruta
+				return "redirect:/admin/categoriasAdmin/?error=true";
+			}
+
+		}
+
+		return "redirect:/admin/categoriasAdmin/";
+
+		/*
+		 * categoriaServicio.deleteById(id); return "redirect:/admin/categoriasAdmin";
+		 */
 	}
-	
-	
+
 	@GetMapping("/admin/categoriasAdmin/{id}/editar")
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
-		
-		//Buscamos al categoria por id y recordemos que el método findById del servicio, devuelve el objeto buscado o null si no se encuentra.
-		 
-		
+
+		// Buscamos al categoria por id y recordemos que el método findById del
+		// servicio, devuelve el objeto buscado o null si no se encuentra.
+
 		Optional<Categoria> comprobar = categoriaServicio.findById(id);
-		
+
 		if (comprobar.isPresent()) {
 			model.addAttribute("categoria", comprobar.get());
 			return "admin/AgregarCategoria";
@@ -135,19 +145,17 @@ public class CategoriaController {
 			// Redirigimos hacia el listado.
 			return "redirect:/admin/categoriasAdmin";
 		}
-		
-		
+
 	}
-	
+
 	/**
 	 * Método que procesa la respuesta del formulario al editar
 	 */
 	@PostMapping("/admin/categoriasAdmin/{id}/editar/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("categoria") Categoria cat) {
 		categoriaServicio.edit(cat);
-		return "redirect:/admin/categoriasAdmin";//Volvemos a redirigir la listado a través del controller para pintar la lista actualizada con la modificación hecha
+		return "redirect:/admin/categoriasAdmin";// Volvemos a redirigir la listado a través del controller para pintar
+													// la lista actualizada con la modificación hecha
 	}
-	
-	
-	
+
 }
