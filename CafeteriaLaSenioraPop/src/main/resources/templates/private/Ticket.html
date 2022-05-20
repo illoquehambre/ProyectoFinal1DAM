@@ -121,13 +121,9 @@
 
 								<td colspan=3>
 								  
-									<form th:action="@{/private/cerrarTicket}"  method="post" th:object="${mesa}">
-										<label for="numero">Nº mesa</label>
-										<!--  <input type="number" name="numero" id="numero" th:field="*{numero}"/>	-->		
-										<input class="btn btn-light border border-0 bg-success mt-3 text-light"
-											type="submit" name="Checkout" value="Checkout"/>
-									</form>
-								 
+									
+								 <a th:href="@{/private/cerrarTicket}"><button class="btn btn-light border border-0 bg-success mt-3 text-light"
+											type="submit" name="Checkout">Checkout</button></a>
 								</td>
 							</tr>
 							<!--  
@@ -148,13 +144,13 @@
 
 
 			</div>
-
-
-		</div>
-		<a th:href="@{/private/categorias}"><button
+				<a th:href="@{/private/categorias}"><button
 				class=" btn btn-light pastel border border-0 rounded-pill">Seguir
 				comprando</button></a>
 
+
+		</div>
+		
 	</div>
 </body>
 
