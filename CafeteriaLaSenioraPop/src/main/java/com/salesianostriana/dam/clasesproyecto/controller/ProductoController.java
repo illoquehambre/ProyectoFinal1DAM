@@ -108,16 +108,25 @@ public class ProductoController {
 	
 	@GetMapping("/admin/productosAdmin/borrar/{id}")
 	public String borrar(@PathVariable("id") long id) {
-		/*
-		List<LineaDeVenta> lineasDeVenta=new ArrayList<LineaDeVenta>();
-		lineasDeVenta=lineaDeVentaServicio.findAll();
-				
-		lineasDeVenta.stream().filter(producto-> id==(producto.getId()))
-		.findAny()
-		*/
+		
+		Optional<Producto> producto = productoServicio.findById(id);
+
+		if (producto.isPresent()) {
+
+			if (lineaDeVentaServicio.numeroLineasDeVentaProducto(producto.get()) == 0) {
+				productoServicio.delete(producto.get());
+			} else {
+
+				// Se ha agregado el parámetro error con valor true a la ruta
+				return "redirect:/admin/productosAdmin/?error=true";
+			}
+
+		}
+
+		
 				
 		
-		productoServicio.deleteById(id);
+		//productoServicio.deleteById(id);
 		return "redirect:/admin/productosAdmin";
 	}
 	

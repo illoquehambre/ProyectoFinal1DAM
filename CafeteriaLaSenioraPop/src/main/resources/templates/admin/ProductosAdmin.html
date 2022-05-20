@@ -20,16 +20,7 @@
 <body>
 	<header th:replace="~{fragments/header :: myheader}"></header>
 	
-	<div class="container-lg">
-		<div class="alert alert-warning alert-dismissible" role="alert"
-			th:if="${param.error}">
-			<button type="button" class="close" data-bs-dismiss="alert"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			<span>No se puede borrar un producto que tiene asociadas
-				lineas de venta.</span>
-		</div>
+	
 
 	<div class="container-lg">
 	
