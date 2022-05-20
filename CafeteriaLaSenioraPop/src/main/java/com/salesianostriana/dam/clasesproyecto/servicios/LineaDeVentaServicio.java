@@ -26,7 +26,5 @@ public class LineaDeVentaServicio extends ServicioBaseImpl<LineaDeVenta, Long, L
 		return ticketServivio.getProductsCarrito();
 	}
 	
-	public int numeroLineasDeVentaProducto(Producto producto) {
-		return repositorio.findNumLineasVentaByProducto(producto);
-	}
+	
 }
