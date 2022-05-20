@@ -2,10 +2,10 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
 
 
 
@@ -16,37 +16,33 @@
 	<header th:fragment="mysidebar">
 		<nav class="navbar navbar-expand-sm crema sticky-top">
 			<div class="container-fluid">
-				<a class="navbar-brand" th:href="@{/}"> <img
-					th:src="@{/img/sr.pop_01.png}" width="75px" alt="Logo oficial"></a>
-				<button
-					class="navbar-toggler btn btn-light bt-lg dropdown-toggle crema border border-dark text-dark"
+				<a class="navbar-brand" th:href="@{/}"> <img th:src="@{/img/sr.pop_01.png}" width="75px"
+						alt="Logo oficial"></a>
+				<button class="navbar-toggler btn btn-light bt-lg dropdown-toggle crema border border-dark text-dark"
 					type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
 					Desplegar</button>
 				<div class="collapse navbar-collapse" id="mynavbar">
 					<ul class="navbar-nav me-auto align-items-center">
-						<li class="nav-item h3"><a class="nav-link text-dark"
-							th:href="@{/}">LA SR. POP </a></li>
+						<li class="nav-item h3"><a class="nav-link text-dark" th:href="@{/}">LA SR. POP </a></li>
 
 						<li>
 							<!-- Button to open the offcanvas sidebar -->
-							<button class="btn btn-light crema border border-1 border-dark  "
-								type="button" data-bs-toggle="offcanvas"
-								data-bs-target="#botonsidecamva">Desplegar Categorias</button>
+							<button class="btn btn-light crema border border-1 border-dark dropdown-toggle  "
+								type="button" data-bs-toggle="offcanvas" data-bs-target="#botonsidecamva">Desplegar
+								Categorias</button>
 						</li>
-						<li><a class="nav-link text-dark"
-							th:href="@{/private/mostrarTicket}"><button
-									class="btn btn-light crema border border-1 border-dark "
-									type="button">Mostrar Ticket</button> </a></li>
+						<li><a class="nav-link text-dark" th:href="@{/private/mostrarTicket}"><button
+									class="btn btn-light crema border border-1 border-dark " type="button">Mostrar
+									Ticket</button> </a></li>
 
-						
+
 					</ul>
 					<div class="justify-content-around">
-					<a th:href="@{/index}"><button
-					class="btn btn-light crema border border-1 border-dark my-2">Volver al inicio</button> 
-					</a>
-					<a th:href="@{/logout}"><button
-							class="btn btn-light btn-lg pastel border border-0 my-2"
-							type="button">Logout</button></a>
+						<a th:href="@{/index}"><button
+								class="btn btn-light crema border border-1 border-dark my-2">Volver al inicio</button>
+						</a>
+						<a th:href="@{/logout}"><button class="btn btn-light btn-lg pastel border border-0 my-2"
+								type="button">Logout</button></a>
 					</div>
 
 				</div>
@@ -56,12 +52,10 @@
 		<div class="offcanvas offcanvas-start semiCrema" id="botonsidecamva">
 			<div class="offcanvas-header eo ">
 				<form method="GET" th:action="@{/private/buscarCat}">
-					<input type="text" placeholder="Nombre categoria" name="nombre"
-						id="nombre" th:value="${param.nombre}" /> <input type="submit"
-						value="Enviar" />
+					<input type="text" placeholder="Nombre categoria" name="nombre" id="nombre"
+						th:value="${param.nombre}" /> <input type="submit" value="Enviar" />
 				</form>
-				<button type="button" class="btn-close text-reset"
-					data-bs-dismiss="offcanvas"></button>
+				<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
 			</div>
 			<div class="offcanvas-body eo">
 
@@ -79,9 +73,9 @@
 
 							<td class="text-center" th:text="${categoria.nombre}">Una
 								categoria</td>
-							<td><a
-								th:href="@{/private/categorias/{id}/productos(id=${categoria.id})}"><button
-										type="button" class="btn pastel vorder border-0 btn-light">Produtos</button></a></td>
+							<td><a th:href="@{/private/categorias/{id}/productos(id=${categoria.id})}"><button
+										type="button" class="btn pastel vorder border-0 btn-light">Produtos</button></a>
+							</td>
 
 						</tr>
 

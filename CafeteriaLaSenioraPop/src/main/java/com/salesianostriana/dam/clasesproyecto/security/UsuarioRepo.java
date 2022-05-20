@@ -29,21 +29,21 @@ public class UsuarioRepo {
 	public void init() {
 		usuarios = List.of(
 				Usuario.builder()
-					.username("luismi")
-					.password("12345678")
+					.username("admin")
+					.password("admin")
 					.role("ADMIN")
-					.nombre("Luis Miguel")
-					.apellidos("López Magaña")
-					.fechaNacimiento(LocalDate.of(1982, 1, 1))
+					.nombre("Administrador")
+					.apellidos("Un capo el pibe")
+					.fechaNacimiento(LocalDate.of(1512, 6, 9))
 					.build()
 				,
 				Usuario.builder()
-				.username("angel")
-				.password("87654321")
+				.username("user")
+				.password("1234")
 				.role("USER")
-				.nombre("Ángel")
-				.apellidos("Naranjo González")
-				.fechaNacimiento(LocalDate.of(1976, 1, 1))
+				.nombre("Usuario")
+				.apellidos("Normalito y corriente")
+				.fechaNacimiento(LocalDate.of(1969, 9, 6))
 				.build()
 				
 				

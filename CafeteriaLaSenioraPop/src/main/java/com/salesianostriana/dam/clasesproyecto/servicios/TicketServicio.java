@@ -37,6 +37,8 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 	public Map<Producto, Integer> getProductsCarrito() {
 		return Collections.unmodifiableMap(products);
 	}
+	
+	
 	public void addProducto (Producto p) {
 		if (products.containsKey(p)) {
 			products.replace(p, products.get(p)+1);
@@ -55,7 +57,7 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 		}
 
 	}
-	public void cerrarTicket(int mesa) {
+	public void cerrarTicket() {
 		List<LineaDeVenta> listaLineasDeVenta =new ArrayList<LineaDeVenta>();
 		Ticket ticket;
 		double total=0;
@@ -70,13 +72,13 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 					.build()
 					);
 			
-			total+=total+(lineaDeVenta.getKey().getPrecio() * lineaDeVenta.getValue());
+			total+=(lineaDeVenta.getKey().getPrecio() * lineaDeVenta.getValue());
 		}
+		total=this.descuento(total);
 		//build del ticket
 		ticket = Ticket.builder()
 		.fecha(LocalDateTime.now())
-		.total(total)
-		.mesa(mesa)
+		.total(total)		
 		.build();
 		
 		if(!listaLineasDeVenta.isEmpty()) {
@@ -92,6 +94,16 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 		}
 		
 		
+	}
+	
+	public double descuento(double total) {
+		double cantidadLimite=100;
+		double descuento=10;
+		int divisor=100;
+		if(total>=cantidadLimite) {
+			return total-(descuento*(total/divisor));
+		}
+		return total;
 	}
 
 }

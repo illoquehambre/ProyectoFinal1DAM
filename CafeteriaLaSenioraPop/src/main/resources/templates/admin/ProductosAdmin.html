@@ -22,7 +22,16 @@
 
 
 	<div class="container-lg">
-
+	
+		<div class="alert alert-warning alert-dismissible" role="alert"
+			th:if="${param.error}">
+			<button type="button" class="close" data-bs-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<span>No se puede borrar un producto que tiene asociadas
+				lineas de venta.</span>
+		</div>
 
 		<div class="row">
 			<div class="col-md-12">
@@ -36,10 +45,10 @@
 							</form>
 							</div>
 				
-				<div class="table-wrap">
-					<table class="table semiCrema text-center">
+				<div class="overflow-auto">
+					<table class="table table-hover table-striped  text-center">
 					
-						<thead class="thead-primary">
+						<thead class="thead-primary crema">
 							
 							<tr>
 								<th>Categoria</th>
@@ -50,11 +59,13 @@
 
 							</tr>
 						</thead>
-						<tbody>
+						<tbody class="semiCrema">
 
 							<tr th:each="producto : ${productos}">
 								<td th:text="${producto.categoria.nombre}">nombreCat</td>
-								<td><img th:src="@{producto.url}" alt="Icono"></td>
+								<td><img th:src="${not (#strings.isEmpty(producto.url))} 
+                                              ? ${producto.url} : 'http://placehold.it/30x30'" class=""
+                            alt="imagen" /></td>
 								<td th:text="${producto.nombre}">nombre</td>
 								<td><a href="#"
 									th:href="@{/admin/productosAdmin/{id}/editar(id=${producto.id})}"
@@ -67,7 +78,7 @@
 									<div class="modal-dialog" role="document">
 										<div class="modal-content">
 											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal"
+												<button type="button" class="close" data-bs-dismiss="modal"
 													aria-label="Close">
 													<span aria-hidden="true">&times;</span>
 												</button>

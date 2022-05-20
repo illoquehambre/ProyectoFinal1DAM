@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.clasesproyecto.model.Categoria;
@@ -29,23 +28,10 @@ public class CategoriaController {
 	@Autowired
 	private ProductoServicio productoServicio;
 
-	@GetMapping("/carta")
-	public String carta(Model model, Optional<String> optional) {
-
-		List<Categoria> categorias = new ArrayList<Categoria>();
-
-		for (Categoria cat : categoriaServicio.findAll()) {
-
-			categorias.add(cat);
-		}
-
-		model.addAttribute("categorias", categorias);
-
-		return "Carta2";
-	}
+	
 
 	@GetMapping({ "/private", "/private/categorias" })
-	public String listado(Model model, Optional<String> optional) {
+	public String listado(Model model) {
 
 		List<Categoria> categorias = new ArrayList<Categoria>();
 

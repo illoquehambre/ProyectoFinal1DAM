@@ -11,10 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.clasesproyecto.model.Categoria;
 import com.salesianostriana.dam.clasesproyecto.model.Producto;
+import com.salesianostriana.dam.clasesproyecto.model.Ticket;
 import com.salesianostriana.dam.clasesproyecto.servicios.CategoriaServicio;
 import com.salesianostriana.dam.clasesproyecto.servicios.ProductoServicio;
 import com.salesianostriana.dam.clasesproyecto.servicios.TicketServicio;
@@ -29,14 +29,31 @@ public class TicketController {
 	private TicketServicio ticketServicio;
 	@Autowired
 	private ProductoServicio productoServicio;
-	
+
 	@Autowired
 	private CategoriaServicio categoriaServicio;
+
+	@GetMapping("admin/mostrarRegistro")
+	public String mostrarRegistro(Model model) {
+		
+		List<Ticket> ticket = new ArrayList<Ticket>();
+
+		for (Ticket tk : ticketServicio.findAll()) {
+
+			ticket.add(tk);
+		}
+
+		model.addAttribute("ventas", ticket);
+
+		return "admin/RegistroVenta";
+
+
+	}
 
 	@GetMapping("private/mostrarTicket") // Se encarga de mostrar todo lo que esté añadido al carrito, en mi caso será
 											// igual
 	public String showCarrito(Model model) {
-		
+
 		List<Categoria> categorias = new ArrayList<Categoria>();
 
 		for (Categoria cat : categoriaServicio.findAll()) {
@@ -45,7 +62,6 @@ public class TicketController {
 		}
 
 		model.addAttribute("categorias", categorias);
-		
 
 		model.addAttribute("products", ticketServicio.getProductsCarrito());
 
@@ -73,14 +89,13 @@ public class TicketController {
 		ticketServicio.removeProducto(productoServicio.findById(id));
 		return "redirect:/private/mostrarTicket";
 	}
-	
-	
+
 	@GetMapping("/private/cerrarTicket")
-	public String checkout(@RequestParam("mesa") int mesa) {		
-		
-			ticketServicio.cerrarTicket(mesa);
-			return "redirect:/private/categorias";
-		
+	public String checkout() {
+
+		ticketServicio.cerrarTicket();
+		return "redirect:/private/categorias";
+
 	}
 
 	@ModelAttribute("total_carrito")
@@ -92,6 +107,7 @@ public class TicketController {
 			for (Producto p : carrito.keySet()) {
 				total += p.getPrecio() * carrito.get(p);
 			}
+			
 			return total;
 		}
 
@@ -99,5 +115,20 @@ public class TicketController {
 	}
 	
 	
+	@ModelAttribute("total_con_descuento")
+	public Double totalConDescuento() {
+
+		Map<Producto, Integer> carrito = ticketServicio.getProductsCarrito();
+		double total = 0.0;
+		if (carrito != null) {
+			for (Producto p : carrito.keySet()) {
+				total += p.getPrecio() * carrito.get(p);
+			}
+			
+			return ticketServicio.descuento(total);
+		}
+
+		return 0.0;
+	}
 
 }

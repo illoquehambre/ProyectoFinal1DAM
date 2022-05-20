@@ -14,57 +14,16 @@
 <link rel="stylesheet" type="text/css" th:href="@{/css/estilos_01.css}">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
+	
 </head>
 
 <body>
 
-	<!--  
-        <form th:action="${producto.id != 0} ? @{editar/submit} : @{nuevo/submit}" class="w-75 d-flex flex-column align-items-center was-validated container py-2 bg-success mt-5" th:object="${producto}" method="post" >
-            <div class="align-items-center">
-				<input th:if="${producto.id != 0}" type="hidden" name="id" th:field="*{id}" />
-                <div class="d-flex mb-1 w-100 w-lg-50 input-group form-floating my-5">
-                    <span class="input-group-text text-success">Nombre</span>
-                    <input class="  bg-light text-secondary " type="text"
-                        placeholder="Nombre" name="name" id="name" required th:field="*{nombre}">
-                </div>
-    
-                <div class="d-flex mb-1 w-100 w-lg-50 input-group align-content-between my-5">
-                    <span class="input-group-text text-success">Precio</span>
-                    <input class="  bg-light text-secondary " type="text"
-                        placeholder="Precio" name="precio" id="precio" required th:field="*{precio}">
-                </div>
-    
-                <div class="d-flex mb-1 w-100 w-lg-50 input-group align-content-between my-5">
-                    <span class="input-group-text text-success">Cantidad Disponible</span>
-                    <input class="  bg-light text-secondary " type="text"
-                        placeholder="Cantidad Disponible" name="cantidad" id="cantidad" required th:field="*{cantidadDisponible}">
-                </div>
-    			<div class="d-flex mb-1 w-100 w-lg-50 input-group align-content-between my-5">
-                    <span class="input-group-text text-success">Url Imagen</span>
-                    <input class="  bg-light text-secondary " type="text"
-                        placeholder="Url Imagen" name="url" id="url" th:field="*{url}">
-                </div>
-            
-    
-    
-                <div class=" d-flex mb-1 w-100 w-lg-50   input-group align-content-between my-5">
-                    <span class="input-group-text text-success">categoria</span>
-                    <select class="  bg-light text-secondary" name="categoria" id="categoria" required th:field="*{categoria}">
-                    	<option value="-1"></option>
-                        <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nombre}"> </option>
-                    </select>
-                </div>
-   		
-            </div>
-    		<input type="submit" name="enviar" value="Enviar">
-        </form>
-        
-      -->
+	
 	<header th:replace="~{fragments/header :: myheader}"></header>
 
 	<div
-		class="d-flex align-items-center justify-content-center p-3 fw-bold  w-100 h-100 mt-5">
+		class="d-flex align-items-center justify-content-center p-3 fw-bold  w-100 h-100 mt-5 needs-validation" novalidate>
 
 		<div class="form  w-75 p-3 d-flex flex-column align-items-end">
 			<h1 class="text-center mb-3 w-100">¡Producto!</h1>
@@ -74,7 +33,7 @@
 				th:object="${producto}" method="post">
 				<div class="d-flex flex-column mb-1 w-100">
 					<label for="name">Nombre</label> <input
-						class="border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary"
+						class="border border-0 rounded required bg-light p-2 mt-1 mb-2 text-secondary"
 						type="text" placeholder="Nombre" name="name" id="name" required
 						th:field="*{nombre}">
 				</div>
@@ -82,7 +41,7 @@
 
 				<div class="d-flex flex-column mb-1 w-100">
 					<label for="precio">precio</label> <input
-						class="border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary"
+						class="border border-0 rounded requiered  bg-light p-2 mt-1 mb-2 text-secondary"
 						type="text" placeholder="Precio" name="precio" id="precio"
 						required th:field="*{precio}">
 				</div>
@@ -90,15 +49,15 @@
 
 
 				<div class="d-flex flex-column mb-1 w-100">
-					<label for="url">Url imagen</label> <input
+					<label  for="url">Url imagen</label> <input
 						class="border border-0 rounded  bg-light p-2 mt-1 mb-2 text-secondary"
 						type="text" placeholder="Url Imagen" name="url" id="url"
 						th:field="*{url}" />
 
 				</div>
 				<div class="d-flex flex-column mb-1 w-100">
-				<label class="form-label" for="textAreaExample">Descripción</label>
-					<textarea class="form-control" id="textAreaExample1" rows="4"
+				<label  for="textArea">Descripción</label>
+					<textarea  id="textArea" rows="4"
 						th:field="*{descripcion}"></textarea>
 					
 
@@ -109,7 +68,7 @@
 					<label for="categoria">Categoria</label> <select
 						class="  bg-light text-secondary" name="categoria" id="categoria"
 						required th:field="*{categoria}">
-						<option value="-1"></option>
+						
 						<option th:each="categoria : ${categorias}"
 							th:value="${categoria.id}" th:text="${categoria.nombre}">
 						</option>

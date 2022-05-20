@@ -24,33 +24,6 @@
 <body>
 
 	<header th:replace="~{fragments/sidebar :: mysidebar}"></header>
-	<!--
-    <div class="container">
-
-    
-        <ul class=" my-5">
-            <li class="d-flex border border-1 border-dark justify-content-around p-3 row " th:each="producto : ${productos}">
-                <div th:text="${producto.nombre}"  class="col-4 col-md-2">Nombre producto</div>
-                <div th:text="${producto.precio}"  class="col-4 col-md-2">PrecioUd</div>
-                <div  th:text="${producto.cantidad}" class="col-4 col-md-2">Cantidad</div>
-                <div  class="pt-2 pt-md-0 col-4 col-md-2">SubTotal</div>
-                <button class=" pt-2 pt-md-0 col-4 col-md-1 btn btn-danger">Borrar</button> 
-            </li>
-        </ul>
-
-
-
-        <div class="d-flex justify-content-between">
-            
-            <a href="./Carta2.html">
-                <button  class=" btn btn-primary rounded-pill">Volver Atrás</button>
-            </a>
-            <button class=" btn btn-primary rounded-pill">Imprimir</button>
-            
-        </div>
-    </div>
-    
--->
 
 
 	<div class="container-lg mt-5">
@@ -101,7 +74,7 @@
 									<div class="modal-dialog" role="document">
 										<div class="modal-content">
 											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal"
+												<button type="button" class="close" data-bs-dismiss="modal"
 													aria-label="Close">
 													<span aria-hidden="true">&times;</span>
 												</button>
@@ -110,7 +83,7 @@
 											<div class="modal-body">
 												<p>¿Está usted seguro de borrar este producto?</p>
 												<button type="button" class="btn btn-default"
-													data-dismiss="modal">No</button>
+													data-bs-dismiss="modal">No</button>
 												<a
 													th:href="@{/private/borrarProducto/{id}(id=${element.key.id})}"
 													class="btn btn-danger">Sí</a>
@@ -122,18 +95,27 @@
 
 							</tr>
 							<tr>
-								<td> </td>
-								<td> </td>
-								<td> </td>
+								
+								
 								<td>
-									<h3>Total</h3>
+									<h4>Total sin descuento:</h4>
 								</td>
 								<td class="text-right">
 									<h3>
-										<strong th:text="${total_carrito}">100€</strong>
+										<strong th:text="${total_carrito+'€'}">100€</strong>
+									</h3>
+								</td>
+								<td> </td>								<td>
+									<h4>Precio Final:</hh4>
+								</td>
+								<td class="text-right">
+									<h3>
+										<strong th:text="${total_con_descuento+'€'}">100€</strong>
 									</h3>
 								</td>
 							</tr>
+							
+							<!-- 
 							<tr>
 								<td colspan=2> </td>
 
@@ -149,6 +131,7 @@
 									
 								</td>
 							</tr>
+							-->
 							<tr>
 								<td colspan=4> </td>
 								
@@ -171,6 +154,7 @@
 		<a th:href="@{/private/categorias}"><button
 				class=" btn btn-light pastel border border-0 rounded-pill">Seguir
 				comprando</button></a>
+
 	</div>
 </body>
 
