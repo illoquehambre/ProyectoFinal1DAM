@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.clasesproyecto.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,10 +33,12 @@ public class Ticket {
 	@EqualsAndHashCode.Exclude
 	@OneToMany (mappedBy="ticket", fetch= FetchType.EAGER)
 	@Builder.Default
-	private List <LineaDeVenta> lineaDeVenta = new ArrayList<LineaDeVenta>();
-	private LocalDateTime fecha;
+	private List <LineaDeVenta> lineaDeVenta = new ArrayList<LineaDeVenta>();	
+	private LocalDate fecha;
+	private LocalTime hora;
 	//Indicar relación de la BD
 	private double total;
+	private int mesa;
 
 	
 	

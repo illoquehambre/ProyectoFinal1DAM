@@ -1,7 +1,9 @@
 package com.salesianostriana.dam.clasesproyecto.servicios;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.salesianostriana.dam.clasesproyecto.model.LineaDeVenta;
+import com.salesianostriana.dam.clasesproyecto.model.Mesa;
 import com.salesianostriana.dam.clasesproyecto.model.Producto;
 import com.salesianostriana.dam.clasesproyecto.model.Ticket;
 import com.salesianostriana.dam.clasesproyecto.repositories.ProductoRepository;
@@ -57,10 +60,11 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 		}
 
 	}
-	public void cerrarTicket() {
+	public void cerrarTicket(Mesa mesa) {
 		List<LineaDeVenta> listaLineasDeVenta =new ArrayList<LineaDeVenta>();
 		Ticket ticket;
 		double total=0;
+		
 		for (Map.Entry<Producto, Integer> lineaDeVenta : products.entrySet()) {//
 			
 			
@@ -72,11 +76,14 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 					.build()
 					);
 			
-			total+=total+(lineaDeVenta.getKey().getPrecio() * lineaDeVenta.getValue());
+			total+=(lineaDeVenta.getKey().getPrecio() * lineaDeVenta.getValue());
 		}
+		total=this.descuento(total);
 		//build del ticket
 		ticket = Ticket.builder()
-		.fecha(LocalDateTime.now())
+		.fecha(LocalDate.now())
+		.hora(LocalTime.now())
+		.mesa(mesa.getNumero())
 		.total(total)		
 		.build();
 		
@@ -93,6 +100,16 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 		}
 		
 		
+	}
+	
+	public double descuento(double total) {
+		double cantidadLimite=100;
+		double descuento=10;
+		int divisor=100;
+		if(total>=cantidadLimite) {
+			return total-(descuento*(total/divisor));
+		}
+		return total;
 	}
 
 }

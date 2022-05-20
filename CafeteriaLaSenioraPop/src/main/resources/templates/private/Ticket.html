@@ -95,35 +95,42 @@
 
 							</tr>
 							<tr>
-								<td> </td>
-								<td> </td>
-								<td> </td>
+								
+								
 								<td>
-									<h3>Total</h3>
+									<h4>Total sin descuento:</h4>
 								</td>
 								<td class="text-right">
 									<h3>
-										<strong th:text="${total_carrito}">100€</strong>
+										<strong th:text="${total_carrito+'€'}">100€</strong>
+									</h3>
+								</td>
+								<td> </td>								<td>
+									<h4>Precio Final:</h4>
+								</td>
+								<td class="text-right">
+									<h3>
+										<strong th:text="${total_con_descuento+'€'}">100€</strong>
 									</h3>
 								</td>
 							</tr>
-							<!-- 
+							
+							 
 							<tr>
 								<td colspan=2> </td>
 
 								<td colspan=3>
-								
-									<form th:action="@{/private/cerrarTicket}"  method="post">
-										<label for="mesa">Nº mesa</label>
-										<input type="number" name="mesa" id="mesa"/>
-										
+								  
+									<form th:action="@{/private/cerrarTicket}"  method="post" th:object="${mesa}">
+										<label for="numero">Nº mesa</label>
+										<!--  <input type="number" name="numero" id="numero" th:field="*{numero}"/>	-->		
 										<input class="btn btn-light border border-0 bg-success mt-3 text-light"
 											type="submit" name="Checkout" value="Checkout"/>
 									</form>
-									
+								 
 								</td>
 							</tr>
-							-->
+							<!--  
 							<tr>
 								<td colspan=4> </td>
 								
@@ -132,6 +139,7 @@
 											Checkout <span class="glyphicon glyphicon-play"></span>
 										</button></a></td>
 							</tr>
+							-->
 						</tbody>
 					</table>
 				</div>

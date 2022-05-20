@@ -104,6 +104,19 @@ public class ProductoController {
 	
 	@GetMapping("/admin/productosAdmin/borrar/{id}")
 	public String borrar(@PathVariable("id") long id) {
+		/*
+		Optional<Producto> producto = productoServicio.findById(id);
+		if (producto.isPresent()) {
+
+			if (productoServicio.numero(producto.get()) == 0) {
+				productoServicio.deleteById(id);
+			} else {
+
+				// Se ha agregado el parámetro error con valor true a la ruta
+				return "redirect:/admin/categoriasAdmin/?error=true";
+			}
+
+		}*/
 		productoServicio.deleteById(id);
 		return "redirect:/admin/productosAdmin";
 	}

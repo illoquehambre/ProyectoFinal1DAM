@@ -28,23 +28,10 @@ public class CategoriaController {
 	@Autowired
 	private ProductoServicio productoServicio;
 
-	@GetMapping("/carta")
-	public String carta(Model model, Optional<String> optional) {
-
-		List<Categoria> categorias = new ArrayList<Categoria>();
-
-		for (Categoria cat : categoriaServicio.findAll()) {
-
-			categorias.add(cat);
-		}
-
-		model.addAttribute("categorias", categorias);
-
-		return "Carta2";
-	}
+	
 
 	@GetMapping({ "/private", "/private/categorias" })
-	public String listado(Model model, Optional<String> optional) {
+	public String listado(Model model) {
 
 		List<Categoria> categorias = new ArrayList<Categoria>();
 
