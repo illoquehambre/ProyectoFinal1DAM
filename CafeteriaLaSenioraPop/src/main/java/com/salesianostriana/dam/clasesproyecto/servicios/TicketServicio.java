@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.salesianostriana.dam.clasesproyecto.model.LineaDeVenta;
+import com.salesianostriana.dam.clasesproyecto.model.Mesa;
 import com.salesianostriana.dam.clasesproyecto.model.Producto;
 import com.salesianostriana.dam.clasesproyecto.model.Ticket;
 import com.salesianostriana.dam.clasesproyecto.repositories.ProductoRepository;
@@ -57,10 +58,11 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 		}
 
 	}
-	public void cerrarTicket() {
+	public void cerrarTicket(Mesa mesa) {
 		List<LineaDeVenta> listaLineasDeVenta =new ArrayList<LineaDeVenta>();
 		Ticket ticket;
 		double total=0;
+		
 		for (Map.Entry<Producto, Integer> lineaDeVenta : products.entrySet()) {//
 			
 			
@@ -78,6 +80,7 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 		//build del ticket
 		ticket = Ticket.builder()
 		.fecha(LocalDateTime.now())
+		.mesa(mesa.getNumero())
 		.total(total)		
 		.build();
 		

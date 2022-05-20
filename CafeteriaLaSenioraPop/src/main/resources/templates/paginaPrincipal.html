@@ -8,10 +8,12 @@
 	<!-- Latest compiled and minified CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-	<link rel="stylesheet" href="./estilos.css">
+
 	<link rel="stylesheet" type="text/css" th:href="@{/css/estilos_01.css}">
 	<!-- Latest compiled JavaScript -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 	<title>Document</title>
 	
 </head>
@@ -72,7 +74,9 @@
 			<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
 		</div>
 		<div class="offcanvas-body crema">
-			<table class="table table-dark table-hover crema">
+			<table class="table table-dark table-hover crema" data-aos="fade-right"
+     data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
 				<thead>
 					<tr>
 
@@ -218,7 +222,7 @@
 		</section>
 		<section id="section2" class="row d-flex justify-content-center pt-5 mt-5 ">
 			<h1 class="display-6 text-center text-dark semiCrema mt-5">EVENTOS</h1>
-			<div class="card col-sm-4 col-12 m-3 crema p-0 border-0" style="max-width:400px;">
+			<div class="card col-sm-4 col-12 m-3 crema p-0 border-0 "data-aos="flip-left" style="max-width:400px;">
 				<img class="card-img-top" th:src="@{/img/evento_01.png}" alt="Card image">
 				<div class="card-body">
 					<h4 class="card-title">Titulo Evento/h4>
@@ -228,7 +232,7 @@
 					<a href="https://www.instagram.com/p/CddwN60AUPQ/" class="btn btn-light text dark pastel border-0 m-3">Ver más</a>
 				</div>
 			</div>
-			<div class="card col-sm-4 col-12 m-3 crema p-0 border-0" style="max-width:400px;">
+			<div class="card col-sm-4 col-12 m-3 crema p-0 border-0" data-aos="flip-left"  style="max-width:400px;">
 				<img class="card-img-top" th:src="@{/img/evento_02.png}" alt="Card image">
 				<div class="card-body">
 					<h4 class="card-title">Titulo Evento/h4>
@@ -238,7 +242,7 @@
 					<a href="https://www.instagram.com/p/CdSq7IsA80v/" class="btn btn-light text dark pastel border-0 m-3">Ver más</a>
 				</div>
 			</div>
-			<div class="card col-sm-4 col-12 m-3 crema p-0 border-0" style="max-width:400px;">
+			<div class="card col-sm-4 col-12 m-3 crema p-0 border-0" data-aos="flip-left"  style="max-width:400px;">
 				<img class="card-img-top" th:src="@{/img/evento_03.png}" alt="Card image">
 				<div class="card-body">
 					<h4 class="card-title">Titulo Evento/h4>
@@ -248,7 +252,7 @@
 					<a href="https://www.instagram.com/p/Cc5pvZXoILm/" class="btn btn-light text dark pastel border-0 m-3">Ver más</a>
 				</div>
 			</div>
-			<div class="card col-sm-4 col-12 m-3 crema p-0 border-0" style="max-width:400px;">
+			<div class="card col-sm-4 col-12 m-3 crema p-0 border-0" data-aos="flip-left"  style="max-width:400px;">
 				<img class="card-img-top" th:src="@{/img/evento_04.png}" alt="Card image">
 				<div class="card-body">
 					<h4 class="card-title">Titulo Evento/h4>
@@ -258,7 +262,7 @@
 					<a href="https://www.instagram.com/p/Cc5ncMRIu4U/" class="btn btn-light text dark pastel border-0 m-3">Ver más</a>
 				</div>
 			</div>
-			<div class="card col-sm-4 col-12 m-3 crema p-0 border-0" style="max-width:400px;">
+			<div class="card col-sm-4 col-12 m-3 crema p-0 border-0" data-aos="flip-left"  style="max-width:400px;">
 				<img class="card-img-top" th:src="@{/img/evento_05.png}" alt="Card image">
 				<div class="card-body">
 					<h4 class="card-title">Titulo Evento/h4>
@@ -268,7 +272,7 @@
 					<a href="https://www.instagram.com/p/CbfMNjqgejL/" class="btn btn-light text dark pastel border-0 m-3">Ver más</a>
 				</div>
 			</div>
-			<div class="card col-sm-4 col-12 m-3 crema p-0 border-0" style="max-width:400px;">
+			<div class="card col-sm-4 col-12 m-3 crema p-0 border-0" data-aos="flip-left"  style="max-width:400px;">
 				<img class="card-img-top" th:src="@{/img/evento_06.png}" alt="Card image">
 				<div class="card-body">
 					<h4 class="card-title">Titulo Evento/h4>
@@ -339,7 +343,9 @@
 			<h1 class="display-6 text-center text-dark semiCrema mt-5">MÁS VENDIDOS</h1>
 		</section>
 	</div>
-	
+	<script>
+  AOS.init();
+</script>
 	<footer class="text-center text-lg-start crema text-dark mt-5">
 		<section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
 			<div class="me-5 d-none d-lg-block">

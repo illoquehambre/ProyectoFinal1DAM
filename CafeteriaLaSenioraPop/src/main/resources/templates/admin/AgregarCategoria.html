@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/estilos_01.css}">
-
+	<script type="text/javascript" th:src="@{/js/valid.js}"></script>
 </head>
 
 <body >
@@ -22,20 +22,28 @@
 
 		<div class="form  w-50 p-3 d-flex flex-column align-items-end">
 			<h1 class="text-center mb-3 w-100">¡Categoria!</h1>
-			<form
-				th:action="${categoria.id != 0} ? @{editar/submit} : @{nuevo/submit}"
-				class="w-100 d-flex flex-column align-items-end was-validated "
-				th:object="${categoria}" method="post">
-				<div class="d-flex flex-column mb-1 w-100">
-					<label for="name">Nombre</label> <input
-						class="border border-0 rounded required bg-light p-2 mt-1 mb-2 text-secondary"
-						type="text" placeholder="Nombre" name="name" id="name" required
-						th:field="*{nombre}">
-				</div>
-				
-				<input class="btn btn-light border border-0 pastel mt-3"
-					type="submit" name="enviar" value="Enviar">
-			</form>
+			
+			<form class="w-100 needs-validation" novalidate method="POST"
+									th:action="${categoria.id != 0} ? @{editar/submit} : @{nuevo/submit}" th:object="${categoria}">
+									<fieldset class="mt-5">
+										<div class="form-group">
+											<div class="col-lg-10 mt-5">
+												<label for="nombre">Nombre </label>
+												<input th:field="*{nombre}" id="nombre" name="nombre"
+													type="text" placeholder="nombre" class="form-control" required>
+												<div class="valid-feedback">correcto</div>
+												<div class="invalid-feedback">Tienes que rellenar este campo</div>
+											</div>
+										</div>
+										
+										<div class="form-group d-flex m-3 justify-content-between">
+											<button type="reset" class="btn btn-lg btn-light pastel border border-0">Borrar
+												todo</button>
+											<button type="submit" class="btn btn-lg btn-light pastel border border-0">Enviar</button>
+										</div>
+									</fieldset>
+								</form>
+			
 		</div>
 	</div>
 

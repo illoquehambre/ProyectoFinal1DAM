@@ -11,8 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.clasesproyecto.model.Categoria;
+import com.salesianostriana.dam.clasesproyecto.model.Mesa;
 import com.salesianostriana.dam.clasesproyecto.model.Producto;
 import com.salesianostriana.dam.clasesproyecto.model.Ticket;
 import com.salesianostriana.dam.clasesproyecto.servicios.CategoriaServicio;
@@ -89,14 +92,28 @@ public class TicketController {
 		ticketServicio.removeProducto(productoServicio.findById(id));
 		return "redirect:/private/mostrarTicket";
 	}
+	
+	
+	
 
-	@GetMapping("/private/cerrarTicket")
+	/*
+	 * @GetMapping("/private/cerrarTicket")
 	public String checkout() {
 
 		ticketServicio.cerrarTicket();
 		return "redirect:/private/categorias";
 
 	}
+	*/
+	@PostMapping("/private/cerrarTicket")
+	public String checkout(@ModelAttribute Mesa mesa) {
+
+		ticketServicio.cerrarTicket(mesa);
+		return "redirect:/private/categorias";
+
+	}
+	
+	
 
 	@ModelAttribute("total_carrito")
 	public Double totalCarrito() {
@@ -113,6 +130,8 @@ public class TicketController {
 
 		return 0.0;
 	}
+	
+	
 	
 	
 	@ModelAttribute("total_con_descuento")

@@ -20,10 +20,15 @@
     }
 </style>
 
-<body data-bs-toggle="modal" data-bs-target="#exampleModal">
-    <h1>¡Error!</h1>
-    <p>No tienes privilegios para acceder a esta funcionalidad</p>
-    <a th:href="@{/}">Volver</a>
+<body class="align-content-center">
+	<div class="container semiCrema text-center mt-5">
+	<h1>¡Error!</h1>
+    <p>Ha ocurrido algún tipo de fallo, vuelva atrás he intentelo de nuevo</p>
+    <a th:href="@{/}"><button class="btn btn-light btn-lg pastel border border-0 "
+								type="button">Volver</button></a>
+	</div>
+    
+    
 
     
 </body>
