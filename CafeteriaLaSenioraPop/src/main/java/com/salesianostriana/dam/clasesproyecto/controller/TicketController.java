@@ -1,6 +1,5 @@
 package com.salesianostriana.dam.clasesproyecto.controller;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.salesianostriana.dam.clasesproyecto.model.Categoria;
 import com.salesianostriana.dam.clasesproyecto.model.Producto;
+import com.salesianostriana.dam.clasesproyecto.model.Ticket;
 import com.salesianostriana.dam.clasesproyecto.servicios.CategoriaServicio;
 import com.salesianostriana.dam.clasesproyecto.servicios.ProductoServicio;
 import com.salesianostriana.dam.clasesproyecto.servicios.TicketServicio;
@@ -30,30 +30,43 @@ public class TicketController {
 	@Autowired
 	private ProductoServicio productoServicio;
 
-	
 	@Autowired
 	private CategoriaServicio categoriaServicio;
 
+	@GetMapping("admin/mostrarRegistro")
+	public String mostrarRegistro(Model model) {
+		
+		List<Ticket> ticket = new ArrayList<Ticket>();
+
+		for (Ticket tk : ticketServicio.findAll()) {
+
+			ticket.add(tk);
+		}
+
+		model.addAttribute("ventas", ticket);
+
+		return "admin/RegistroVenta";
+
+
+	}
 
 	@GetMapping("private/mostrarTicket") // Se encarga de mostrar todo lo que esté añadido al carrito, en mi caso será
 											// igual
 	public String showCarrito(Model model) {
-	
-	List<Categoria> categorias = new ArrayList<Categoria>();
 
-	for (Categoria cat : categoriaServicio.findAll()) {
+		List<Categoria> categorias = new ArrayList<Categoria>();
 
-		categorias.add(cat);
+		for (Categoria cat : categoriaServicio.findAll()) {
+
+			categorias.add(cat);
+		}
+
+		model.addAttribute("categorias", categorias);
+
+		model.addAttribute("products", ticketServicio.getProductsCarrito());
+
+		return "/private/Ticket";
 	}
-
-	model.addAttribute("categorias", categorias);
-	
-
-	model.addAttribute("products", ticketServicio.getProductsCarrito());
-
-	return "/private/Ticket";
-}	
-		
 
 	@GetMapping("private/productoACarrito/{id}") // añade un producto al carrito
 	public String productoACarrito(@PathVariable("id") long id, Model model) {
@@ -76,14 +89,13 @@ public class TicketController {
 		ticketServicio.removeProducto(productoServicio.findById(id));
 		return "redirect:/private/mostrarTicket";
 	}
-	
-	
+
 	@GetMapping("/private/cerrarTicket")
-	public String checkout() {		
-		
-			ticketServicio.cerrarTicket();
-			return "redirect:/private/categorias";
-		
+	public String checkout() {
+
+		ticketServicio.cerrarTicket();
+		return "redirect:/private/categorias";
+
 	}
 
 	@ModelAttribute("total_carrito")
@@ -100,8 +112,5 @@ public class TicketController {
 
 		return 0.0;
 	}
-	
-	
-
 
 }
