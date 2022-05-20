@@ -2,7 +2,6 @@ package com.salesianostriana.dam.clasesproyecto.servicios;
 
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.salesianostriana.dam.clasesproyecto.model.LineaDeVenta;
-import com.salesianostriana.dam.clasesproyecto.model.Mesa;
 import com.salesianostriana.dam.clasesproyecto.model.Producto;
 import com.salesianostriana.dam.clasesproyecto.model.Ticket;
 import com.salesianostriana.dam.clasesproyecto.repositories.ProductoRepository;
@@ -60,7 +58,7 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 		}
 
 	}
-	public void cerrarTicket(Mesa mesa) {
+	public void cerrarTicket() {
 		List<LineaDeVenta> listaLineasDeVenta =new ArrayList<LineaDeVenta>();
 		Ticket ticket;
 		double total=0;
@@ -83,7 +81,6 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 		ticket = Ticket.builder()
 		.fecha(LocalDate.now())
 		.hora(LocalTime.now())
-		.mesa(mesa.getNumero())
 		.total(total)		
 		.build();
 		

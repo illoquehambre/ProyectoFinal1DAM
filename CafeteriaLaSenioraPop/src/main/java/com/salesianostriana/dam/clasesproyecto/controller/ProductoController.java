@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.clasesproyecto.model.Categoria;
+import com.salesianostriana.dam.clasesproyecto.model.LineaDeVenta;
 import com.salesianostriana.dam.clasesproyecto.model.Producto;
 import com.salesianostriana.dam.clasesproyecto.servicios.CategoriaServicio;
+import com.salesianostriana.dam.clasesproyecto.servicios.LineaDeVentaServicio;
 import com.salesianostriana.dam.clasesproyecto.servicios.ProductoServicio;
 
 import lombok.RequiredArgsConstructor;
@@ -27,6 +29,8 @@ public class ProductoController {
 	private CategoriaServicio categoriaServicio;
 	@Autowired
 	private ProductoServicio productoServicio;
+	@Autowired
+	private LineaDeVentaServicio lineaDeVentaServicio;
 	
 	
 	@GetMapping({"/private/categorias/{id}/productos"})
@@ -104,20 +108,25 @@ public class ProductoController {
 	
 	@GetMapping("/admin/productosAdmin/borrar/{id}")
 	public String borrar(@PathVariable("id") long id) {
-		/*
+		
 		Optional<Producto> producto = productoServicio.findById(id);
+
 		if (producto.isPresent()) {
 
-			if (productoServicio.numero(producto.get()) == 0) {
-				productoServicio.deleteById(id);
+			if (lineaDeVentaServicio.numeroLineasDeVentaProducto(producto.get()) == 0) {
+				productoServicio.delete(producto.get());
 			} else {
 
 				// Se ha agregado el parámetro error con valor true a la ruta
-				return "redirect:/admin/categoriasAdmin/?error=true";
+				return "redirect:/admin/productosAdmin/?error=true";
 			}
 
-		}*/
-		productoServicio.deleteById(id);
+		}
+
+		
+				
+		
+		//productoServicio.deleteById(id);
 		return "redirect:/admin/productosAdmin";
 	}
 	

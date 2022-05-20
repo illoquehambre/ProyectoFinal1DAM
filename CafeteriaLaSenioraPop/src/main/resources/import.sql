@@ -1,6 +1,12 @@
-INSERT INTO CATEGORIA (id, nombre) VALUES (NEXTVAL('hibernate_sequence'),'Ensaladas');
-INSERT INTO CATEGORIA (id, nombre) VALUES (NEXTVAL('hibernate_sequence'),'Carnes');
-INSERT INTO PRODUCTO (id, nombre, precio, url, categoria_id) VALUES (NEXTVAL('hibernate_sequence'),'Ensalada César', 54, 'https://i.postimg.cc/6qdy3J7R/905565.jpg', 1);
-INSERT INTO PRODUCTO (id, nombre, precio, url, categoria_id) VALUES (NEXTVAL('hibernate_sequence'),'Ensalada Normal', 54, 'vsrvvsr', 1);
-INSERT INTO PRODUCTO (id, nombre, precio, url, categoria_id) VALUES (NEXTVAL('hibernate_sequence'),'entrecot', 54,  'vsrvvsr', 2);
-INSERT INTO PRODUCTO (id, nombre, precio, url, categoria_id) VALUES (NEXTVAL('hibernate_sequence'),'solomillo', 54, 'vsrvvsr', 2);
+INSERT INTO CATEGORIA (id, nombre) VALUES (NEXTVAL('hibernate_sequence'),'Repostería');
+INSERT INTO CATEGORIA (id, nombre) VALUES (NEXTVAL('hibernate_sequence'),'Bebidas calientes');
+INSERT INTO CATEGORIA (id, nombre) VALUES (NEXTVAL('hibernate_sequence'),'Bebidas frías');
+INSERT INTO PRODUCTO (id, nombre, precio, url, descripcion, categoria_id) VALUES (NEXTVAL('hibernate_sequence'),'Tarta chocolate', 4, 'https://i.postimg.cc/6qdy3J7R/905565.jpg', 'Una tarta tradicional hecha de chocolate y galleta', 1);
+INSERT INTO PRODUCTO (id, nombre, precio, url, descripcion, categoria_id) VALUES (NEXTVAL('hibernate_sequence'),'Tarta Frutos rojos', 4, 'https://i.postimg.cc/VN2FNFY0/comida-03.jpg', 'Una tarta tradicional hecha de chocolate y una gran variedad de deliciosos frutos rojos', 1);
+INSERT INTO PRODUCTO (id, nombre, precio, url, descripcion, categoria_id) VALUES (NEXTVAL('hibernate_sequence'),'Tarta Limón', 4, 'https://i.postimg.cc/QxD05Scp/comida-02.jpg', 'Una tarta tradicional hecha chocolate, nata y limón', 1);
+INSERT INTO PRODUCTO (id, nombre, precio, url, descripcion, categoria_id) VALUES (NEXTVAL('hibernate_sequence'),'Dulcitos', 2.5, 'https://i.postimg.cc/13CHkQ2H/comida-06.jpg', 'Deliciosos dulcitos de diversos sabores que te asombrarán.', 1);
+INSERT INTO PRODUCTO (id, nombre, precio, url, descripcion, categoria_id) VALUES (NEXTVAL('hibernate_sequence'),'CocaCola', 1.5, 'https://i.postimg.cc/gJCd41Gc/67ce28b4-6236-4182-a9a9-0725e1421ebb-producto-241.png', 'Una coca-cola normal y corriente hermano, que quieres que te diga?', 3);
+INSERT INTO PRODUCTO (id, nombre, precio, url, descripcion, categoria_id) VALUES (NEXTVAL('hibernate_sequence'),'Caña Doble', 1.5, 'https://i.postimg.cc/cJD5s3zV/Whats-App-Image-2022-05-20-at-20-38-31.jpg', 'Una legendaria caña helada de cerveza Alhambra el doble de grande de lo normal. Cuentan las leyendas que el creador de esta aplicación-web desabastece semanalmente de este producto al bar.', 3);
+INSERT INTO PRODUCTO (id, nombre, precio, url, descripcion, categoria_id) VALUES (NEXTVAL('hibernate_sequence'),'Estrella Galicia', 1.4, 'https://i.postimg.cc/HkgnT8DW/2042362969.png', 'Un botellín normalito pero bien fresquito pal verano que hace calor.', 3);
+INSERT INTO PRODUCTO (id, nombre, precio, url, descripcion, categoria_id) VALUES (NEXTVAL('hibernate_sequence'),'Cafelito calentito', 4, 'https://i.postimg.cc/9F1t92mh/comida-08.jpg', 'Algo tan simple como un café normal y corriente, peroq ue provoca una adicción al creador de esta aplicación-web. (Sobre todo las últimas semanas haciendo este proyecto).', 2);
+
