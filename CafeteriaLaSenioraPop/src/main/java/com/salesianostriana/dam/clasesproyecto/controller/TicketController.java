@@ -107,7 +107,25 @@ public class TicketController {
 			for (Producto p : carrito.keySet()) {
 				total += p.getPrecio() * carrito.get(p);
 			}
+			
 			return total;
+		}
+
+		return 0.0;
+	}
+	
+	
+	@ModelAttribute("total_con_descuento")
+	public Double totalConDescuento() {
+
+		Map<Producto, Integer> carrito = ticketServicio.getProductsCarrito();
+		double total = 0.0;
+		if (carrito != null) {
+			for (Producto p : carrito.keySet()) {
+				total += p.getPrecio() * carrito.get(p);
+			}
+			
+			return ticketServicio.descuento(total);
 		}
 
 		return 0.0;

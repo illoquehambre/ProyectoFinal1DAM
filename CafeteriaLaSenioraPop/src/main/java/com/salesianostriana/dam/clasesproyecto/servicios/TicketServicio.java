@@ -72,8 +72,9 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 					.build()
 					);
 			
-			total+=total+(lineaDeVenta.getKey().getPrecio() * lineaDeVenta.getValue());
+			total+=(lineaDeVenta.getKey().getPrecio() * lineaDeVenta.getValue());
 		}
+		total=this.descuento(total);
 		//build del ticket
 		ticket = Ticket.builder()
 		.fecha(LocalDateTime.now())
@@ -93,6 +94,16 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 		}
 		
 		
+	}
+	
+	public double descuento(double total) {
+		double cantidadLimite=100;
+		double descuento=10;
+		int divisor=100;
+		if(total>=cantidadLimite) {
+			return total-(descuento*(total/divisor));
+		}
+		return total;
 	}
 
 }

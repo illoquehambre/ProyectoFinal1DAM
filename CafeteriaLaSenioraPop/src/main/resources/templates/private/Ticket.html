@@ -95,18 +95,26 @@
 
 							</tr>
 							<tr>
-								<td> </td>
-								<td> </td>
-								<td> </td>
+								
+								
 								<td>
-									<h3>Total</h3>
+									<h4>Total sin descuento:</h4>
 								</td>
 								<td class="text-right">
 									<h3>
-										<strong th:text="${total_carrito}">100€</strong>
+										<strong th:text="${total_carrito+'€'}">100€</strong>
+									</h3>
+								</td>
+								<td> </td>								<td>
+									<h4>Precio Final:</hh4>
+								</td>
+								<td class="text-right">
+									<h3>
+										<strong th:text="${total_con_descuento+'€'}">100€</strong>
 									</h3>
 								</td>
 							</tr>
+							
 							<!-- 
 							<tr>
 								<td colspan=2> </td>

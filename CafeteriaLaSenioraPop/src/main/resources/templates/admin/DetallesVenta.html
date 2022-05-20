@@ -55,16 +55,24 @@
 								<td th:text="${lineaVenta.producto.precio * lineaVenta.cantidad}"></td>
 								<td></td>
 							</tr>
-							<tr th:object="${ticket}">
-								<td> </td>
-								<td> </td>							
+							<tr>
+								
+								
 								<td>
-									<h3>Total</h3>
+									<h4>Total sin descuento:</h4>
 								</td>
 								<td class="text-right">
-									
-										<strong th:text="${total_carrito}">100€</strong>
-									
+									<h3>
+										<strong th:text="${total_carrito+'€'}">100€</strong>
+									</h3>
+								</td>
+								<td> </td>								<td>
+									<h4>Precio Final:</h4>
+								</td>
+								<td class="text-right">
+									<h3>
+										<strong th:text="${total_con_descuento+'€'}">100€</strong>
+									</h3>
 								</td>
 							</tr>
 								
