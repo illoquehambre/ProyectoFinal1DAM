@@ -1,7 +1,9 @@
 package com.salesianostriana.dam.clasesproyecto.servicios;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -79,7 +81,8 @@ public class TicketServicio extends ServicioBaseImpl<Ticket, Long, TicketReposit
 		total=this.descuento(total);
 		//build del ticket
 		ticket = Ticket.builder()
-		.fecha(LocalDateTime.now())
+		.fecha(LocalDate.now())
+		.hora(LocalTime.now())
 		.mesa(mesa.getNumero())
 		.total(total)		
 		.build();

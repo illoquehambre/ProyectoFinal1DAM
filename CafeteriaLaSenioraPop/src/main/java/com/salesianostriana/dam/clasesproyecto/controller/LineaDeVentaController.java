@@ -51,7 +51,7 @@ public class LineaDeVentaController {
 		double total = 0.0;
 		if (carrito != null) {
 			for (Producto p : carrito.keySet()) {
-				total += p.getPrecio() * carrito.get(p);
+				total += p.getPrecio()* carrito.get(p);
 			}
 			
 			return total;

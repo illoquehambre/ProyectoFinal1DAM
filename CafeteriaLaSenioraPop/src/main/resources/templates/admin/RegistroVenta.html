@@ -34,6 +34,7 @@
 							<tr>
 								<th>Id</th>
 								<th>Fecha</th>
+								<th>Hora</th>
 								<th>Total</th>
 								<th>Detalles</th>
 
@@ -45,7 +46,8 @@
 
 							<tr th:each="ticket : ${ventas}">
 								<td th:text="${ticket.id}">id</td>
-								<td th:text="${ticket.fecha}">Nombre</td>
+								<td th:text="${ticket.fecha}">fecha</td>
+								<td th:text="${ticket.hora}">hora</td>
 								<td th:text="${ticket.total}">Total</td>
 								<td><a href="#" th:href="@{/admin/mostrarRegistro/{id}/detallesVenta(id=${ticket.id})}"
 										class="btn btn-danger">Detalles</a></td>
