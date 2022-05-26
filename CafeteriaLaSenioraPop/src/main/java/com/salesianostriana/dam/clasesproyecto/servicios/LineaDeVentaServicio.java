@@ -27,4 +27,9 @@ public class LineaDeVentaServicio extends ServicioBaseImpl<LineaDeVenta, Long, L
 	}
 	
 	
+	public int numeroLineasVentaProducto(Producto producto) {
+		return repositorio.findNumLineasDeVentaByProducto(producto);
+	}
+	
+	
 }
