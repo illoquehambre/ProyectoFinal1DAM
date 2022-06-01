@@ -3,22 +3,17 @@ document.getElementById("nombre").addEventListener("blur", pasarNombreAMayuscula
 function revisarFormulario(){
 	let resultado = false;
 
-	//en las siguientes llamadas encadenadas con && hay que tener en cuenta que en el momento 
-	//en el que una de las llamadas devuelva false, ya no se realizarán las siguientes
 	resultado = pasarNombreAMayusculas();
 	
 
 	formulario.enviar.className = resultado?"btn btn-success mb-2":"btn btn-danger mb-2";
 
-	return resultado; //lo tengo a false para que nunca envíe el formulario, cuando esto entrara en producción, habría que poner return resultado;
+	return resultado; 
 }
 
 
 function pasarNombreAMayusculas(){
-	//Es más fácil acceder a los campos del formulario de esta forma, ya que existe un objeto
-	// global que tiene por nombre el id que le hayamos dado al formulario. 
-	//Además, puedo acceder a todos los campos a través del name o del id (indistintamente)
-	// que le hayamos dado a cada campo
+
 	let campoNombre = document.getElementById("nombre");
 
 	let resultado = campoNombre.value!="";
