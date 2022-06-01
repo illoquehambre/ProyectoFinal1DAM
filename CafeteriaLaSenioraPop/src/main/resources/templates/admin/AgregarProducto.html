@@ -52,7 +52,7 @@
 											<div class="col-lg-10 mt-5">
 												<label for="url">Precio </label>
 												<input th:field="*{precio}" id="precio" name="precio"
-													type="text" placeholder="precio" class="form-control" pattern='[0-9]+(\.[0-9][0-9]?)?'>
+													type="text" placeholder="precio" class="form-control">
 												
 											</div>
 											<div class="mensajeError text-danger" id="errorPrecio" >No puede ser nulo, menor o igual que cero</div>
@@ -88,7 +88,7 @@
 										
 										<div class="form-group d-flex m-3 justify-content-between">
 											<button type="reset" class="btn btn-lg btn-light pastel border border-0">Reset</button>
-											<button id="enviar" type="submit" class="btn btn-lg btn-light pastel border border-0">Enviar</button>
+											<button id="enviar" name="enviar" type="submit" class="btn btn-lg btn-light pastel border border-0">Enviar</button>
 										</div>
 									</fieldset>
 								</form>
